@@ -3,7 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="《浪漫餐厅》海外版 Gossip Harbor 深度体验与出海运营方案，求职作品">
+<meta name="theme-color" content="#c0392b">
 <title>《浪漫餐厅（Gossip Harbor）》出海运营深度拆解报告</title>
+<!-- 预加载 LCP 封面图，hint 浏览器尽早发起请求 -->
+<link rel="preload" as="image" href="images/_tap_banner.webp" fetchpriority="high">
+<!-- GitHub Pages 静态资源同源，dns-prefetch 仅用于外链 -->
+<link rel="dns-prefetch" href="//wzbis666.github.io">
 <style>
   :root {
     --color-primary: #c0392b;
@@ -350,7 +356,12 @@
 <!-- =================== 封面 =================== -->
 <section class="cover" id="cover">
   <div class="cover-tag">求 职 作 品 &nbsp;·&nbsp; P O R T F O L I O</div>
-  <img class="cover-banner" src="images/_tap_banner.webp" alt="《浪漫餐厅》封面">
+  <img class="cover-banner"
+       src="images/_tap_banner.webp"
+       alt="《浪漫餐厅》封面"
+       width="1080" height="608"
+       fetchpriority="high"
+       decoding="async">
   <h1 class="cover-title">《浪漫餐厅（Gossip Harbor）》<br>出海运营深度拆解报告</h1>
   <p class="cover-subtitle">深度体验 × 运营拆解 × 出海发行运营方案</p>
   <div class="cover-meta">
@@ -424,14 +435,22 @@
   <h2 id="sec1-1">1.1 一句话产品认知</h2>
   <p>《浪漫餐厅》海外定名 <em>Gossip Harbor</em>，是柠檬微趣研发的剧情驱动型 Merge-2（二合）休闲手游，2022 年 7 月上线海外。它不靠合成难度留人：核心驱动力是都市情感 + 悬疑探案的"狗血短剧"叙事，合成只是解锁剧情、装修餐厅的工具。开局剧情为女主<strong>凯莉</strong>（英文名 Quinn）离婚带女儿归来经营餐厅、遭遇投毒案，一边经营一边追查真相（澎湃新闻，2025-06；女主名以游戏内中文译名为准）。</p>
   <figure>
-    <img src="images/1.jpg" alt="产品 Google Play 海外商店页">
+    <picture>
+      <source srcset="images/1.webp" type="image/webp">
+      <img src="images/1.jpg" alt="产品 Google Play 海外商店页"
+           width="1080" height="2412" loading="lazy" decoding="async">
+    </picture>
     <figcaption>图 1-1：产品 Google Play 海外商店页（App Store 商店页结构基本一致，此处以 Google Play 为代表）</figcaption>
   </figure>
 
   <h2 id="sec1-2">1.2 赛道背景：Merge-2 是休闲品类的增长独苗</h2>
   <p>2025 年上半年，Merge-2 全球市场收入总流水超 6.8 亿美元，同比 +94%；下载量同比 +32%（AppMagic）。在休闲益智大类（内购流水 87 亿美元）中，三消、Merge-2、点消三大子类里 Merge-2 是唯一收入未下滑、仍在大幅增长的子类。</p>
   <figure>
-    <img src="images/fig1_market.png" alt="Merge-2 赛道增长数据">
+    <picture>
+    <source srcset="images/fig1_market.webp" type="image/webp">
+    <img src="images/fig1_market.png" alt="Merge-2 赛道增长数据"
+         width="1167" height="413" loading="lazy" decoding="async">
+  </picture>
     <figcaption>图 1-2：2025H1 Merge-2 全球收入与下载增速（AppMagic 数据 / AppGrowing 国际版转载，2025）</figcaption>
   </figure>
   <p>2025 全年，9 款中国出海合成产品年流水过亿人民币；合成品类流水 Top 20 中 12 款来自中国厂商（60%）；玩法格局上 Merge-2 上榜 12 款，首次超过 Merge-3（8 款）（白鲸出海/36 氪年度榜单，2026-02）。</p>
@@ -553,7 +572,11 @@
   </div>
   <p><strong>用户特征归纳：</strong>碎片化时间多，喜欢肥皂剧、情感悬疑故事；对硬核操作接受度低，追求解压与情绪价值；付费动机几乎只有一条——"想知道剧情还能有多离谱"。</p>
   <figure>
-    <img src="images/fig3_users.png" alt="性别结构 &amp; 单日游戏时长均值">
+    <picture>
+    <source srcset="images/fig3_users.webp" type="image/webp">
+    <img src="images/fig3_users.png" alt="性别结构 &amp; 单日游戏时长均值"
+         width="1319" height="548" loading="lazy" decoding="async">
+  </picture>
     <figcaption>图 2-1：用户性别结构与单日游戏时长均值（Sensor Tower / 澎湃新闻 2025-06；图中 source 标注的"百度百科"为作者制图时引述，HTML 文本已统一改为澎湃新闻 2025-06 一手源）</figcaption>
   </figure>
 
@@ -598,7 +621,11 @@
     </table>
   </div>
   <figure>
-    <img src="images/fig4_segments.png" alt="用户分层象限图">
+    <picture>
+      <source srcset="images/fig4_segments.webp" type="image/webp">
+      <img src="images/fig4_segments.png" alt="用户分层象限图"
+           width="1072" height="756" loading="lazy" decoding="async">
+    </picture>
     <figcaption>图 2-2：用户分层象限图（基于 2.1 公开画像与玩家社区评论合理推断）</figcaption>
   </figure>
 
@@ -639,19 +666,29 @@
     <li><strong>叙事剧情模块：</strong>每周五更新章节，情感纠葛 + 悬疑双线推进。</li>
   </ul>
   <figure>
-    <img src="images/fig5_loop.png" alt="核心循环示意图">
+    <picture>
+    <source srcset="images/fig5_loop.webp" type="image/webp">
+    <img src="images/fig5_loop.png" alt="核心循环示意图"
+         width="1325" height="374" loading="lazy" decoding="async">
+  </picture>
     <figcaption>图 3-1：核心循环示意图</figcaption>
   </figure>
   <div class="figure-grid">
-    <figure>
-      <img src="images/2.jpg" alt="游戏主界面（订单+合成棋盘）">
-    </figure>
-    <figure>
-      <img src="images/3.jpg" alt="餐厅装修配色选择">
-    </figure>
-    <figure>
-      <img src="images/4.jpg" alt="剧情对话（凯莉 / 山姆）">
-    </figure>
+    <picture>
+      <source srcset="images/2.webp" type="image/webp">
+      <img src="images/2.jpg" alt="游戏主界面（订单+合成棋盘）"
+           width="1080" height="2412" loading="lazy" decoding="async">
+    </picture>
+    <picture>
+      <source srcset="images/3.webp" type="image/webp">
+      <img src="images/3.jpg" alt="餐厅装修配色选择"
+           width="1080" height="2412" loading="lazy" decoding="async">
+    </picture>
+    <picture>
+      <source srcset="images/4.webp" type="image/webp">
+      <img src="images/4.jpg" alt="剧情对话（凯莉 / 山姆）"
+           width="1080" height="2412" loading="lazy" decoding="async">
+    </picture>
   </div>
   <p style="text-align:center;font-size:13px;color:var(--color-text-light);font-style:italic;margin-top:-8px;">图 3-2：游戏内实机画面（作者 2026-07 实机游玩截图）——左：主界面（顶部 3 个顾客订单槽 + 中部合成棋盘；当前版本含测试包调试浮层，替换为正式服截图后效果更佳）；中：装修配色选择界面（餐厅破败态→选择主色）；右：剧情对话界面（凯莉与山姆关于"黑猫嫌疑人"的探案对白）</p>
 
@@ -794,7 +831,11 @@
   </div>
   <p><strong>对比竞品：</strong>超越老牌合成竞品《Merge Mansion》《Travel Town》，成为 Merge-2 品类全球收入头部产品（Sensor Tower 月报）。</p>
   <figure>
-    <img src="images/fig2_revenue.png" alt="收入与排名对比">
+    <picture>
+      <source srcset="images/fig2_revenue.webp" type="image/webp">
+      <img src="images/fig2_revenue.png" alt="收入与排名对比"
+           width="1617" height="557" loading="lazy" decoding="async">
+    </picture>
     <figcaption>图 4-1：月收入对比与 Sensor Tower 出海收入榜排名走势（图示为 4.1 表格的视觉化摘要，精确数字以表格为准）</figcaption>
   </figure>
 
@@ -869,14 +910,22 @@
     <li><strong>吐槽舆情承接：</strong>社媒高频吐槽（体力、冰块、活动难度）安排官方账号"有回应地出现"——每周一次"我们听到了"帖子，把吐槽变成官方亲和力素材，同时整理关键词同步产品侧。</li>
   </ol>
   <figure>
-    <img src="images/5.jpg" alt="情感诉求类买量素材">
+    <picture>
+      <source srcset="images/5.webp" type="image/webp">
+      <img src="images/5.jpg" alt="情感诉求类买量素材"
+           width="1080" height="2412" loading="lazy" decoding="async">
+    </picture>
     <figcaption>图 5-1：典型情感诉求类买量素材（TikTok 平台 2025-03 投放；母女困境场景 + 1303.8w 人在玩数据，区别于剧情冲突式"短剧"——前者以情绪共情为主，后者以戏剧桥段为主，两类素材在投放中通常组合使用）</figcaption>
   </figure>
 
   <h2 id="sec5-3">5.3 活动节奏方案：12 周活动日历（示意）</h2>
   <p><strong>设计原则：</strong>剧情周更是心跳，空窗期活动是缓冲垫，赛季活动是情绪峰值，节日节点借势放大。</p>
   <figure>
-    <img src="images/fig6_calendar.png" alt="12 周活动日历">
+    <picture>
+    <source srcset="images/fig6_calendar.webp" type="image/webp">
+    <img src="images/fig6_calendar.png" alt="12 周活动日历"
+         width="1553" height="590" loading="lazy" decoding="async">
+  </picture>
     <figcaption>图 5-2：12 周活动日历（示意）</figcaption>
   </figure>
   <ul>
