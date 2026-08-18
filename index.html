@@ -395,9 +395,6 @@
 
   .toc-list a {
     color: var(--text);
-    flex: 1;
-    border-bottom: 1px dotted var(--border-strong);
-    padding-bottom: 2px;
     transition: color 0.2s var(--ease-out);
   }
 
@@ -419,18 +416,6 @@
   .toc-list .l3 {
     padding-left: 48px;
     font-size: 13.5px;
-  }
-
-  .toc-list .dots {
-    flex: 0 0 auto;
-    margin: 0 6px;
-    color: var(--border-strong);
-  }
-
-  .toc-list .pn {
-    flex: 0 0 auto;
-    color: var(--text-light);
-    font-size: 13px;
   }
 
   /* ===== Misc ===== */
@@ -616,39 +601,39 @@
   <nav class="toc">
     <h2>CONTENTS</h2>
     <ul class="toc-list">
-      <li class="l1"><a href="#summary">报告速览（Executive Summary）</a><span class="dots">..................</span><span class="pn">3</span></li>
-      <li class="l1"><a href="#sec1">一、产品与市场定位</a><span class="dots">........................................</span><span class="pn">4</span></li>
-      <li class="l2"><a href="#sec1-1">1.1 一句话产品认知</a><span class="dots">.........................................</span><span class="pn">4</span></li>
-      <li class="l2"><a href="#sec1-2">1.2 赛道背景：Merge-2 是休闲品类的增长独苗</a><span class="dots">...........</span><span class="pn">4</span></li>
-      <li class="l2"><a href="#sec1-3">1.3 市场定位与发行节奏</a><span class="dots">.....................................</span><span class="pn">5</span></li>
-      <li class="l2"><a href="#sec1-4">1.4 竞争格局对比</a><span class="dots">.............................................</span><span class="pn">6</span></li>
-      <li class="l2"><a href="#sec1-5">1.5 差异化优势与风险</a><span class="dots">........................................</span><span class="pn">6</span></li>
-      <li class="l1"><a href="#sec2">二、用户分析</a><span class="dots">.............................................</span><span class="pn">7</span></li>
-      <li class="l2"><a href="#sec2-1">2.1 核心用户画像（公开数据）</a><span class="dots">.................................</span><span class="pn">7</span></li>
-      <li class="l2"><a href="#sec2-2">2.2 用户分层</a><span class="dots">...............................................</span><span class="pn">8</span></li>
-      <li class="l2"><a href="#sec2-3">2.3 用户痛点（个人游玩 + 社区评论提炼）</a><span class="dots">.....................</span><span class="pn">8</span></li>
-      <li class="l2"><a href="#sec2-4">2.4 海外社区生态实况</a><span class="dots">.......................................</span><span class="pn">9</span></li>
-      <li class="l2"><a href="#sec2-5">2.5 对出海运营的启示</a><span class="dots">.......................................</span><span class="pn">9</span></li>
-      <li class="l1"><a href="#sec3">三、产品拆解</a><span class="dots">.............................................</span><span class="pn">10</span></li>
-      <li class="l2"><a href="#sec3-1">3.1 核心循环</a><span class="dots">...............................................</span><span class="pn">10</span></li>
-      <li class="l2"><a href="#sec3-2">3.2 商业化体系</a><span class="dots">.............................................</span><span class="pn">11</span></li>
-      <li class="l2"><a href="#sec3-3">3.3 活动体系设计</a><span class="dots">...........................................</span><span class="pn">11</span></li>
-      <li class="l2"><a href="#sec3-4">3.4 产品优势</a><span class="dots">...............................................</span><span class="pn">12</span></li>
-      <li class="l2"><a href="#sec3-5">3.5 现存产品短板（运营视角）</a><span class="dots">................................</span><span class="pn">12</span></li>
-      <li class="l1"><a href="#sec4">四、数据复盘（公开数据）</a><span class="dots">...................................</span><span class="pn">13</span></li>
-      <li class="l2"><a href="#sec4-1">4.1 收入规模</a><span class="dots">.............................................</span><span class="pn">13</span></li>
-      <li class="l2"><a href="#sec4-2">4.2 用户行为与留存理解</a><span class="dots">.....................................</span><span class="pn">13</span></li>
-      <li class="l2"><a href="#sec4-3">4.3 商业化理解</a><span class="dots">.............................................</span><span class="pn">14</span></li>
-      <li class="l2"><a href="#sec4-4">4.4 如果我是运营，我会盯什么</a><span class="dots">.................................</span><span class="pn">14</span></li>
-      <li class="l1"><a href="#sec5">五、我的运营方案（原创章节）</a><span class="dots">.................................</span><span class="pn">15</span></li>
-      <li class="l2"><a href="#sec5-1">5.1 总体思路：一条情绪营销主线，贯穿四个环节</a><span class="dots">..................</span><span class="pn">15</span></li>
-      <li class="l2"><a href="#sec5-2">5.2 社媒与社区：把剧情情绪价值做成话题运营</a><span class="dots">.....................</span><span class="pn">15</span></li>
-      <li class="l2"><a href="#sec5-3">5.3 活动节奏方案：12 周活动日历（示意）</a><span class="dots">.......................</span><span class="pn">16</span></li>
-      <li class="l2"><a href="#sec5-4">5.4 用户分层运营 SOP</a><span class="dots">......................................</span><span class="pn">17</span></li>
-      <li class="l2"><a href="#sec5-5">5.5 舆情与数据看板（周报框架）</a><span class="dots">.................................</span><span class="pn">17</span></li>
-      <li class="l2"><a href="#sec5-6">5.6 风险预案</a><span class="dots">..............................................</span><span class="pn">17</span></li>
-      <li class="l2"><a href="#sec5-7">5.7 我会盯的核心指标（监控框架）</a><span class="dots">............................</span><span class="pn">18</span></li>
-      <li class="l1"><a href="#sec6">六、总结：方法论提炼</a><span class="dots">........................................</span><span class="pn">19</span></li>
+      <li class="l1"><a href="#summary">报告速览（Executive Summary）</a></li>
+      <li class="l1"><a href="#sec1">一、产品与市场定位</a></li>
+      <li class="l2"><a href="#sec1-1">1.1 一句话产品认知</a></li>
+      <li class="l2"><a href="#sec1-2">1.2 赛道背景：Merge-2 是休闲品类的增长独苗</a></li>
+      <li class="l2"><a href="#sec1-3">1.3 市场定位与发行节奏</a></li>
+      <li class="l2"><a href="#sec1-4">1.4 竞争格局对比</a></li>
+      <li class="l2"><a href="#sec1-5">1.5 差异化优势与风险</a></li>
+      <li class="l1"><a href="#sec2">二、用户分析</a></li>
+      <li class="l2"><a href="#sec2-1">2.1 核心用户画像（公开数据）</a></li>
+      <li class="l2"><a href="#sec2-2">2.2 用户分层</a></li>
+      <li class="l2"><a href="#sec2-3">2.3 用户痛点（个人游玩 + 社区评论提炼）</a></li>
+      <li class="l2"><a href="#sec2-4">2.4 海外社区生态实况</a></li>
+      <li class="l2"><a href="#sec2-5">2.5 对出海运营的启示</a></li>
+      <li class="l1"><a href="#sec3">三、产品拆解</a></li>
+      <li class="l2"><a href="#sec3-1">3.1 核心循环</a></li>
+      <li class="l2"><a href="#sec3-2">3.2 商业化体系</a></li>
+      <li class="l2"><a href="#sec3-3">3.3 活动体系设计</a></li>
+      <li class="l2"><a href="#sec3-4">3.4 产品优势</a></li>
+      <li class="l2"><a href="#sec3-5">3.5 现存产品短板（运营视角）</a></li>
+      <li class="l1"><a href="#sec4">四、数据复盘（公开数据）</a></li>
+      <li class="l2"><a href="#sec4-1">4.1 收入规模</a></li>
+      <li class="l2"><a href="#sec4-2">4.2 用户行为与留存理解</a></li>
+      <li class="l2"><a href="#sec4-3">4.3 商业化理解</a></li>
+      <li class="l2"><a href="#sec4-4">4.4 如果我是运营，我会盯什么</a></li>
+      <li class="l1"><a href="#sec5">五、我的运营方案（原创章节）</a></li>
+      <li class="l2"><a href="#sec5-1">5.1 总体思路：一条情绪营销主线，贯穿四个环节</a></li>
+      <li class="l2"><a href="#sec5-2">5.2 社媒与社区：把剧情情绪价值做成话题运营</a></li>
+      <li class="l2"><a href="#sec5-3">5.3 活动节奏方案：12 周活动日历（示意）</a></li>
+      <li class="l2"><a href="#sec5-4">5.4 用户分层运营 SOP</a></li>
+      <li class="l2"><a href="#sec5-5">5.5 舆情与数据看板（周报框架）</a></li>
+      <li class="l2"><a href="#sec5-6">5.6 风险预案</a></li>
+      <li class="l2"><a href="#sec5-7">5.7 我会盯的核心指标（监控框架）</a></li>
+      <li class="l1"><a href="#sec6">六、总结：方法论提炼</a></li>
     </ul>
   </nav>
 
