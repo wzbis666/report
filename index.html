@@ -33,14 +33,14 @@
       "Segoe UI", Roboto, "Noto Sans SC", "Helvetica Neue", Arial, sans-serif;
     --font-display: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", serif;
 
-    --shadow-sm: 0 2px 8px rgba(122, 74, 50, 0.08);
-    --shadow-md: 0 8px 24px rgba(122, 74, 50, 0.14);
-    --shadow-lg: 0 16px 48px rgba(61, 130, 196, 0.16);
-    --shadow-glow: 0 10px 32px rgba(232, 162, 78, 0.30);
+    --shadow-sm: 3px 3px 0 rgba(122, 74, 50, 0.12);
+    --shadow-md: 6px 6px 0 rgba(122, 74, 50, 0.15);
+    --shadow-lg: 10px 10px 0 rgba(61, 130, 196, 0.18);
+    --shadow-glow: 6px 6px 0 rgba(232, 162, 78, 0.35);
 
     --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-    --radius: 16px;
-    --radius-sm: 10px;
+    --radius: 22px;
+    --radius-sm: 14px;
   }
 
   * {
@@ -263,7 +263,7 @@
     margin: 24px 0;
     border-radius: var(--radius);
     box-shadow: var(--shadow-md);
-    border: 1px solid var(--border);
+    border: 2px solid var(--border-strong);
   }
 
   table {
@@ -311,7 +311,7 @@
     height: auto;
     border-radius: var(--radius-sm);
     box-shadow: var(--shadow-sm);
-    border: 1px solid var(--border);
+    border: 2px solid var(--border-strong);
     transition: transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out);
   }
 
@@ -421,8 +421,9 @@
 
   /* ===== Misc ===== */
   .divider {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--border-strong), transparent);
+    height: 10px;
+    background: radial-gradient(circle, var(--border-strong) 3px, transparent 3.5px);
+    background-size: 20px 10px;
     margin: 32px 0;
   }
 
