@@ -891,7 +891,7 @@
   .compare-toggle.active { background: var(--ink); color: var(--white); box-shadow: 3px 4px 0 var(--yellow); }
 
   .game-card {
-    min-height: 330px;
+    min-height: 610px;
     padding: 30px;
     border: 2px solid var(--ink);
     border-radius: 26px;
@@ -913,13 +913,71 @@
   }
 
   .compare-board[data-focus="harbor"] .harbor,
-  .compare-board[data-focus="dream"] .dream { transform: translateY(-7px) scale(1.025); box-shadow: 0 18px 38px rgba(23, 50, 77, 0.14); }
+  .compare-board[data-focus="dream"] .dream { transform: translateY(-7px) scale(1.018); box-shadow: 0 18px 38px rgba(23, 50, 77, 0.14); }
   .compare-board[data-focus="harbor"] .dream,
-  .compare-board[data-focus="dream"] .harbor { opacity: 0.42; filter: grayscale(0.45); transform: scale(0.97); }
+  .compare-board[data-focus="dream"] .harbor { opacity: 0.52; filter: grayscale(0.4); transform: scale(0.98); }
   .compare-board[data-focus="both"] .game-card:hover { transform: translateY(-6px); box-shadow: 0 16px 34px rgba(23, 50, 77, 0.12); }
 
   .game-card.harbor { background: linear-gradient(150deg, var(--blue-soft), var(--white)); }
   .game-card.dream { background: linear-gradient(150deg, var(--yellow-soft), #f4e6dc); }
+
+  .game-stage {
+    height: 300px;
+    margin: -30px -30px 24px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 2px solid var(--ink);
+    isolation: isolate;
+  }
+
+  .harbor .game-stage {
+    background:
+      radial-gradient(circle at 18% 18%, rgba(255,255,255,.88), transparent 27%),
+      linear-gradient(145deg, #86d1df, #e8f7f7 58%, #f6c66f);
+  }
+
+  .dream .game-stage {
+    background:
+      radial-gradient(circle at 82% 18%, rgba(255,255,255,.88), transparent 24%),
+      linear-gradient(145deg, #d7eee1, #fff3cf 52%, #efb59f);
+  }
+
+  .stage-card {
+    position: absolute;
+    top: 22px;
+    width: 45%;
+    height: 250px;
+    object-fit: cover;
+    border: 4px solid var(--white);
+    border-radius: 16px;
+    box-shadow: 0 14px 26px rgba(23, 50, 77, 0.2);
+    transition: transform 360ms cubic-bezier(.2,.75,.25,1), filter 260ms ease, opacity 260ms ease;
+  }
+
+  .stage-card.left { left: 2%; transform: rotate(-7deg) scale(.88); opacity: .78; filter: saturate(.84); }
+  .stage-card.right { right: 2%; transform: rotate(7deg) scale(.88); opacity: .78; filter: saturate(.84); }
+  .stage-main { left: 27.5%; z-index: 3; object-position: 50% 28%; }
+  .stage-main.swap { animation: materialSwap 380ms cubic-bezier(.2,.75,.25,1); }
+
+  .game-stage:hover .stage-card.left { transform: translateX(-6px) rotate(-9deg) scale(.9); }
+  .game-stage:hover .stage-card.right { transform: translateX(6px) rotate(9deg) scale(.9); }
+  .game-stage:hover .stage-main { transform: translateY(-6px) scale(1.025); }
+
+  .stage-caption {
+    position: absolute;
+    left: 50%;
+    bottom: 12px;
+    z-index: 5;
+    padding: 5px 11px;
+    border: 1px solid var(--ink);
+    border-radius: 999px;
+    background: rgba(255, 253, 248, 0.94);
+    font-size: 11px;
+    font-weight: 900;
+    white-space: nowrap;
+    transform: translateX(-50%);
+    box-shadow: 3px 4px 0 var(--ink);
+  }
 
   .game-card .game-tag {
     font-size: 12px;
@@ -928,13 +986,47 @@
   }
 
   .game-card h3 {
-    margin: 12px 0 16px;
+    margin: 8px 0 12px;
     font-family: var(--display-font);
     font-size: 28px;
   }
 
   .game-card ul { margin: 0; padding-left: 20px; }
   .game-card li { margin: 8px 0; }
+
+  .material-switcher {
+    margin: 18px 0 16px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .material-button {
+    padding: 5px 5px 7px;
+    overflow: hidden;
+    border: 1px solid var(--ink);
+    border-radius: 12px;
+    background: rgba(255, 253, 248, 0.78);
+    cursor: pointer;
+    transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+  }
+
+  .material-button img {
+    display: block;
+    width: 100%;
+    height: 58px;
+    margin-bottom: 5px;
+    object-fit: cover;
+    border-radius: 8px;
+    filter: saturate(.82);
+    transition: filter 180ms ease, transform 180ms ease;
+  }
+
+  .material-button span { display: block; font-size: 11px; font-weight: 800; white-space: nowrap; }
+  .material-button:hover { transform: translateY(-3px); box-shadow: 3px 4px 0 var(--ink); }
+  .material-button:hover img { filter: saturate(1); transform: scale(1.035); }
+  .material-button.active { background: var(--ink); color: var(--white); box-shadow: 3px 4px 0 var(--yellow); }
+  .material-button.active img { filter: saturate(1.08); }
 
   .vs {
     display: grid;
@@ -1256,6 +1348,10 @@
 
   @keyframes slowSpin { to { transform: rotate(360deg); } }
   @keyframes mergePop { from { opacity: 0; transform: scale(.6) rotate(-8deg); } }
+  @keyframes materialSwap {
+    0% { opacity: .35; transform: translateY(13px) scale(.94) rotate(-2deg); }
+    100% { opacity: 1; transform: none; }
+  }
 
   @media (max-width: 900px) {
     .cover-grid,
@@ -1319,6 +1415,10 @@
     .compare-controls { align-items: flex-start; }
     .compare-actions { width: 100%; }
     .compare-toggle { flex: 1; }
+    .game-card { min-height: 570px; padding: 24px; }
+    .game-stage { height: 280px; margin: -24px -24px 20px; }
+    .stage-card { top: 20px; height: 232px; }
+    .material-button img { height: 52px; }
     .lightbox { padding: 18px; }
     .lightbox-panel { width: min(330px, calc(100vw - 56px)); }
     .lightbox-nav { top: auto; bottom: 18px; width: 42px; height: 42px; transform: none; }
@@ -1341,6 +1441,8 @@
     .loop-step,
     .game-card,
     .fit-card,
+    .stage-card,
+    .material-button,
     .lightbox,
     .lightbox-panel { transition: none; }
     .cover-visual.reveal,
@@ -1610,8 +1712,19 @@
 
     <div class="compare-board reveal" data-focus="both">
       <article class="game-card harbor">
+        <div class="game-stage" aria-label="《浪漫餐厅》人物、场景和道具素材">
+          <img class="stage-card left" src="images/2.jpg" alt="《浪漫餐厅》合成棋盘与餐饮道具" loading="lazy">
+          <img class="stage-card stage-main" src="images/4.jpg" alt="《浪漫餐厅》悬疑剧情人物" loading="lazy">
+          <img class="stage-card right" src="images/3.jpg" alt="《浪漫餐厅》餐厅装修场景" loading="lazy">
+          <span class="stage-caption">人物 / 悬疑线</span>
+        </div>
         <span class="game-tag">现代海滨 · 餐厅经营</span>
         <h3>《浪漫餐厅》</h3>
+        <div class="material-switcher" role="group" aria-label="切换《浪漫餐厅》标志性素材">
+          <button class="material-button active" type="button" data-src="images/4.jpg" data-alt="《浪漫餐厅》悬疑剧情人物" data-label="人物 / 悬疑线" aria-pressed="true"><img src="images/4.jpg" alt="" loading="lazy"><span>悬疑人物</span></button>
+          <button class="material-button" type="button" data-src="images/3.jpg" data-alt="《浪漫餐厅》餐厅装修场景" data-label="场景 / 餐厅装修" aria-pressed="false"><img src="images/3.jpg" alt="" loading="lazy"><span>餐厅场景</span></button>
+          <button class="material-button" type="button" data-src="images/2.jpg" data-alt="《浪漫餐厅》合成棋盘与餐饮道具" data-label="道具 / 餐饮合成" aria-pressed="false"><img src="images/2.jpg" alt="" loading="lazy"><span>餐饮道具</span></button>
+        </div>
         <ul>
           <li>二合订单推进餐厅修复</li>
           <li>现代情感关系与悬疑事件</li>
@@ -1621,8 +1734,19 @@
       </article>
       <div class="vs">VS</div>
       <article class="game-card dream">
+        <div class="game-stage" aria-label="《梦幻消除战》人物、场景和道具素材">
+          <img class="stage-card left" src="images/compare/dream-merge.webp" alt="《梦幻消除战》古风合成道具" loading="lazy">
+          <img class="stage-card stage-main" src="images/compare/dream-characters.webp" alt="《梦幻消除战》古风剧情人物" loading="lazy">
+          <img class="stage-card right" src="images/compare/dream-teahouse.webp" alt="《梦幻消除战》茶楼经营场景" loading="lazy">
+          <span class="stage-caption">人物 / 古风情缘</span>
+        </div>
         <span class="game-tag">中国古风 · 茶楼经营</span>
         <h3>《梦幻消除战》</h3>
+        <div class="material-switcher" role="group" aria-label="切换《梦幻消除战》标志性素材">
+          <button class="material-button active" type="button" data-src="images/compare/dream-characters.webp" data-alt="《梦幻消除战》古风剧情人物" data-label="人物 / 古风情缘" aria-pressed="true"><img src="images/compare/dream-characters.webp" alt="" loading="lazy"><span>古风人物</span></button>
+          <button class="material-button" type="button" data-src="images/compare/dream-teahouse.webp" data-alt="《梦幻消除战》茶楼经营场景" data-label="场景 / 茶楼经营" aria-pressed="false"><img src="images/compare/dream-teahouse.webp" alt="" loading="lazy"><span>茶楼场景</span></button>
+          <button class="material-button" type="button" data-src="images/compare/dream-merge.webp" data-alt="《梦幻消除战》古风合成道具" data-label="道具 / 茶点合成" aria-pressed="false"><img src="images/compare/dream-merge.webp" alt="" loading="lazy"><span>古风道具</span></button>
+        </div>
         <ul>
           <li>二合订单推进茶楼重建</li>
           <li>重生、复仇、奇案与情缘</li>
@@ -1633,7 +1757,7 @@
     </div>
 
     <div class="compare-insight reveal">
-      <strong>我的理解：</strong>两款产品的基础循环相近，但题材不是简单“换皮”。物品命名、剧情冲突、装修审美、广告素材和社区话题都会随文化背景变化。对游戏运营支持而言，快速吃透产品不仅是会玩，还要理解目标玩家为什么会对同一机制产生不同期待。关于《梦幻消除战》的产品描述来自官方 App Store 与 TapTap 页面。<a href="#source-5">[5]</a>
+      <strong>我的理解：</strong>两款产品的基础循环相近，但题材不是简单“换皮”。从人物服饰、经营空间到订单道具，现代海滨与中国古风使用了完全不同的视觉语言；物品命名、剧情冲突、装修审美、广告素材和社区话题也会随文化背景变化。对游戏运营支持而言，快速吃透产品不仅是会玩，还要理解目标玩家为什么会对同一机制产生不同期待。左侧为本次实玩截图，右侧为《梦幻消除战》官方 App Store 素材。<a href="#source-5">[5]</a>
     </div>
   </section>
 
@@ -1739,7 +1863,7 @@
       <li id="source-2"><span class="source-no">[2]</span><div><a href="https://apps.apple.com/ng/app/gossip-harbor-merge-story/id1623318294" target="_blank" rel="noreferrer">App Store：Gossip Harbor - Merge &amp; Story</a><small>用于确认每周五章节更新、公开活动说明及玩家评论案例。</small></div></li>
       <li id="source-3"><span class="source-no">[3]</span><div><a href="https://www.gamerefinery.com/mobile-game-market-review-april-2026/" target="_blank" rel="noreferrer">GameRefinery：Mobile Game Market Review, April 2026</a><small>用于确认产品持续加入混合 PvE 等 LiveOps 内容。</small></div></li>
       <li id="source-4"><span class="source-no">[4]</span><div><a href="https://www.reddit.com/r/GossipHarbor/comments/1ttlcg0/events_still_due_and_cards/" target="_blank" rel="noreferrer">Reddit：玩家对活动准备和资源安排的讨论</a><small>只作为社区个案，用于发现问题线索，不代表整体用户。</small></div></li>
-      <li id="source-5"><span class="source-no">[5]</span><div><a href="https://apps.apple.com/cn/app/%E6%A2%A6%E5%B9%BB%E6%B6%88%E9%99%A4%E6%88%98/id6748513887" target="_blank" rel="noreferrer">App Store：《梦幻消除战》产品页</a>；<a href="https://www.taptap.cn/app/747820" target="_blank" rel="noreferrer">TapTap 官方页</a><small>用于确认古风合成经营、茶楼装修、情缘和奇案等产品要素。</small></div></li>
+      <li id="source-5"><span class="source-no">[5]</span><div><a href="https://apps.apple.com/cn/app/%E6%A2%A6%E5%B9%BB%E6%B6%88%E9%99%A4%E6%88%98/id6748513887" target="_blank" rel="noreferrer">App Store：《梦幻消除战》产品页</a>；<a href="https://www.taptap.cn/app/747820" target="_blank" rel="noreferrer">TapTap 官方页</a><small>用于确认古风合成经营、茶楼装修、情缘和奇案等产品要素；对比卡中的古风人物、场景与道具均取自 App Store 官方截图。</small></div></li>
       <li><span class="source-no">[P]</span><div><strong>个人体验与求职材料</strong><small>7 天、约 20 小时、抖音小程序 20 级、约 20 元付费、广告与 CD 行为来自候选人真实记录；岗位职责和履历数据来自候选人提供的 JD 与简历。</small></div></li>
     </ol>
   </section>
@@ -1992,16 +2116,42 @@
     dream: "中国古风视角：茶点、奇案、情缘与唐宋家具共同强化本地文化代入。"
   };
 
+  function setCompareFocus(focus) {
+    compareBoard.dataset.focus = focus;
+    compareButtons.forEach(function (item) {
+      var active = item.dataset.focus === focus;
+      item.classList.toggle("active", active);
+      item.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+    compareNote.textContent = compareNotes[focus];
+  }
+
   compareButtons.forEach(function (button) {
     button.addEventListener("click", function () {
-      var focus = button.dataset.focus;
-      compareBoard.dataset.focus = focus;
-      compareButtons.forEach(function (item) {
-        var active = item === button;
-        item.classList.toggle("active", active);
-        item.setAttribute("aria-pressed", active ? "true" : "false");
+      setCompareFocus(button.dataset.focus);
+    });
+  });
+
+  Array.prototype.slice.call(document.querySelectorAll(".game-card")).forEach(function (card) {
+    var materialButtons = Array.prototype.slice.call(card.querySelectorAll(".material-button"));
+    var mainImage = card.querySelector(".stage-main");
+    var caption = card.querySelector(".stage-caption");
+    var cardFocus = card.classList.contains("harbor") ? "harbor" : "dream";
+
+    materialButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        materialButtons.forEach(function (item) {
+          var active = item === button;
+          item.classList.toggle("active", active);
+          item.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+        mainImage.src = button.dataset.src;
+        mainImage.alt = button.dataset.alt;
+        caption.textContent = button.dataset.label;
+        mainImage.classList.remove("swap");
+        window.requestAnimationFrame(function () { mainImage.classList.add("swap"); });
+        setCompareFocus(cardFocus);
       });
-      compareNote.textContent = compareNotes[focus];
     });
   });
 
