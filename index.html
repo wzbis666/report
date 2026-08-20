@@ -3,549 +3,912 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>《浪漫餐厅（Gossip Harbor）》出海内容与社区运营拆解</title>
-<!-- 关闭浏览器自动滚动恢复，避免刷新后跳到上次位置；无 URL 锚点时强制顶部定位 -->
-<script>if('scrollRestoration' in history)history.scrollRestoration='manual';if(!location.hash)window.scrollTo(0,0);</script>
+<meta name="description" content="《浪漫餐厅》一周玩家体验与游戏运营支持岗位思考">
+<title>《浪漫餐厅》一周玩家体验与运营思考</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;800&amp;family=Noto+Serif+SC:wght@700;800;900&amp;display=swap" rel="stylesheet">
+<script>if("scrollRestoration" in history) history.scrollRestoration = "manual";</script>
 <style>
   :root {
-    /* 游戏画风配色 —— 从《浪漫餐厅》真实截图提取（天空蓝 × 暖金 × 奶油）*/
-    --sky: #5aa9e6;
-    --sky-deep: #3d82c4;
-    --sky-deeper: #2d6aa8;
-    --sky-soft: #eaf4fb;
-    --gold: #e8a24e;
-    --gold-deep: #d98a2b;
-    --gold-soft: #fdf1dd;
-    --cream: #fdf6ec;
-    --cream-warm: #fbf0df;
-    --wood: #7a4a32;
-    --wood-deep: #5a3523;
-    --night: #2a2438;
-    --text: #4a3b2a;
-    --text-light: #8a7a6a;
-    --border: #eadfce;
-    --border-strong: #d9c6a8;
-
-    /* 兼容正文 inline style 的旧变量引用 */
-    --color-text-light: #8a7a6a;
-
-    --font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei",
-      "Segoe UI", Roboto, "Noto Sans SC", "Helvetica Neue", Arial, sans-serif;
-    --font-display: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", serif;
-
-    --shadow-sm: 0 2px 8px rgba(122, 74, 50, 0.08);
-    --shadow-md: 0 8px 24px rgba(122, 74, 50, 0.14);
-    --shadow-lg: 0 16px 48px rgba(61, 130, 196, 0.16);
-    --shadow-glow: 0 10px 32px rgba(232, 162, 78, 0.30);
-
-    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-    --radius: 16px;
-    --radius-sm: 10px;
+    --ink: #17324d;
+    --ink-soft: #4f6578;
+    --paper: #f7f1e6;
+    --paper-deep: #eee3d1;
+    --white: #fffdf8;
+    --blue: #52a9c5;
+    --blue-deep: #267b9b;
+    --blue-soft: #dff2f6;
+    --orange: #f47d4a;
+    --orange-soft: #ffe1cf;
+    --yellow: #f4c95d;
+    --yellow-soft: #fff1bd;
+    --green: #69a978;
+    --green-soft: #e5f2e7;
+    --rose: #d96c87;
+    --line: #d9cbb7;
+    --shadow: 0 18px 50px rgba(52, 61, 67, 0.12);
+    --shadow-small: 0 8px 24px rgba(52, 61, 67, 0.09);
+    --radius: 24px;
+    --radius-small: 15px;
+    --body-font: "Noto Sans SC", "Microsoft YaHei", sans-serif;
+    --display-font: "Noto Serif SC", "Songti SC", serif;
   }
 
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+  * { box-sizing: border-box; }
 
-  html {
-    scroll-behavior: smooth;
-  }
+  html { scroll-behavior: smooth; }
 
   body {
-    font-family: var(--font-sans);
-    color: var(--text);
-    background:
-      radial-gradient(1400px 700px at 0% 0%, #dff0fb 0%, transparent 55%),
-      radial-gradient(1200px 650px at 100% 0%, #fdf1dd 0%, transparent 50%),
-      var(--cream);
-    line-height: 1.8;
+    margin: 0;
+    color: var(--ink);
+    font-family: var(--body-font);
     font-size: 16px;
+    line-height: 1.8;
+    background-color: var(--paper);
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(23, 50, 77, 0.07) 1px, transparent 0),
+      linear-gradient(135deg, rgba(82, 169, 197, 0.08), transparent 38%),
+      linear-gradient(315deg, rgba(244, 125, 74, 0.07), transparent 34%);
+    background-size: 22px 22px, 100% 100%, 100% 100%;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
 
-  /* ===== Cover Page ===== */
-  .cover {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 110px 40px 60px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    background:
-      radial-gradient(1100px 600px at 15% 12%, rgba(90,169,230,0.28) 0%, transparent 60%),
-      radial-gradient(900px 560px at 85% 22%, rgba(232,162,78,0.24) 0%, transparent 55%),
-      linear-gradient(180deg, #fdf6ec 0%, #fdf1e0 100%);
-  }
-  /* 封面动态光晕：缓慢流动，模拟天空云层漂移 */
-  .cover::before {
-    content: "";
-    position: absolute;
-    inset: -20%;
-    background:
-      radial-gradient(700px 420px at 20% 30%, rgba(90,169,230,0.18) 0%, transparent 55%),
-      radial-gradient(620px 400px at 80% 55%, rgba(232,162,78,0.16) 0%, transparent 55%);
-    animation: coverDrift 24s var(--ease-out) infinite alternate;
-    pointer-events: none;
-  }
-  @keyframes coverDrift {
-    0%   { transform: translate3d(0, 0, 0) scale(1); }
-    100% { transform: translate3d(4%, -5%, 0) scale(1.1); }
-  }
+  a { color: var(--blue-deep); text-underline-offset: 3px; }
+  img { max-width: 100%; }
 
-  .cover-tag {
-    position: relative;
-    letter-spacing: 0.42em;
-    font-size: 13px;
-    color: var(--gold-deep);
-    background: var(--gold-soft);
-    padding: 8px 18px 8px 22px;
-    border-radius: 999px;
-    margin-bottom: 32px;
-    font-weight: 600;
-    box-shadow: var(--shadow-sm);
-    animation: coverRise 0.7s var(--ease-out) both;
-  }
-
-  .cover-banner {
-    position: relative;
-    max-width: 720px;
-    width: 100%;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-lg);
-    margin-bottom: 40px;
-    border: 3px solid transparent;
-    background:
-      linear-gradient(#fff, #fff) padding-box,
-      linear-gradient(135deg, var(--gold), var(--sky)) border-box;
-    animation: coverRise 0.7s 0.12s var(--ease-out) both, bannerFloat 6s 1s ease-in-out infinite;
-  }
-  @keyframes bannerFloat {
-    0%, 100% { transform: translateY(0); }
-    50%      { transform: translateY(-8px); }
-  }
-
-  .cover-title {
-    position: relative;
-    font-family: var(--font-display);
-    font-size: 40px;
-    font-weight: 800;
-    color: var(--wood-deep);
-    margin-bottom: 16px;
-    line-height: 1.4;
-    letter-spacing: 0.02em;
-    animation: coverRise 0.7s 0.2s var(--ease-out) both;
-  }
-
-  .cover-subtitle {
-    position: relative;
-    font-size: 17px;
-    color: var(--wood);
-    margin-bottom: 8px;
-    letter-spacing: 0.12em;
-    animation: coverRise 0.7s 0.28s var(--ease-out) both;
-  }
-
-  .cover-meta {
-    position: relative;
-    margin-top: 32px;
-    color: var(--text-light);
-    font-size: 14px;
-    animation: coverRise 0.7s 0.36s var(--ease-out) both;
-  }
-
-  .cover-meta p {
-    margin: 4px 0;
-  }
-
-  .cover-disclaimer {
-    position: relative;
-    max-width: 720px;
-    margin: 40px auto 0;
-    padding: 20px 24px;
-    background: rgba(255,255,255,0.72);
-    backdrop-filter: blur(8px);
-    border-left: 4px solid var(--gold);
-    border-radius: var(--radius-sm);
-    font-size: 13px;
-    color: var(--text-light);
-    text-align: left;
-    line-height: 1.9;
-    box-shadow: var(--shadow-sm);
-    animation: coverRise 0.7s 0.44s var(--ease-out) both;
-  }
-  @keyframes coverRise {
-    from { opacity: 0; transform: translateY(18px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ===== Layout ===== */
-  .container {
-    max-width: 880px;
-    margin: 0 auto;
-    padding: 40px 32px 80px;
-  }
-
-  .page-header {
-    border-bottom: 2px solid var(--border);
-    padding-bottom: 12px;
-    margin-bottom: 32px;
-    color: var(--text-light);
-    font-size: 13px;
-    letter-spacing: 0.05em;
-  }
-
-  /* ===== Typography ===== */
-  h1 {
-    font-size: 30px;
-    margin: 68px 0 28px;
-    color: var(--wood-deep);
-    font-weight: 800;
-    letter-spacing: 0.01em;
-    line-height: 1.3;
-  }
-
-  h2 {
-    font-size: 21px;
-    margin: 36px 0 16px;
-    color: var(--sky-deep);
-    padding-bottom: 8px;
-    border-bottom: 2px solid var(--border);
-    font-weight: 700;
-  }
-
-  h3 {
-    font-size: 17px;
-    margin: 24px 0 12px;
-    color: var(--wood);
-    font-weight: 600;
-  }
-
-  p {
-    margin: 12px 0;
-    text-align: justify;
-  }
-
-  strong {
-    color: var(--sky-deeper);
-    font-weight: 600;
-  }
-
-  a {
-    color: var(--sky-deep);
-    text-decoration: none;
-  }
-
-  a:hover {
-    color: var(--gold-deep);
-    text-decoration: underline;
-  }
-
-  /* ===== Lists ===== */
-  ul, ol {
-    margin: 12px 0 12px 28px;
-  }
-
-  li {
-    margin: 8px 0;
-  }
-
-  /* ===== Tables ===== */
-  .table-wrap {
-    overflow-x: auto;
-    margin: 24px 0;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-md);
-    border: 1px solid var(--border);
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    background: #fff;
-    font-size: 14px;
-  }
-
-  th, td {
-    padding: 13px 16px;
-    text-align: left;
-    border: 1px solid var(--border);
-    vertical-align: top;
-  }
-
-  th {
-    background: linear-gradient(180deg, var(--sky-soft), #e3f0fb);
-    font-weight: 700;
-    color: var(--sky-deeper);
-    white-space: nowrap;
-  }
-
-  tbody tr {
-    transition: background 0.2s var(--ease-out);
-  }
-
-  tbody tr:nth-child(even) {
-    background: #fdf8f0;
-  }
-
-  tbody tr:hover {
-    background: var(--gold-soft);
-  }
-
-  /* ===== Figures ===== */
-  figure {
-    margin: 28px 0;
-    text-align: center;
-  }
-
-  figure img {
-    max-width: 100%;
-    max-height: 74vh;
-    height: auto;
-    border-radius: var(--radius-sm);
-    box-shadow: var(--shadow-sm);
-    border: 1px solid var(--border);
-    transition: transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out);
-  }
-
-  figure:hover img {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-glow);
-  }
-
-  figcaption {
-    margin-top: 12px;
-    font-size: 13px;
-    color: var(--text-light);
-    font-style: normal;
-    text-align: left;
-    background: var(--cream-warm);
-    border-left: 3px solid var(--sky);
-    border-radius: var(--radius-sm);
-    padding: 8px 14px;
-  }
-
-  .figure-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-    margin: 24px 0;
-  }
-
-  .figure-grid figure {
-    margin: 0;
-  }
-
-  /* 实机截图顶部含测试包版本号，仅在展示层裁去该调试信息 */
-  .figure-grid .crop-debug-bar {
-    overflow: hidden;
-    border-radius: var(--radius-sm);
-    box-shadow: var(--shadow-sm);
-    border: 1px solid var(--border);
-  }
-
-  .figure-grid .crop-debug-bar img {
-    display: block;
-    transform: translateY(-24px);
-    margin-bottom: -24px;
-    border: 0;
-    border-radius: 0;
-    box-shadow: none;
-  }
-
-  .figure-grid .crop-debug-bar:hover img {
-    transform: translateY(-28px);
-    box-shadow: none;
-  }
-
-  /* ===== Callout ===== */
-  .callout {
-    margin: 24px 0;
-    padding: 18px 24px;
-    background: linear-gradient(180deg, var(--gold-soft), #fff7e8);
-    border-left: 4px solid var(--gold);
-    border-radius: var(--radius-sm);
-    box-shadow: var(--shadow-sm);
-    color: var(--wood-deep);
-  }
-
-  /* 我的运营判断 —— 天空蓝强调，与"说明性 callout"区分 */
-  .insight {
-    margin: 24px 0;
-    padding: 16px 24px;
-    background: linear-gradient(180deg, var(--sky-soft), #f2f8fd);
-    border-left: 4px solid var(--sky-deep);
-    border-radius: var(--radius-sm);
-    box-shadow: var(--shadow-sm);
-    color: var(--sky-deeper);
-  }
-
-  /* ===== Table of Contents ===== */
-  .toc {
-    background: linear-gradient(180deg, #ffffff, var(--sky-soft));
-    padding: 28px 36px;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    margin: 20px 0 40px;
-    box-shadow: var(--shadow-md);
-  }
-
-  .toc h2 {
-    margin-top: 0;
-    border: none;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  .toc-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .toc-list li {
-    margin: 8px 0;
-    display: flex;
-    align-items: baseline;
-  }
-
-  .toc-list a {
-    color: var(--text);
-    transition: color 0.2s var(--ease-out);
-  }
-
-  .toc-list a:hover {
-    color: var(--sky-deep);
-  }
-
-  .toc-list .l1 {
-    font-weight: 600;
-    font-size: 15px;
-    margin-top: 12px;
-  }
-
-  .toc-list .l2 {
-    padding-left: 24px;
-    font-size: 14px;
-  }
-
-  .toc-list .l3 {
-    padding-left: 48px;
-    font-size: 13.5px;
-  }
-
-  /* ===== Misc ===== */
-  .divider {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--border-strong), transparent);
-    margin: 32px 0;
-  }
-
-  .section-number {
-    color: var(--gold-deep);
-    font-weight: 700;
-    margin-right: 6px;
-  }
-
-  .footer {
-    text-align: center;
-    padding: 24px;
-    color: var(--text-light);
-    font-size: 12px;
-    border-top: 1px solid var(--border);
-    margin-top: 60px;
-  }
-
-  /* ===== 顶部导航 & 阅读进度条 ===== */
-  .progress-bar {
+  .progress {
     position: fixed;
-    top: 0; left: 0;
-    height: 3px;
+    inset: 0 auto auto 0;
     width: 0;
-    background: linear-gradient(90deg, var(--sky), var(--gold-deep));
+    height: 4px;
     z-index: 1200;
-    transition: width 0.12s linear;
+    background: linear-gradient(90deg, var(--orange), var(--yellow), var(--blue));
   }
 
-  .topnav {
+  .topbar {
     position: fixed;
-    top: 0; left: 0; right: 0;
+    inset: 0 0 auto;
     z-index: 1100;
-    background: rgba(253, 246, 236, 0.86);
-    backdrop-filter: saturate(160%) blur(12px);
-    -webkit-backdrop-filter: saturate(160%) blur(12px);
-    border-bottom: 1px solid var(--border);
-    box-shadow: 0 4px 20px rgba(122, 74, 50, 0.06);
+    background: rgba(247, 241, 230, 0.9);
+    backdrop-filter: blur(16px) saturate(140%);
+    border-bottom: 1px solid rgba(23, 50, 77, 0.1);
   }
 
-  .topnav-inner {
-    max-width: 1080px;
+  .topbar-inner {
+    width: min(1120px, calc(100% - 36px));
+    min-height: 62px;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 16px;
-    padding: 10px 24px;
+    gap: 18px;
   }
 
   .brand {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 15px;
-    color: var(--wood-deep);
-    letter-spacing: 0.02em;
+    color: var(--ink);
+    font-family: var(--display-font);
+    font-weight: 900;
+    text-decoration: none;
     white-space: nowrap;
-    text-decoration: none;
   }
 
-  .brand:hover {
-    color: var(--gold-deep);
-    text-decoration: none;
-  }
-
-  .topnav-links {
+  .nav-links {
     display: flex;
-    align-items: center;
-    gap: 2px;
+    gap: 4px;
     overflow-x: auto;
     scrollbar-width: none;
   }
-  .topnav-links::-webkit-scrollbar { display: none; }
+
+  .nav-links::-webkit-scrollbar { display: none; }
 
   .nav-link {
-    display: inline-block;
-    padding: 6px 12px;
+    padding: 7px 11px;
     border-radius: 999px;
-    color: var(--text);
-    font-size: 14px;
+    color: var(--ink-soft);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
     white-space: nowrap;
-    text-decoration: none;
-    transition: background 0.2s var(--ease-out), color 0.2s var(--ease-out);
+    transition: color 180ms ease, background 180ms ease, transform 180ms ease;
   }
 
-  .nav-link:hover {
-    background: var(--sky-soft);
-    color: var(--sky-deeper);
-    text-decoration: none;
-  }
-
+  .nav-link:hover,
   .nav-link.active {
-    background: linear-gradient(135deg, var(--sky-deep), var(--sky));
-    color: #fff;
-    box-shadow: 0 4px 14px rgba(61, 130, 196, 0.28);
+    color: var(--white);
+    background: var(--ink);
+    transform: translateY(-1px);
   }
 
-  /* ===== 滚动进场动画 ===== */
+  .cover {
+    min-height: 100vh;
+    padding: 116px 6vw 68px;
+    display: grid;
+    place-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before,
+  .cover::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(3px);
+  }
+
+  .cover::before {
+    width: 320px;
+    height: 320px;
+    left: -130px;
+    top: 120px;
+    background: rgba(82, 169, 197, 0.22);
+  }
+
+  .cover::after {
+    width: 260px;
+    height: 260px;
+    right: -90px;
+    bottom: 80px;
+    background: rgba(244, 201, 93, 0.24);
+  }
+
+  .cover-grid {
+    width: min(1120px, 100%);
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+    gap: 72px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .eyebrow,
+  .section-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 12px;
+    border: 2px solid var(--ink);
+    border-radius: 999px;
+    background: var(--yellow-soft);
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+
+  .cover h1 {
+    max-width: 690px;
+    margin: 28px 0 22px;
+    font-family: var(--display-font);
+    font-size: clamp(43px, 5.8vw, 76px);
+    line-height: 1.13;
+    letter-spacing: -0.04em;
+  }
+
+  .title-mark {
+    position: relative;
+    color: var(--orange);
+    display: inline-block;
+  }
+
+  .title-mark::after {
+    content: "";
+    position: absolute;
+    left: -2%;
+    right: -2%;
+    bottom: 2px;
+    height: 10px;
+    z-index: -1;
+    background: var(--yellow);
+    border-radius: 50%;
+    transform: rotate(-1deg);
+  }
+
+  .cover-lead {
+    max-width: 650px;
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 18px;
+  }
+
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 32px;
+  }
+
+  .stat {
+    padding: 14px 10px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: rgba(255, 253, 248, 0.78);
+    text-align: center;
+    box-shadow: var(--shadow-small);
+  }
+
+  .stat strong {
+    display: block;
+    color: var(--ink);
+    font-size: 26px;
+    line-height: 1.1;
+  }
+
+  .stat span {
+    color: var(--ink-soft);
+    font-size: 12px;
+  }
+
+  .cover-note {
+    margin-top: 22px;
+    color: var(--ink-soft);
+    font-size: 13px;
+  }
+
+  .cover-visual {
+    position: relative;
+    padding: 18px 18px 62px;
+    border: 2px solid var(--ink);
+    border-radius: 14px;
+    background: var(--white);
+    box-shadow: 14px 16px 0 rgba(23, 50, 77, 0.15);
+    transform: rotate(2deg);
+  }
+
+  .cover-visual img {
+    display: block;
+    width: 100%;
+    min-height: 330px;
+    object-fit: cover;
+    border-radius: 7px;
+  }
+
+  .cover-caption {
+    position: absolute;
+    left: 24px;
+    bottom: 15px;
+    font-family: var(--display-font);
+    font-size: 16px;
+    font-weight: 800;
+  }
+
+  .level-sticker {
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 92px;
+    height: 92px;
+    display: grid;
+    place-items: center;
+    border: 3px solid var(--ink);
+    border-radius: 50%;
+    background: var(--orange);
+    color: var(--white);
+    font-weight: 900;
+    line-height: 1.15;
+    text-align: center;
+    transform: rotate(9deg);
+    box-shadow: 5px 6px 0 var(--ink);
+  }
+
+  .tape {
+    position: absolute;
+    width: 96px;
+    height: 30px;
+    top: -16px;
+    left: 38px;
+    background: rgba(244, 201, 93, 0.65);
+    transform: rotate(-7deg);
+  }
+
+  main {
+    width: min(1040px, calc(100% - 36px));
+    margin: 0 auto;
+  }
+
+  .section {
+    padding: 92px 0 20px;
+    scroll-margin-top: 54px;
+  }
+
+  .section-heading {
+    display: grid;
+    grid-template-columns: 86px minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+    margin-bottom: 34px;
+  }
+
+  .section-number {
+    font-family: var(--display-font);
+    font-size: 54px;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--orange);
+    -webkit-text-stroke: 1px var(--ink);
+    text-shadow: 4px 4px 0 var(--yellow-soft);
+  }
+
+  .section-heading h2 {
+    margin: 8px 0 7px;
+    font-family: var(--display-font);
+    font-size: clamp(29px, 4vw, 44px);
+    line-height: 1.25;
+  }
+
+  .section-heading p {
+    margin: 0;
+    color: var(--ink-soft);
+  }
+
+  .paper-card,
+  .note-card,
+  .source-card {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: rgba(255, 253, 248, 0.94);
+    box-shadow: var(--shadow-small);
+  }
+
+  .paper-card { padding: clamp(24px, 4vw, 42px); }
+
+  .intro-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 30px;
+    overflow: hidden;
+  }
+
+  .intro-card::after {
+    content: "PLAYER NOTE";
+    position: absolute;
+    right: -18px;
+    top: 26px;
+    padding: 6px 22px;
+    background: var(--blue);
+    color: white;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.16em;
+    transform: rotate(7deg);
+  }
+
+  .intro-card h3,
+  .paper-card h3 {
+    margin: 0 0 12px;
+    font-size: 22px;
+  }
+
+  .intro-card p { margin: 0; }
+
+  .summary-quote {
+    padding: 22px;
+    border-radius: 18px;
+    background: var(--yellow-soft);
+    font-family: var(--display-font);
+    font-size: 19px;
+    font-weight: 800;
+    transform: rotate(-1deg);
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 22px;
+  }
+
+  .note-card {
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .note-card::before {
+    content: "";
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    right: -24px;
+    top: -24px;
+    border-radius: 50%;
+    background: var(--card-accent, var(--blue-soft));
+  }
+
+  .note-card h3 {
+    margin: 0 0 8px;
+    font-size: 18px;
+  }
+
+  .note-card p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 14px;
+  }
+
+  .note-card.blue { --card-accent: var(--blue-soft); border-top: 6px solid var(--blue); }
+  .note-card.orange { --card-accent: var(--orange-soft); border-top: 6px solid var(--orange); }
+  .note-card.green { --card-accent: var(--green-soft); border-top: 6px solid var(--green); }
+
+  .evidence-note {
+    margin-top: 22px;
+    padding: 15px 19px;
+    border: 1px dashed var(--blue-deep);
+    border-radius: 14px;
+    background: var(--blue-soft);
+    color: var(--ink-soft);
+    font-size: 13px;
+  }
+
+  .experience-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+  }
+
+  .diary-entry {
+    padding: 26px;
+    border-left: 6px solid var(--orange);
+  }
+
+  .diary-entry .date {
+    color: var(--orange);
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+  }
+
+  .diary-entry blockquote {
+    margin: 14px 0 0;
+    font-family: var(--display-font);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.7;
+  }
+
+  .loop {
+    margin: 26px 0;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .loop-step {
+    position: relative;
+    min-height: 118px;
+    padding: 18px 14px;
+    display: grid;
+    align-content: center;
+    border: 2px solid var(--ink);
+    border-radius: 18px;
+    background: var(--white);
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .loop-step:nth-child(2) { background: var(--blue-soft); }
+  .loop-step:nth-child(3) { background: var(--yellow-soft); }
+  .loop-step:nth-child(4) { background: var(--orange-soft); }
+  .loop-step:nth-child(5) { background: var(--green-soft); }
+
+  .loop-step:not(:last-child)::after {
+    content: "→";
+    position: absolute;
+    right: -18px;
+    top: 50%;
+    z-index: 2;
+    transform: translateY(-50%);
+    color: var(--ink);
+    font-size: 22px;
+    font-weight: 900;
+  }
+
+  .shot-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 28px;
+  }
+
+  .shot {
+    margin: 0;
+    padding: 10px 10px 16px;
+    border: 2px solid var(--ink);
+    border-radius: 18px;
+    background: var(--white);
+    box-shadow: 7px 8px 0 rgba(23, 50, 77, 0.12);
+    overflow: hidden;
+  }
+
+  .shot:nth-child(2) { transform: translateY(18px) rotate(1deg); }
+  .shot:nth-child(3) { transform: rotate(-1deg); }
+
+  .shot-window {
+    overflow: hidden;
+    border-radius: 11px;
+    background: var(--paper-deep);
+  }
+
+  .shot img {
+    display: block;
+    width: 100%;
+    transform: translateY(-18px);
+    margin-bottom: -18px;
+  }
+
+  .shot figcaption {
+    padding: 13px 5px 0;
+    color: var(--ink-soft);
+    font-size: 13px;
+    text-align: center;
+  }
+
+  .public-signals {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 42px;
+  }
+
+  .signal {
+    padding: 18px;
+    border-radius: 16px;
+    background: var(--ink);
+    color: var(--white);
+  }
+
+  .signal strong {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--yellow);
+    font-size: 18px;
+  }
+
+  .signal p { margin: 0; font-size: 13px; color: #d8e4ec; }
+  .signal a { color: white; }
+
+  .friction-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .friction-card {
+    position: relative;
+    padding: 30px;
+    border: 2px solid var(--ink);
+    border-radius: 22px;
+    background: var(--white);
+    box-shadow: 8px 9px 0 var(--orange-soft);
+  }
+
+  .friction-card .index {
+    position: absolute;
+    right: 20px;
+    top: 14px;
+    color: var(--orange-soft);
+    font-family: var(--display-font);
+    font-size: 64px;
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  .friction-card h3 { margin: 0 0 10px; font-size: 22px; }
+  .friction-card p { margin: 0; color: var(--ink-soft); }
+
+  .impact-line {
+    margin: 22px 0 0;
+    padding: 22px 26px;
+    border-radius: 18px;
+    background: var(--orange-soft);
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .feedback-proof {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .feedback-item {
+    padding: 20px;
+    border-radius: 18px;
+    background: var(--white);
+    border: 1px solid var(--line);
+  }
+
+  .feedback-item .source-label {
+    color: var(--blue-deep);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+  }
+
+  .feedback-item p { margin: 8px 0 0; color: var(--ink-soft); }
+
+  .feedback-flow {
+    margin-top: 34px;
+    padding: 30px;
+    border: 2px dashed var(--ink);
+    border-radius: 22px;
+    background: var(--green-soft);
+  }
+
+  .feedback-flow h3 { margin: 0 0 18px; }
+
+  .flow-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .flow-pill {
+    flex: 1;
+    min-width: 120px;
+    padding: 12px 14px;
+    border: 1px solid var(--ink);
+    border-radius: 999px;
+    background: var(--white);
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .flow-arrow { font-weight: 900; }
+
+  .compare-board {
+    display: grid;
+    grid-template-columns: 1fr 90px 1fr;
+    gap: 18px;
+    align-items: stretch;
+  }
+
+  .game-card {
+    min-height: 330px;
+    padding: 30px;
+    border: 2px solid var(--ink);
+    border-radius: 26px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .game-card.harbor { background: linear-gradient(150deg, var(--blue-soft), var(--white)); }
+  .game-card.dream { background: linear-gradient(150deg, var(--yellow-soft), #f4e6dc); }
+
+  .game-card .game-tag {
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+  }
+
+  .game-card h3 {
+    margin: 12px 0 16px;
+    font-family: var(--display-font);
+    font-size: 28px;
+  }
+
+  .game-card ul { margin: 0; padding-left: 20px; }
+  .game-card li { margin: 8px 0; }
+
+  .vs {
+    display: grid;
+    place-items: center;
+    font-family: var(--display-font);
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--orange);
+  }
+
+  .compare-insight {
+    margin-top: 22px;
+    padding: 24px 28px;
+    border-left: 7px solid var(--orange);
+    border-radius: 0 18px 18px 0;
+    background: var(--white);
+  }
+
+  .support-project {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 24px;
+  }
+
+  .project-brief {
+    padding: 30px;
+    border: 2px solid var(--ink);
+    border-radius: 26px;
+    background: var(--ink);
+    color: var(--white);
+  }
+
+  .project-brief .project-tag {
+    color: var(--yellow);
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+  }
+
+  .project-brief h3 {
+    margin: 12px 0 18px;
+    font-family: var(--display-font);
+    font-size: 29px;
+    line-height: 1.35;
+  }
+
+  .project-brief p { color: #d8e4ec; }
+
+  .deliverables {
+    display: grid;
+    gap: 12px;
+  }
+
+  .deliverable {
+    padding: 18px 20px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--white);
+  }
+
+  .deliverable strong { display: block; margin-bottom: 5px; }
+  .deliverable span { color: var(--ink-soft); font-size: 14px; }
+
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 24px;
+  }
+
+  .week {
+    padding: 22px 18px;
+    border-radius: 18px;
+    background: var(--white);
+    border: 1px solid var(--line);
+  }
+
+  .week strong {
+    display: inline-block;
+    margin-bottom: 9px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: var(--blue-soft);
+    color: var(--blue-deep);
+  }
+
+  .week p { margin: 0; color: var(--ink-soft); font-size: 14px; }
+
+  .small-idea {
+    margin-top: 22px;
+    padding: 24px;
+    border: 2px dashed var(--orange);
+    border-radius: 20px;
+    background: var(--orange-soft);
+  }
+
+  .small-idea h3 { margin: 0 0 8px; }
+  .small-idea p { margin: 0; }
+
+  .fit-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .fit-card {
+    padding: 24px;
+    border-radius: 20px;
+    background: var(--white);
+    border: 1px solid var(--line);
+  }
+
+  .fit-card .jd {
+    display: block;
+    color: var(--rose);
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+  }
+
+  .fit-card h3 { margin: 7px 0 8px; font-size: 19px; }
+  .fit-card p { margin: 0; color: var(--ink-soft); font-size: 14px; }
+
+  .resume-proof {
+    margin-top: 24px;
+    padding: 28px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    background: var(--ink);
+    color: var(--white);
+  }
+
+  .proof strong {
+    display: block;
+    color: var(--yellow);
+    font-size: 28px;
+  }
+
+  .proof span { color: #d8e4ec; font-size: 13px; }
+
+  .month-plan {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .month-step {
+    padding: 20px;
+    border-radius: 18px;
+    background: var(--white);
+    border: 1px solid var(--line);
+  }
+
+  .month-step b { color: var(--orange); }
+  .month-step p { margin: 7px 0 0; color: var(--ink-soft); font-size: 13px; }
+
+  .sources {
+    margin: 86px 0 76px;
+    padding: clamp(25px, 5vw, 44px);
+  }
+
+  .sources h2 {
+    margin: 0 0 8px;
+    font-family: var(--display-font);
+    font-size: 28px;
+  }
+
+  .sources > p { margin: 0 0 22px; color: var(--ink-soft); }
+
+  .source-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 11px;
+  }
+
+  .source-list li {
+    padding: 13px 0;
+    border-bottom: 1px dashed var(--line);
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .source-no {
+    color: var(--orange);
+    font-weight: 900;
+  }
+
+  .source-list small {
+    display: block;
+    margin-top: 3px;
+    color: var(--ink-soft);
+  }
+
+  .footer {
+    padding: 28px 18px 40px;
+    color: var(--ink-soft);
+    font-size: 12px;
+    text-align: center;
+  }
+
   .reveal {
     opacity: 0;
-    transform: translateY(22px);
-    transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
-    will-change: opacity, transform;
+    transform: translateY(18px);
+    transition: opacity 560ms ease, transform 560ms ease;
   }
 
   .reveal.in-view {
@@ -553,820 +916,467 @@
     transform: none;
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .reveal {
-      opacity: 1;
-      transform: none;
-      transition: none;
+  @media (max-width: 900px) {
+    .cover-grid,
+    .intro-card,
+    .support-project { grid-template-columns: 1fr; }
+    .cover-grid { gap: 54px; }
+    .cover-visual { width: min(620px, 94%); margin: 0 auto; }
+    .card-grid,
+    .public-signals,
+    .timeline,
+    .month-plan { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .loop { grid-template-columns: 1fr; }
+    .loop-step { min-height: 74px; }
+    .loop-step:not(:last-child)::after {
+      content: "↓";
+      top: auto;
+      right: 50%;
+      bottom: -24px;
+      transform: translateX(50%);
     }
-    .cover::before, .cover-tag, .cover-banner, .cover-title,
-    .cover-subtitle, .cover-meta, .cover-disclaimer { animation: none; }
-    html { scroll-behavior: auto; }
+    .compare-board { grid-template-columns: 1fr; }
+    .vs { min-height: 54px; }
   }
 
-  @media (max-width: 720px) {
-    .container { padding: 24px 18px 60px; }
-    .cover-title { font-size: 26px; }
-    h1 { font-size: 22px; }
-    h2 { font-size: 18px; }
-    .figure-grid { grid-template-columns: 1fr; }
-    .toc { padding: 20px 18px; }
-
-    .topnav-inner {
-      padding: 8px 14px;
-      gap: 10px;
-    }
+  @media (max-width: 680px) {
+    body { font-size: 15px; }
+    .topbar-inner { width: calc(100% - 24px); min-height: 56px; }
     .brand { font-size: 13px; }
-    .nav-link { font-size: 13px; padding: 5px 10px; }
+    .nav-link { font-size: 12px; padding: 6px 9px; }
+    .cover { padding: 94px 18px 48px; }
+    .cover h1 { font-size: 42px; }
+    .cover-lead { font-size: 16px; }
+    .stat-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .level-sticker { width: 74px; height: 74px; right: -12px; top: -24px; font-size: 13px; }
+    main { width: calc(100% - 28px); }
+    .section { padding-top: 76px; }
+    .section-heading { grid-template-columns: 58px minmax(0, 1fr); gap: 14px; }
+    .section-number { font-size: 41px; }
+    .section-heading h2 { font-size: 28px; }
+    .card-grid,
+    .experience-grid,
+    .friction-grid,
+    .feedback-proof,
+    .fit-grid,
+    .resume-proof,
+    .public-signals,
+    .timeline,
+    .month-plan { grid-template-columns: 1fr; }
+    .shot-grid { grid-template-columns: 1fr; max-width: 360px; margin-inline: auto; }
+    .shot:nth-child(2), .shot:nth-child(3) { transform: none; }
+    .cover-visual img { min-height: 230px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .nav-link { transition: none; }
   }
 </style>
 </head>
 <body>
+<div class="progress" id="progress" aria-hidden="true"></div>
 
-<!-- =================== 阅读进度条 & 顶部导航 =================== -->
-<div class="progress-bar" id="progressBar" aria-hidden="true"></div>
-<nav class="topnav" id="topnav" aria-label="章节导航">
-  <div class="topnav-inner">
-    <a class="brand" href="#cover">浪漫餐厅 · 内容运营拆解</a>
-    <div class="topnav-links">
-      <a class="nav-link" href="#summary">报告速览</a>
-      <a class="nav-link" href="#sec1">产品与市场</a>
-      <a class="nav-link" href="#sec2">用户分析</a>
-      <a class="nav-link" href="#sec3">产品拆解</a>
-      <a class="nav-link" href="#sec4">数据复盘</a>
-      <a class="nav-link" href="#sec5">运营方案</a>
-      <a class="nav-link" href="#sec6">总结</a>
+<nav class="topbar" aria-label="章节导航">
+  <div class="topbar-inner">
+    <a class="brand" href="#cover">浪漫餐厅 · 玩家观察手账</a>
+    <div class="nav-links">
+      <a class="nav-link" href="#summary">先说结论</a>
+      <a class="nav-link" href="#experience">真实体验</a>
+      <a class="nav-link" href="#friction">卡点观察</a>
+      <a class="nav-link" href="#compare">同类对比</a>
+      <a class="nav-link" href="#support">运营支持</a>
+      <a class="nav-link" href="#fit">岗位匹配</a>
     </div>
   </div>
 </nav>
 
-<!-- =================== 封面 =================== -->
-<section class="cover" id="cover">
-  <div class="cover-tag">求 职 作 品 &nbsp;·&nbsp; P O R T F O L I O</div>
-  <img class="cover-banner" src="images/_tap_banner.webp" alt="《浪漫餐厅》封面">
-  <p style="font-size:12px;color:var(--text-light);margin:-26px 0 22px;">封面图为《浪漫餐厅（Gossip Harbor）》官方宣传素材，仅用于个人求职作品的分析说明，不作商用。</p>
-  <h1 class="cover-title">《浪漫餐厅（Gossip Harbor）》<br>出海内容与社区运营拆解</h1>
-  <p class="cover-subtitle">实机体验 × 社区洞察 × 12 周运营试点</p>
-  <div class="cover-meta">
-    <p>求职岗位：游戏运营支持（内容 / 社区 / 活动方向）</p>
-    <p>完成时间：2026 年 8 月</p>
-  </div>
-  <div class="cover-disclaimer">
-    <strong>研究说明：</strong>本报告基于作者实机体验、2026 年 7 月社区样本及 Sensor Tower、AppMagic、DataEye 等公开资料。收入数据均保留其原始时间、主体和统计口径；留存、LTV、付费分层等内部指标不作事实陈述，仅作为待验证的运营假设。图表均由作者依据文中所列数据整理。
-  </div>
-</section>
+<header class="cover" id="cover">
+  <div class="cover-grid">
+    <div class="cover-copy reveal">
+      <span class="eyebrow">求职作品 · 游戏运营支持</span>
+      <h1>《浪漫餐厅》<br><span class="title-mark">一周玩家体验</span><br>与运营思考</h1>
+      <p class="cover-lead">我没有从行业报告开始，而是先在抖音小程序里玩了约 20 小时：合成、追剧情、装修餐厅，也真实经历了体力不足、等待 CD 和高阶订单带来的挫败。</p>
+      <div class="stat-row" aria-label="体验数据">
+        <div class="stat"><strong>7 天</strong><span>连续体验</span></div>
+        <div class="stat"><strong>20h</strong><span>累计时长</span></div>
+        <div class="stat"><strong>Lv.20</strong><span>当前等级</span></div>
+        <div class="stat"><strong>¥20</strong><span>真实付费</span></div>
+      </div>
+      <p class="cover-note">报告用于网页作品集，不展示个人姓名、学校和联系方式。公开资料只做方向验证，个人体验均来自本次真实游玩。</p>
+    </div>
 
-<!-- =================== 目录 =================== -->
-<div class="container">
-  <div class="page-header">浪漫餐厅（Gossip Harbor）出海内容与社区运营拆解</div>
-  <h1>目录</h1>
-  <nav class="toc">
-    <h2>CONTENTS</h2>
-    <ul class="toc-list">
-      <li class="l1"><a href="#summary">报告速览（Executive Summary）</a></li>
-      <li class="l1"><a href="#sec1">一、产品与市场定位</a></li>
-      <li class="l2"><a href="#sec1-1">1.1 一句话产品认知</a></li>
-      <li class="l2"><a href="#sec1-2">1.2 赛道背景：Merge-2 保持增长</a></li>
-      <li class="l2"><a href="#sec1-3">1.3 市场定位与发行节奏</a></li>
-      <li class="l2"><a href="#sec1-4">1.4 竞争格局对比</a></li>
-      <li class="l2"><a href="#sec1-5">1.5 差异化优势与风险（市场战略视角）</a></li>
-      <li class="l1"><a href="#sec2">二、用户分析</a></li>
-      <li class="l2"><a href="#sec2-1">2.1 核心用户画像（公开数据）</a></li>
-      <li class="l2"><a href="#sec2-2">2.2 用户分层（运营视角推断）</a></li>
-      <li class="l2"><a href="#sec2-3">2.3 用户痛点（个人游玩 + 社区评论提炼）</a></li>
-      <li class="l2"><a href="#sec2-4">2.4 海外社区生态实况</a></li>
-      <li class="l2"><a href="#sec2-5">2.5 对出海运营的启示</a></li>
-      <li class="l1"><a href="#sec3">三、产品拆解</a></li>
-      <li class="l2"><a href="#sec3-1">3.1 核心循环</a></li>
-      <li class="l2"><a href="#sec3-2">3.2 商业化体系</a></li>
-      <li class="l2"><a href="#sec3-3">3.3 活动体系设计</a></li>
-      <li class="l2"><a href="#sec3-4">3.4 产品运营层面优势（基于游玩体验）</a></li>
-      <li class="l2"><a href="#sec3-5">3.5 产品运营层面短板（基于游玩 + 社区观察）</a></li>
-      <li class="l1"><a href="#sec4">四、数据复盘（公开数据）</a></li>
-      <li class="l2"><a href="#sec4-1">4.1 收入规模（按时间 / 主体 / 口径拆分）</a></li>
-      <li class="l2"><a href="#sec4-2">4.2 用户行为假设与验证需求</a></li>
-      <li class="l2"><a href="#sec4-3">4.3 商业化观察与验证需求</a></li>
-      <li class="l2"><a href="#sec4-4">4.4 数据复盘小结</a></li>
-      <li class="l1"><a href="#sec5">五、12 周内容与社区运营试点</a></li>
-      <li class="l2"><a href="#sec5-1">5.1 试点目标与完整链路</a></li>
-      <li class="l2"><a href="#sec5-2">5.2 核心实验：剧情猜想话题</a></li>
-      <li class="l2"><a href="#sec5-3">5.3 12 周推进路线</a></li>
-      <li class="l2"><a href="#sec5-4">5.4 分层触达 SOP</a></li>
-      <li class="l2"><a href="#sec5-5">5.5 舆情与数据看板（周报框架）</a></li>
-      <li class="l2"><a href="#sec5-6">5.6 风险预案</a></li>
-      <li class="l2"><a href="#sec5-7">5.7 我会盯的核心指标（监控框架）</a></li>
-      <li class="l1"><a href="#sec6">六、总结：方法论提炼</a></li>
-      <li class="l2"><a href="#sec6-plan">附：入职后 30 天计划（示意）</a></li>
-    </ul>
-  </nav>
-
-  <!-- =================== 报告速览 =================== -->
-  <h1 id="summary">报告速览（Executive Summary）</h1>
-  <p><strong>本报告回答一个问题：</strong>在不调整核心玩法的前提下，如何把《Gossip Harbor》的周更剧情转化为可持续的社区参与和版本回流。</p>
-  <p>基于公开数据、实机体验和 2026 年 7 月的社区样本，我形成了三个方向性判断：</p>
-  <ol>
-    <li><strong>产品已验证“合成 + 叙事”的商业潜力。</strong>公开榜单显示其处于出海收入头部；不同机构的收入估算口径不完全一致，因此本报告只用于判断趋势，不进行跨来源精确比较。</li>
-    <li><strong>剧情可能是重要的回流与付费动机之一。</strong>公开画像显示女性用户占比超过 60%，单日游戏时长约 32 分钟；这一相关性不能单独证明因果，仍需用版本回流和章节漏斗验证。</li>
-    <li><strong>社区中的剧情内容存在可测试的承接机会。</strong>2026 年 7 月近 30 天样本中，“The story”标签帖明显少于“Venting”标签帖。受样本量和标签习惯影响，这里将其定义为运营假设，而不是既定结论。</li>
-  </ol>
-  <p><strong>建议方案：</strong>围绕“周四猜想—周五更新—周末讨论”建立 12 周内容运营试点，以剧情更新后 24 小时回流率和有效讨论参与人数为核心指标；先建立基线，再通过对照组与分层触达判断是否扩大投入。</p>
-  <div class="callout">
-    <strong>证据标签：</strong>【公开数据】指可追溯的第三方资料；【社区样本】指特定时间窗口内的社区观察；【实机体验】指作者个人游玩记录；【待验证假设】指需要内部 BI 或实验才能确认的判断。
-  </div>
-  <div class="divider"></div>
-
-  <!-- =================== 一、产品与市场定位 =================== -->
-  <h1 id="sec1">一、产品与市场定位</h1>
-
-  <h2 id="sec1-1">1.1 一句话产品认知</h2>
-  <p>《浪漫餐厅》海外定名 <em>Gossip Harbor</em>，是柠檬微趣研发的剧情驱动型 Merge-2（二合）休闲手游，2022 年 7 月上线海外。产品以都市情感与悬疑叙事提供长期目标，以合成和餐厅装修承接日常操作与成长反馈。开局剧情为女主<strong>凯莉</strong>（英文名 Quinn）离婚后带女儿经营餐厅并追查投毒事件（澎湃新闻，2025-06；女主名以游戏内中文译名为准）。</p>
-  <figure>
-    <img src="images/1.jpg" alt="产品 Google Play 海外商店页">
-    <figcaption>图 1-1：产品 Google Play 海外商店页（App Store 商店页结构基本一致，此处以 Google Play 为代表）</figcaption>
-  </figure>
-
-  <h2 id="sec1-2">1.2 赛道背景：Merge-2 保持增长</h2>
-  <p>2026 年上半年，全球合成手游收入突破 21 亿美元，成为解谜品类中第二大收入子品类；其中二合（Merge-2）贡献了超 90% 的品类收入（Sensor Tower）。2026 年第二季度全球合成手游内购收入首次突破 10 亿美元、同比 +70%，成为推动全球解谜手游收入增长的重要引擎。</p>
-  <figure>
-    <img src="images/fig1_market.svg" alt="2026 年合成手游市场公开数据摘要">
-    <figcaption>图 1-2：2026 年合成手游市场公开数据摘要。三项指标分别对应 2026H1、2026H1 和 2026Q2，不跨时间直接相加或比较（Sensor Tower，2026）。</figcaption>
-  </figure>
-  <p>格局上中国厂商已主导赛道：2025 年合成品类流水 Top 20 中 12 款来自中国厂商、9 款出海产品年流水过亿人民币；玩法格局上 Merge-2 上榜 12 款、首次超过 Merge-3（8 款）（白鲸出海/36 氪年度榜单，2026-02）。</p>
-  <p>头部集中度显著：柠檬微趣 2026 上半年收入约 10.6 亿美元、同比 +30%，在 Sensor Tower 全球发行商收入榜中位列第 7，并被该报告列为增速最快的发行商；旗下 Gossip Harbor 已连续 7 个月位列中国出海手游收入榜首，公开榜单可以支持其处于 Merge-2 头部位置。</p>
-
-  <h2 id="sec1-3">1.3 市场定位与发行节奏</h2>
-  <p><strong>海外主市场：</strong>北美、欧洲，买量素材突出情感冲突和悬念。2025 年公开报道统计，柠檬微趣投放素材中有超过 1 万组涉及短剧元素；素材规模可以说明其工业化生产能力，但实际转化效果仍需 CTR、CVR、CPI 与回收数据验证（澎湃新闻，2025-06）。</p>
-  <p><strong>发行成绩：</strong>《Gossip Harbor》自 2026 年 1 月起连续 7 个月位列中国出海手游收入榜首，并在相关 Sensor Tower 月报口径下位列全球解谜手游收入榜首；2026 年 2 月的公开单月流水估算高于《糖果传奇》。后者属于三消产品，只用于观察收入规模，不作为 Merge-2 直接竞品。</p>
-  <p><strong>国内并行：</strong>国服版《浪漫餐厅》及微信小游戏端 2024 年上线，2025 年 3 月进入微信小游戏消耗增长榜第 10（DataEye）。国服做剧情尺度本地化裁剪，但出海仍是主战场，本报告以海外运营为主线。</p>
-
-  <h2 id="sec1-4">1.4 竞争格局对比</h2>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>产品</th>
-          <th>厂商</th>
-          <th>题材定位</th>
-          <th>最新公开表现</th>
-          <th>对运营方案的启示</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Gossip Harbor</strong></td>
-          <td>柠檬微趣</td>
-          <td>都市情感 + 悬疑剧情</td>
-          <td>连续 7 个月蝉联出海收入冠军；2025 全年收入约 6.5 亿美元（Sensor Tower）</td>
-          <td>叙事驱动的品类标杆</td>
-        </tr>
-        <tr>
-          <td>Merge Mansion</td>
-          <td>Metacore</td>
-          <td>庄园解谜剧情</td>
-          <td>头部爆款流水开始下滑（白鲸出海，2026-02）</td>
-          <td>老牌产品叙事疲劳，后来者仍有窗口</td>
-        </tr>
-        <tr>
-          <td>Travel Town</td>
-          <td>Magmatic</td>
-          <td>环球旅行经营</td>
-          <td>品类老牌头部，2025 全年约 2.1 亿美元，但已被后发的《Tasty Travels》反超（AppMagic）</td>
-          <td>玩法先行，剧情偏弱</td>
-        </tr>
-        <tr>
-          <td>Seaside Escape</td>
-          <td>柠檬微趣</td>
-          <td>同厂剧情合成</td>
-          <td>全球合成手游收入榜前三，主攻日韩市场（2025 全年约 1.7 亿美元）</td>
-          <td>同厂矩阵复制，验证方法论可复用</td>
-        </tr>
-        <tr>
-          <td>Tasty Travels</td>
-          <td>点点互动</td>
-          <td>环球美食旅行</td>
-          <td>2026 年 5 月海外收入突破 3900 万美元创新高，已反超《Travel Town》成第二大二合（点点数据）</td>
-          <td>题材差异化 + 副玩法填空窗期</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h2 id="sec1-5">1.5 差异化优势与风险（市场战略视角）</h2>
-  <p>产品的差异化主要来自三点：叙事承担长期目标，合成和装修承担日常反馈；短剧式素材能够持续提供获客题材；周更剧情和高频活动形成稳定的内容节奏。相应风险是内容长期更新可能出现套路化、买量素材边际效率下降，以及不同市场对剧情冲突和文化议题的接受度不同。</p>
-  <div class="insight"><strong>运营含义：</strong>运营侧应优先验证“剧情内容能否提升更新节点回流与社区参与”，再决定是否扩大内容和创作者投入；买量效率、剧情质量和用户留存仍需分别评估，不能由素材数量直接推导。</div>
-  <div class="divider"></div>
-
-  <!-- =================== 二、用户分析 =================== -->
-  <h1 id="sec2">二、用户分析</h1>
-
-  <h2 id="sec2-1">2.1 核心用户画像（公开数据）</h2>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>维度</th>
-          <th>数据</th>
-          <th>来源</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>性别</td>
-          <td>女性占比超过 60%</td>
-          <td>澎湃新闻 2025-06 引述公开画像</td>
-        </tr>
-        <tr>
-          <td>年龄</td>
-          <td>平均约 32 岁，千禧一代为主</td>
-          <td>Sensor Tower 用户画像（澎湃新闻 2025-06 引述）</td>
-        </tr>
-        <tr>
-          <td>地域</td>
-          <td>主要收入市场集中在北美与欧洲</td>
-          <td>公开榜单与媒体报道的方向性判断</td>
-        </tr>
-        <tr>
-          <td>单日时长</td>
-          <td>均值约 32 分钟 vs 休闲行业平均 18 分钟</td>
-          <td>澎湃新闻 2025-06</td>
-        </tr>
-        <tr>
-          <td>付费动机</td>
-          <td>无公开总体数据；剧情推进、体力和外观为待验证动机</td>
-          <td>【待验证假设】需内部付费路径与访谈验证</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <p><strong>用户特征归纳：</strong>公开画像可以支持“成年女性用户占比较高、单日使用时长高于休闲品类均值”的判断；对剧情、装修和合成的偏好强弱，以及各自对付费的贡献，需要结合章节进度、活动参与和购买路径进一步验证。</p>
-  <figure>
-    <img src="images/fig3_users.svg" alt="用户画像公开数据摘要">
-    <figcaption>图 2-1：女性用户占比与单日游戏时长公开数据摘要。60%+ 为区间信息，不绘制为精确比例（澎湃新闻 2025-06 引述公开画像）。</figcaption>
-  </figure>
-
-  <h2 id="sec2-2">2.2 用户分层（运营视角推断）</h2>
-  <p><strong>说明：</strong>下面的分层基于公开画像、社区样本和实机体验，目的是把用户类型转化为可观察行为。各分层的真实规模、阈值和价值需要通过内部 BI 校准。</p>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>暂定分层</th>
-          <th>可观察行为</th>
-          <th>待验证假设</th>
-          <th>验证指标</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>剧情推进型</td>
-          <td>章节推进快、点击更新通知、购买体力或进度礼包</td>
-          <td>剧情更新对回流和付费影响更强</td>
-          <td>更新后 24h 回流、章节完成率、礼包转化</td>
-        </tr>
-        <tr>
-          <td>装修收集型</td>
-          <td>频繁更换装饰、参与收集活动、浏览外观礼包</td>
-          <td>限定外观和主题赛更能提升参与</td>
-          <td>活动参与率、装饰使用率、外观礼包转化</td>
-        </tr>
-        <tr>
-          <td>合成效率型</td>
-          <td>订单完成多、剧情点击少、资源广告观看频繁</td>
-          <td>竞速和资源活动更能提升活跃</td>
-          <td>订单数、活动完成率、广告观看与留存</td>
-        </tr>
-        <tr>
-          <td>新进流用户</td>
-          <td>来自短剧素材、首日进入但未完成关键章节</td>
-          <td>广告承诺与前 10 分钟体验衔接影响次留</td>
-          <td>教程完成率、首章完成率、D1 留存</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <h2 id="sec2-3">2.3 用户痛点（个人游玩 + 社区评论提炼）</h2>
-  <ol>
-    <li><strong>体力限制：</strong>高阶订单消耗较多体力，等待恢复会中断连续体验；</li>
-    <li><strong>随机产出：</strong>部分订单依赖高阶或概率物品，容易形成进度停滞；</li>
-    <li><strong>内容间隔：</strong>剧情更新后的非更新日缺少同等强度的叙事目标；</li>
-    <li><strong>棋盘空间：</strong>高阶物品占用空间，后期整理和扩容压力上升。</li>
-  </ol>
-  <p>【社区样本】r/GossipHarbor 约有 1.4 万成员；GummySearch 的 2026 年 7 月近 30 天快照中，Ice Cube、Energy、Event 是较常见的问题词。该样本只用于发现问题线索，不代表全体玩家。</p>
-
-  <h2 id="sec2-4">2.4 海外社区生态实况</h2>
-  <p>【社区样本】同一快照中，“Venting”标签记录 30 帖，“The story”标签记录 4 帖；官方 Facebook 则以找不同、拼图等轻互动内容为主（澎湃新闻 2025-06）。由于标签使用习惯、平台人群和样本窗口都会影响结果，本报告只提出一个待验证命题：<strong>官方是否可以通过固定剧情栏目，提高有效讨论并带动版本回流。</strong></p>
-
-  <h2 id="sec2-5">2.5 对出海运营的启示</h2>
-  <ol>
-    <li>按可观察行为分层触达，避免用单一活动覆盖所有用户；</li>
-    <li>将体力、随机产出和棋盘空间纳入每周舆情分类，并与进度停滞和流失数据交叉验证；</li>
-    <li>先在 Reddit 与 Facebook 进行小规模剧情栏目测试，再根据参与质量决定是否扩展至 Instagram、TikTok 或创作者合作；</li>
-    <li>让买量素材、首日剧情体验和社区内容使用同一主题，并通过渠道 cohort 检查承接效果。</li>
-  </ol>
-  <div class="insight"><strong>待验证命题：</strong>固定剧情栏目能否提升有效讨论参与，并对剧情更新后 24 小时回流产生增量影响。第五章将围绕这一命题设计试点。</div>
-  <div class="divider"></div>
-
-  <!-- =================== 三、产品拆解 =================== -->
-  <h1 id="sec3">三、产品拆解</h1>
-
-  <h2 id="sec3-1">3.1 核心循环</h2>
-  <p>消耗体力生成素材 → 两两合并合成高阶食材 → 完成顾客订单获取金币与线索 → 解锁餐厅装修、推进剧情 → 产生更高阶素材需求，循环往复。</p>
-  <p><strong>三大模块并行：</strong></p>
-  <ul>
-    <li><strong>合成玩法模块：</strong>将两个同级物品拖拽合并，操作规则直观；</li>
-    <li><strong>餐厅装修模块：</strong>金币解锁家具、改造海边餐厅，支持自由更换布局；</li>
-    <li><strong>叙事剧情模块：</strong>每周五更新章节，情感纠葛 + 悬疑双线推进。</li>
-  </ul>
-  <figure>
-    <img src="images/fig5_loop.png" alt="核心循环示意图">
-    <figcaption>图 3-1：核心循环示意图</figcaption>
-  </figure>
-  <div class="figure-grid">
-    <figure class="crop-debug-bar">
-      <img src="images/2.jpg" alt="游戏主界面（订单+合成棋盘）">
-    </figure>
-    <figure class="crop-debug-bar">
-      <img src="images/3.jpg" alt="餐厅装修配色选择">
-    </figure>
-    <figure class="crop-debug-bar">
-      <img src="images/4.jpg" alt="剧情对话（凯莉 / 山姆）">
+    <figure class="cover-visual reveal">
+      <span class="tape" aria-hidden="true"></span>
+      <span class="level-sticker">LEVEL<br>20</span>
+      <img src="images/_tap_banner.webp" alt="《浪漫餐厅》官方宣传画面">
+      <figcaption class="cover-caption">我的第 20 级观察记录</figcaption>
     </figure>
   </div>
-  <p style="text-align:center;font-size:13px;color:var(--color-text-light);font-style:italic;margin-top:-8px;">图 3-2：游戏内实机画面（作者 2026-07 实机体验记录）——左：订单与合成棋盘；中：餐厅装修选择；右：剧情对话。截图仅用于说明核心循环，不用于评价正式版本画面表现。</p>
+</header>
 
-  <h2 id="sec3-2">3.2 商业化体系</h2>
-  <p>【实机体验】产品以低价资源包和活动付费为主要可见入口，降低首次购买门槛：</p>
-  <ul>
-    <li><strong>直接付费：</strong>体力礼包、格子扩容礼包、剧情加速包、限定外观装饰礼包，档位以 1.99 / 3.99 美元为主；</li>
-    <li><strong>广告变现：</strong>看广告获取体力、道具、生成高级素材；</li>
-    <li><strong>活动内购：</strong>限时竞赛、赛季活动中的通行证与活动专属装饰。</li>
-  </ul>
-  <p><strong>待验证假设：</strong>资源付费主要帮助用户缩短等待、推进剧情或获取限定外观；免费用户可能通过激励广告贡献收入。各动机的真实权重需要结合商品购买路径、广告观看与章节进度验证。</p>
+<main>
+  <section class="section" id="summary">
+    <div class="section-heading reveal">
+      <span class="section-number">00</span>
+      <div>
+        <span class="section-kicker">先说结论</span>
+        <h2>它让我留下来的理由，也正是让我被卡住的地方</h2>
+        <p>剧情给了我继续合成的目标，但资源限制也会打断这种期待。</p>
+      </div>
+    </div>
 
-  <h2 id="sec3-3">3.3 活动体系设计</h2>
-  <p>多线并行活动填补版本空窗、维持活跃度：</p>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>活动类型</th>
-          <th>定位</th>
-          <th>公开案例</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>周度剧情更新</td>
-          <td>最核心长线内容，驱动核心用户回流</td>
-          <td>每周五定时更新</td>
-        </tr>
-        <tr>
-          <td>限时剧情活动</td>
-          <td>大版本情绪峰值</td>
-          <td>2025-05 "The Lost City of Heron Keys"；2025-06 "The Masked Tenor"（Sensor Tower 月报点名）</td>
-        </tr>
-        <tr>
-          <td>限时竞速竞赛</td>
-          <td>玩家比拼收集分数，拿限定家具、道具</td>
-          <td>—</td>
-        </tr>
-        <tr>
-          <td>赛季主题活动</td>
-          <td>集卡、掷骰子走格子，产出限定外观</td>
-          <td>—</td>
-        </tr>
-        <tr>
-          <td>日常订单循环</td>
-          <td>基础循环，保证每日轻度玩家有事可做</td>
-          <td>—</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <div class="paper-card intro-card reveal">
+      <div>
+        <h3>我的一句话理解</h3>
+        <p>《浪漫餐厅》不是简单地把剧情放在二合玩法外面，而是让“我想知道下一段发生什么”成为完成订单、观看广告和购买低价礼包的理由。轻松合成负责即时反馈，悬疑剧情负责拉长目标，装修则把进度变成看得见的成果。</p>
+      </div>
+      <div class="summary-quote">“我不是为了做出更高级的咖啡而合成，我是想赶紧看看接下来是谁在说谎。”</div>
+    </div>
 
-  <h2 id="sec3-4">3.4 产品运营层面优势（基于游玩体验）</h2>
-  <ol>
-    <li><strong>规则易理解：</strong>两个同级物品合并的核心操作直观，首轮体验可以快速建立反馈；</li>
-    <li><strong>内容可传播：</strong>装修结果和角色关系适合被转化为视觉内容、投票与讨论话题；</li>
-    <li><strong>运营节点充足：</strong>周更剧情、限时剧情、竞速、赛季和日常订单提供不同频率的触达机会；</li>
-    <li><strong>低价商品入口明确：</strong>1.99 / 3.99 美元等可见档位降低首次付费门槛，但复购和价格敏感度仍需内部数据确认。</li>
-  </ol>
+    <div class="card-grid reveal">
+      <article class="note-card blue">
+        <h3>最吸引我</h3>
+        <p>低门槛二合足够解压，悬疑剧情不断留下问题，餐厅装修又持续提供成长反馈。</p>
+      </article>
+      <article class="note-card orange">
+        <h3>最挫败我</h3>
+        <p>体力恢复跟不上订单需求；等级提高后，合成路线越来越长，推进感明显变慢。</p>
+      </article>
+      <article class="note-card green">
+        <h3>我想验证</h3>
+        <p>运营支持能否把玩家抱怨整理成可复现的问题，并帮助产品区分“合理付费点”和“过度挫败”。</p>
+      </article>
+    </div>
 
-  <h2 id="sec3-5">3.5 产品运营层面短板（基于游玩 + 社区观察）</h2>
-  <ol>
-    <li><strong>高阶订单挫败：</strong>实机体验与社区样本都出现高阶物品、随机产出和进度停滞反馈；</li>
-    <li><strong>体力中断体验：</strong>资源耗尽会切断连续操作，其对流失和付费的影响需要按进度 cohort 验证；</li>
-    <li><strong>更新间隔缺少强目标：</strong>剧情更新后的参与变化尚无内部数据，建议先监控每日活跃和章节完成曲线；</li>
-    <li><strong>棋盘空间压力：</strong>高阶物品占用空间增加，需观察整理行为、扩容购买和相关负面反馈。</li>
-  </ol>
-  <div class="callout">
-    <strong>协作原则：</strong>运营先用舆情分类、分层数据和低成本活动验证问题，再与产品、数值、投放和客服团队确定处理方式。福利补偿只能作为短期手段，不能替代对真实卡点的定位。
-  </div>
-  <div class="divider"></div>
+    <div class="evidence-note reveal"><strong>证据边界：</strong>这份报告不假装掌握留存、LTV 或付费率等内部数据。涉及玩家行为时，我会明确区分“我的真实体验”“公开页面信息”和“需要入职后验证的判断”。</div>
+  </section>
 
-  <!-- =================== 四、数据复盘 =================== -->
-  <h1 id="sec4">四、数据复盘（公开数据）</h1>
+  <section class="section" id="experience">
+    <div class="section-heading reveal">
+      <span class="section-number">01</span>
+      <div>
+        <span class="section-kicker">真实体验</span>
+        <h2>我是怎么在一周里玩到 20 级的</h2>
+        <p>体验平台为抖音小程序；累计约 20 小时，付费约 20 元。</p>
+      </div>
+    </div>
 
-  <h2 id="sec4-1">4.1 收入规模（按时间 / 主体 / 口径拆分）</h2>
-  <p><strong>说明：</strong>以下数据来自不同三方机构，统计口径（内购/流水、海外/全球、单产品/集团）存在差异，因此按"主体 × 时间 × 口径"分别列出，避免横向误读；精确数字以发行方内部 BI 与 Sensor Tower / AppMagic 单产品页为准。</p>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>时间</th>
-          <th>主体</th>
-          <th>数据</th>
-          <th>来源 / 口径</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>2026 年 1-7 月</td>
-          <td>Gossip Harbor 单产品</td>
-          <td>连续 7 个月位列中国出海手游收入榜首；在相关月报口径下位列全球解谜手游收入榜首</td>
-          <td>Sensor Tower 月报（36 氪 2026-08-17 转述）</td>
-        </tr>
-        <tr>
-          <td>2025 全年</td>
-          <td>Gossip Harbor 单产品</td>
-          <td>全年收入约 <strong>6.5 亿美元</strong>（约 44 亿元 RMB）</td>
-          <td>Sensor Tower（DataEye 2026-07 转述）</td>
-        </tr>
-        <tr>
-          <td>2026-02</td>
-          <td>Gossip Harbor 单产品</td>
-          <td>单月流水约 <strong>7770 万美元</strong>，首次反超《糖果传奇》（约 7170 万美元）</td>
-          <td>GameLook 2026-07 编译</td>
-        </tr>
-        <tr>
-          <td>2026 上半年</td>
-          <td>柠檬微趣集团</td>
-          <td>收入约 <strong>10.6 亿美元</strong>，同比 <strong>+30%</strong>，全球发行商第 7（增速第一）</td>
-          <td>Sensor Tower（2026 上半年全球手游榜）</td>
-        </tr>
-        <tr>
-          <td>2026 上半年</td>
-          <td>Gossip Harbor 单产品</td>
-          <td>全球产品收入约 <strong>6.26 亿美元</strong>（产品榜第 6）</td>
-          <td>Sensor Tower（2026 上半年全球手游榜）</td>
-        </tr>
-        <tr>
-          <td>2025 全年</td>
-          <td>Travel Town（竞品）</td>
-          <td>约 <strong>2.1 亿美元</strong>，已被后发《Tasty Travels》反超</td>
-          <td>AppMagic（白鲸出海 2026-02）</td>
-        </tr>
-        <tr>
-          <td>2025 全年</td>
-          <td>Seaside Escape（同厂）</td>
-          <td>约 <strong>1.7 亿美元</strong>，全球合成手游收入前三</td>
-          <td>AppMagic（白鲸出海 2026-02）</td>
-        </tr>
-        <tr>
-          <td>2026Q2</td>
-          <td>全球合成手游大盘</td>
-          <td>内购收入首次突破 <strong>10 亿美元</strong>，同比 <strong>+70%</strong></td>
-          <td>Sensor Tower（环球网 2026-08）</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <p><strong>比较结论：</strong>不同公开榜单均支持《Gossip Harbor》处于 Merge-2 收入头部，但榜单范围、时间和估算模型不同，不能据此精确计算与《Merge Mansion》《Travel Town》的收入差距；《糖果传奇》属于三消产品，仅用于观察收入量级。</p>
-  <figure>
-    <img src="images/fig2_revenue.svg" alt="Gossip Harbor 公开收入与排名时间线">
-    <figcaption>图 4-1：Gossip Harbor 公开收入与排名时间线。不同节点的统计周期和指标口径不同，仅用于观察趋势，不作直接加总或横向比较。</figcaption>
-  </figure>
+    <div class="experience-grid reveal">
+      <article class="paper-card diary-entry">
+        <span class="date">刚开始 · 轻松进入状态</span>
+        <blockquote>两个同级物品拖到一起就能合成，不需要学习复杂规则。订单完成、金币增加、餐厅变好看，反馈非常直接。</blockquote>
+      </article>
+      <article class="paper-card diary-entry">
+        <span class="date">玩进去之后 · 开始追故事</span>
+        <blockquote>真正让我连续打开游戏的，是女主经营餐厅背后的悬疑线。我会为了尽快解锁下一段对话，继续做订单。</blockquote>
+      </article>
+    </div>
 
-  <h2 id="sec4-2">4.2 用户行为假设与验证需求</h2>
-  <ul>
-    <li><strong>公开数据：</strong>单日游戏时长均值约 32 分钟，高于报道引用的休闲行业平均 18 分钟；该数据说明参与深度较高，但不能单独归因于剧情（澎湃新闻，2025-06）。</li>
-    <li><strong>假设 A：</strong>周更剧情带来更新节点回流。验证方式：比较更新前后 24 小时的合格用户回流，并与过去 4 个版本及未触达对照组比较。</li>
-    <li><strong>假设 B：</strong>高阶物品、体力和棋盘空间导致进度停滞。验证方式：建立“停滞时长—次日/七日流失”曲线，并结合客服和社区关键词定位。</li>
-    <li><strong>假设 C：</strong>短剧素材带来的新用户存在承接差异。验证方式：按素材主题建立渠道 cohort，比较教程完成、首章完成和 D1 留存。</li>
-  </ul>
+    <div class="loop reveal" aria-label="游戏核心循环">
+      <div class="loop-step">消耗体力<br>生成物品</div>
+      <div class="loop-step">两两合成<br>完成订单</div>
+      <div class="loop-step">获得金币<br>推进任务</div>
+      <div class="loop-step">解锁剧情<br>装修餐厅</div>
+      <div class="loop-step">产生新目标<br>回到合成</div>
+    </div>
 
-  <h2 id="sec4-3">4.3 商业化观察与验证需求</h2>
-  <ul>
-    <li><strong>可观察事实：</strong>商品入口覆盖体力、空间、活动通行证和限定外观，并存在激励广告资源入口。</li>
-    <li><strong>待验证动机：</strong>资源购买是否主要由剧情推进驱动，应通过“购买前后章节进度、商品类型、用户分层”交叉分析。</li>
-    <li><strong>待验证价值：</strong>不同分层的 ARPU、广告 ARPDAU 和 LTV 均属于内部指标，公开资料不足以得出高低结论。</li>
-  </ul>
+    <div class="card-grid reveal">
+      <article class="note-card blue">
+        <h3>休闲解压</h3>
+        <p>二合操作简单，适合碎片时间；物品升级和订单完成能持续给出小反馈。</p>
+      </article>
+      <article class="note-card orange">
+        <h3>悬疑剧情</h3>
+        <p>角色关系和事件真相让合成不再只是重复劳动，而是通往下一段内容的过程。</p>
+      </article>
+      <article class="note-card green">
+        <h3>自由装修</h3>
+        <p>推进进度后可以选择餐厅风格，成长结果被视觉化，也给玩家留下表达空间。</p>
+      </article>
+    </div>
 
-  <h2 id="sec4-4">4.4 数据复盘小结</h2>
-  <p>公开数据能够支持“产品处于赛道头部、叙事是重要差异化资产”的方向性判断，但无法直接证明剧情对留存、付费和 LTV 的因果贡献。因此，第五章不预设结论，而是用 12 周试点验证“剧情内容运营是否带来增量回流与有效讨论”。</p>
-  <div class="insight"><strong>数据边界：</strong>第三方数据只用于外部趋势判断；关键决策应以统一口径的内部 BI、社区舆情和对照实验共同支持。周报频率统一为每周一次。</div>
-  <div class="divider"></div>
+    <div class="shot-grid reveal">
+      <figure class="shot">
+        <div class="shot-window"><img src="images/2.jpg" alt="抖音小程序版本的订单与合成棋盘"></div>
+        <figcaption>订单与合成：即时反馈最集中的页面</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="shot-window"><img src="images/3.jpg" alt="餐厅装修选择页面"></div>
+        <figcaption>餐厅装修：把进度变成可见成果</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="shot-window"><img src="images/4.jpg" alt="悬疑剧情对话页面"></div>
+        <figcaption>悬疑剧情：为下一轮合成提供目标</figcaption>
+      </figure>
+    </div>
 
-  <!-- =================== 五、12 周内容与社区运营试点 =================== -->
-  <h1 id="sec5">五、12 周内容与社区运营试点</h1>
-  <p><strong>方案定位：</strong>站在游戏运营支持岗视角，以剧情内容和社区承接为主线，先验证增量效果，再决定是否扩展到创作者合作和更大规模的活动资源。</p>
+    <div class="paper-card reveal" style="margin-top:48px;">
+      <h3>我的付费和广告行为</h3>
+      <p>一周内我付费约 20 元，购买过新手礼包和低价活动礼包；也会频繁观看激励广告来领取资源或跳过 CD。对我来说，这些动作不是为了排名，而是为了维持推进节奏。它说明低价礼包和激励广告能承接即时需求，也提醒运营关注：当资源不足出现得太频繁时，“继续玩”的冲动可能转化为疲劳。</p>
+    </div>
 
-  <h2 id="sec5-1">5.1 试点目标与完整链路</h2>
-  <p><strong>核心命题：</strong>固定的“周四猜想—周五更新—周末讨论”内容节奏，能否提升剧情更新后 24 小时回流率和有效讨论参与人数。</p>
-  <p><strong>北极星指标：</strong>目标用户在剧情更新后 24 小时内的增量回流率；<strong>辅助指标：</strong>有效讨论参与人数、内容互动率、唯一礼包码兑换率和负面反馈率。</p>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>环节</th>
-          <th>运营动作</th>
-          <th>协作方 / 依赖</th>
-          <th>成功信号</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>买量</td>
-          <td>按剧情主题标记素材，并保持素材承诺与首日剧情一致</td>
-          <td>投放、素材、本地化</td>
-          <td>对应 cohort 的教程完成和 D1 留存改善</td>
-        </tr>
-        <tr>
-          <td>游戏内</td>
-          <td>向合格用户发送更新预告；预留未触达对照组</td>
-          <td>产品、数据、推送权限</td>
-          <td>触达组 24h 回流高于对照组</td>
-        </tr>
-        <tr>
-          <td>社区</td>
-          <td>发布猜想投票、更新讨论和复盘内容</td>
-          <td>社区、文案、内容审核</td>
-          <td>有效参与人数和评论深度提高</td>
-        </tr>
-        <tr>
-          <td>复盘</td>
-          <td>统一追踪链接、礼包码和版本 cohort，形成周报</td>
-          <td>数据、客服、投放</td>
-          <td>能够区分自然波动与运营增量</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <div class="public-signals reveal">
+      <div class="signal">
+        <strong>全球收入 Top 5</strong>
+        <p>Sensor Tower 将其列入 2026 年 7 月全球手游收入前五，说明产品已有成熟市场表现。<a href="#source-1">[1]</a></p>
+      </div>
+      <div class="signal">
+        <strong>每周五新章节</strong>
+        <p>全球 App 商店版本明确标注“每周五更新章节”，剧情本身就是固定运营节点。<a href="#source-2">[2]</a></p>
+      </div>
+      <div class="signal">
+        <strong>活动持续叠加</strong>
+        <p>公开资料显示产品持续加入收集、竞赛和混合 PvE 等活动层，LiveOps 是长线体验的重要部分。<a href="#source-3">[3]</a></p>
+      </div>
+    </div>
+  </section>
 
-  <h2 id="sec5-2">5.2 核心实验：剧情猜想话题</h2>
-  <p><strong>依据：</strong>2026 年 7 月社区样本显示剧情标签帖较少，因此先把“剧情内容承接不足”作为假设，用小规模实验验证，不直接扩展为长期栏目。</p>
-  <figure>
-    <img src="images/5.jpg" alt="情感诉求类买量素材">
-    <figcaption>图 5-1：典型情感诉求类素材（TikTok，2025-03）。平台页面展示值不等同于真实玩家规模，本报告只分析其“困境—悬念—行动”叙事结构。</figcaption>
-  </figure>
+  <section class="section" id="friction">
+    <div class="section-heading reveal">
+      <span class="section-number">02</span>
+      <div>
+        <span class="section-kicker">卡点观察</span>
+        <h2>20 级以后，“解压”开始被等待打断</h2>
+        <p>我只写两条自己确实体验到的问题，不把感受包装成内部流失结论。</p>
+      </div>
+    </div>
 
-  <p style="margin-top:8px;"><strong>连续 7 天实验流程</strong></p>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>阶段</th>
-          <th>动作</th>
-          <th>追踪方式</th>
-          <th>负责人 / 依赖</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>D-3 预热</td>
-          <td>Reddit 与 Facebook 发布无剧透三选一猜想；首轮不扩多平台</td>
-          <td>唯一追踪链接、有效投票人数</td>
-          <td>内容运营；需本地化与剧透审核</td>
-        </tr>
-        <tr>
-          <td>D0 更新</td>
-          <td>剧情上线后发布讨论帖；向目标用户推送，保留随机对照组</td>
-          <td>触达 / 对照 cohort、24h 回流率</td>
-          <td>社区与数据；需推送和分组权限</td>
-        </tr>
-        <tr>
-          <td>D1–D2 发酵</td>
-          <td>回复高质量讨论；向符合规则的参与者发放唯一礼包码</td>
-          <td>有效评论、兑换率、异常领取率</td>
-          <td>社区与客服；需奖励规则和反作弊</td>
-        </tr>
-        <tr>
-          <td>D3 复盘</td>
-          <td>发布结果卡并完成单轮复盘，不提前承诺常态化</td>
-          <td>增量回流、有效参与、单位增量成本</td>
-          <td>运营、数据、投放共同评审</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <p><strong>判断规则（示意，W1–W2 建立基线后校准）：</strong>若有效参与人数较过去 4 周同类帖中位数提升至少 20%，且目标 cohort 的 24h 回流率较对照组提升至少 3%，进入下一轮；若连续两轮未达到任一核心指标，或负面反馈 / 单位增量成本超出团队阈值，则调整主题、渠道或停止实验。</p>
+    <div class="friction-grid reveal">
+      <article class="friction-card">
+        <span class="index">01</span>
+        <h3>体力跟不上订单</h3>
+        <p>高阶订单需要多轮生成和合成，体力很快耗尽。我会选择看广告、等待恢复或购买低价礼包；一旦没有合适补充方式，剧情和装修也会同时停住。</p>
+      </article>
+      <article class="friction-card">
+        <span class="index">02</span>
+        <h3>合成路线越来越长</h3>
+        <p>等级提高后，同一订单需要更多中间物品。棋盘被半成品占据，整理和等待时间增加，完成一次订单带来的轻松感被明显稀释。</p>
+      </article>
+    </div>
 
-  <h2 id="sec5-3">5.3 12 周推进路线</h2>
-  <p><strong>试点窗口：</strong>以下以 2026-09-07 至 2026-11-29 为示意周期，覆盖万圣节与感恩节；实际日期需与版本、素材、本地化和审核排期对齐。</p>
-  <figure>
-    <img src="images/fig6_calendar.svg" alt="12 周运营试点路线图">
-    <figcaption>图 5-2：12 周运营试点路线图。先建立基线，再逐步扩大样本；节日内容只有在基础实验有效后接入。</figcaption>
-  </figure>
-  <ul>
-    <li><strong>W1–W2｜基线与准备：</strong>统一指标、建立舆情分类、完成剧透与本地化流程，记录自然回流和社区互动基线；</li>
-    <li><strong>W3–W4｜首轮实验：</strong>仅在 Reddit 与 Facebook 运行一轮剧情猜想，保留对照组；</li>
-    <li><strong>W5–W8｜重复验证：</strong>更换角色与题型重复两轮，并在万圣节节点测试主题内容；</li>
-    <li><strong>W9–W10｜分层触达：</strong>分别对剧情推进型和装修收集型用户测试不同内容；</li>
-    <li><strong>W11–W12｜感恩节与复盘：</strong>仅在前序指标达标时接入节日主题，最终输出继续、调整或停止建议。</li>
-  </ul>
+    <div class="impact-line reveal">体力不足 + 合成链变长 → 订单完成变慢 → 剧情与装修同步停滞 → 玩家更容易产生“今天先不玩了”的念头</div>
 
-  <h2 id="sec5-4">5.4 分层触达 SOP</h2>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>触发条件</th>
-          <th>内容与渠道</th>
-          <th>核心指标</th>
-          <th>验证方式</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>近 7 日完成剧情章节或点击更新通知</td>
-          <td>更新预告、剧情猜想；游戏内推送 + 社区</td>
-          <td>24h 回流、章节完成</td>
-          <td>随机保留未触达对照组</td>
-        </tr>
-        <tr>
-          <td>近 14 日多次更换装饰或参与收集活动</td>
-          <td>主题装修征集、布局灵感；Facebook / Instagram</td>
-          <td>有效投稿、活动参与</td>
-          <td>与非主题内容的历史基线比较</td>
-        </tr>
-        <tr>
-          <td>订单完成高、剧情点击低、资源广告观看频繁</td>
-          <td>竞速提示和资源活动；游戏内</td>
-          <td>订单数、活动完成、广告 ARPDAU</td>
-          <td>按进度和活跃度匹配 cohort</td>
-        </tr>
-        <tr>
-          <td>来自剧情素材且未完成首章</td>
-          <td>素材同主题首日引导；与投放和产品联动</td>
-          <td>教程完成、首章完成、D1</td>
-          <td>按素材主题比较渠道 cohort</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <div class="feedback-proof reveal">
+      <article class="feedback-item">
+        <span class="source-label">公开玩家反馈 · App Store</span>
+        <p>有长期玩家反映，卡牌收集活动中重复卡较多，即使每日参与也难以完成。这里不能代表全部用户，但说明活动奖励公平感值得持续监控。<a href="#source-2">[2]</a></p>
+      </article>
+      <article class="feedback-item">
+        <span class="source-label">公开玩家反馈 · Reddit</span>
+        <p>部分玩家会提前囤积体力和订单以准备活动，也有人认为高消耗活动“不值得投入”。资源规划已经成为社区讨论的一部分。<a href="#source-4">[4]</a></p>
+      </article>
+    </div>
 
-  <h2 id="sec5-5">5.5 舆情与数据看板（周报框架）</h2>
-  <ul>
-    <li><strong>舆情模块：</strong>按体力、随机产出、剧情、活动、技术问题分类；同时记录数量、互动量、情绪和代表性原文，避免只看关键词次数。</li>
-    <li><strong>行为模块：</strong>按版本、渠道和用户分层查看 24h 回流、章节完成、活动参与、礼包兑换与 D1 / D7。</li>
-    <li><strong>结论模块：</strong>每周只输出“继续 / 调整 / 停止”三类建议，并写明证据、负责人和下周验证动作。</li>
-  </ul>
+    <div class="feedback-flow reveal">
+      <h3>如果我是运营支持，我不会直接下结论，而是这样闭环</h3>
+      <div class="flow-row">
+        <span class="flow-pill">收集客服 / QQ 群反馈</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-pill">按等级与订单分类</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-pill">复现并记录截图</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-pill">同步产品与数值</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-pill">跟进结果并回复玩家</span>
+      </div>
+    </div>
+  </section>
 
-  <h2 id="sec5-6">5.6 风险预案</h2>
-  <ol>
-    <li><strong>剧透与内容安全：</strong>所有预告使用已批准素材，设置剧透等级；涉及性别、宗教、身份等议题时完成本地化与内容审核。</li>
-    <li><strong>奖励滥用：</strong>唯一礼包码设置领取条件、有效期和异常兑换监控，客服保留申诉路径。</li>
-    <li><strong>归因偏差：</strong>节日、版本质量和投放变化都可能影响回流；通过对照组、历史基线和素材 cohort 降低误判。</li>
-    <li><strong>资源不足：</strong>若本地化、审核或数据权限未就绪，则缩小渠道与样本，不以不完整数据扩大投入。</li>
-  </ol>
+  <section class="section" id="compare">
+    <div class="section-heading reveal">
+      <span class="section-number">03</span>
+      <div>
+        <span class="section-kicker">同类观察</span>
+        <h2>同一套循环，换成古风茶楼会发生什么</h2>
+        <p>我关注过同平台的《梦幻消除战》，它让我看到题材、本地化和用户期待之间的关系。</p>
+      </div>
+    </div>
 
-  <h2 id="sec5-7">5.7 我会盯的核心指标（监控框架）</h2>
-  <p>以下阈值用于展示判断方法，正式目标应在 W1–W2 完成基线后，由运营、数据和业务负责人共同确认。</p>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>指标</th>
-          <th>定义</th>
-          <th>比较方式</th>
-          <th>决策规则（示意）</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>更新后 24h 回流率</td>
-          <td>合格用户中，更新后 24h 内再次登录的比例</td>
-          <td>触达组 vs 随机对照组；同时参考过去 4 版本中位数</td>
-          <td>相对对照提升 ≥3% 才进入下一轮</td>
-        </tr>
-        <tr>
-          <td>有效讨论参与人数</td>
-          <td>完成投票或发表非重复有效评论的独立用户数</td>
-          <td>过去 4 周同类内容中位数</td>
-          <td>提升 ≥20%，且垃圾 / 重复内容不明显上升</td>
-        </tr>
-        <tr>
-          <td>礼包码兑换率</td>
-          <td>成功兑换人数 / 合格获奖人数</td>
-          <td>不同平台、不同奖励档位</td>
-          <td>异常领取上升则暂停发放并排查规则</td>
-        </tr>
-        <tr>
-          <td>负面反馈率</td>
-          <td>与剧透、奖励公平或内容不适相关的负面反馈 / 有效互动</td>
-          <td>过去 4 周基线与各市场差异</td>
-          <td>超过团队阈值即暂停对应素材或市场投放</td>
-        </tr>
-        <tr>
-          <td>单位增量回流成本</td>
-          <td>内容、奖励与人力成本 / 相对对照组新增回流人数</td>
-          <td>团队现有召回或再营销成本</td>
-          <td>连续两轮高于替代方案则停止或降级</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="divider"></div>
+    <div class="compare-board reveal">
+      <article class="game-card harbor">
+        <span class="game-tag">现代海滨 · 餐厅经营</span>
+        <h3>《浪漫餐厅》</h3>
+        <ul>
+          <li>二合订单推进餐厅修复</li>
+          <li>现代情感关系与悬疑事件</li>
+          <li>西式餐饮物品与海滨视觉</li>
+          <li>短剧式冲突适合海外传播</li>
+        </ul>
+      </article>
+      <div class="vs">VS</div>
+      <article class="game-card dream">
+        <span class="game-tag">中国古风 · 茶楼经营</span>
+        <h3>《梦幻消除战》</h3>
+        <ul>
+          <li>二合订单推进茶楼重建</li>
+          <li>重生、复仇、奇案与情缘</li>
+          <li>茶点、香囊、灯笼等本土物品</li>
+          <li>唐宋家具和古风审美强化代入</li>
+        </ul>
+      </article>
+    </div>
 
-  <!-- =================== 六、总结 =================== -->
-  <h1 id="sec6">六、总结：方法论提炼</h1>
-  <p>《Gossip Harbor》用叙事提供长期目标，用合成与装修承接日常操作，并通过稳定更新形成持续触达机会。对运营岗位而言，关键不是重复说明“剧情重要”，而是证明具体内容动作能否带来增量结果。</p>
-  <p>本报告最终形成三条工作原则：</p>
-  <ol>
-    <li>公开数据用于发现方向，内部 BI 与实验用于确认因果；</li>
-    <li>社区观察先转化为可测试假设，再决定是否投入长期资源；</li>
-    <li>运营动作必须同时写清目标用户、执行依赖、核心指标和停止条件。</li>
-  </ol>
-  <div class="callout">
-    <strong>岗位匹配：</strong>这套方案覆盖内容排期、社区执行、本地化与审核协作、活动配置、客服反馈、数据复盘和跨团队推进，能够对应游戏运营支持岗位的日常工作链路。
-  </div>
+    <div class="compare-insight reveal">
+      <strong>我的理解：</strong>两款产品的基础循环相近，但题材不是简单“换皮”。物品命名、剧情冲突、装修审美、广告素材和社区话题都会随文化背景变化。对游戏运营支持而言，快速吃透产品不仅是会玩，还要理解目标玩家为什么会对同一机制产生不同期待。关于《梦幻消除战》的产品描述来自官方 App Store 与 TapTap 页面。<a href="#source-5">[5]</a>
+    </div>
+  </section>
 
-  <h2 id="sec6-plan">附：入职后 30 天计划（示意）</h2>
-  <p>入职首月的目标不是直接扩大活动，而是完成基线、流程和首轮小规模验证。</p>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>阶段</th>
-          <th>交付物</th>
-          <th>完成标准</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>第 1 周</td>
-          <td>指标字典与数据权限清单</td>
-          <td>统一 24h 回流、章节完成、活动参与和渠道 cohort 口径</td>
-        </tr>
-        <tr>
-          <td>第 2 周</td>
-          <td>社区基线周报与内容审核流程</td>
-          <td>完成 Reddit / Facebook 分类样本，并确认本地化、剧透和奖励审批人</td>
-        </tr>
-        <tr>
-          <td>第 3 周</td>
-          <td>首轮剧情猜想实验</td>
-          <td>完成追踪、对照分组、内容发布、奖励发放和异常监控</td>
-        </tr>
-        <tr>
-          <td>第 4 周</td>
-          <td>实验复盘与下一阶段建议</td>
-          <td>基于指标给出继续、调整或停止结论，并明确下一轮负责人和排期</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <section class="section" id="support">
+    <div class="section-heading reveal">
+      <span class="section-number">04</span>
+      <div>
+        <span class="section-kicker">运营支持</span>
+        <h2>如果入职，我会先做一份“新手 20 级体验问题周报”</h2>
+        <p>不先提大改玩法，而是把玩家问题整理得足够清楚，让产品团队能够判断和行动。</p>
+      </div>
+    </div>
 
-  <div class="footer">
-    《浪漫餐厅（Gossip Harbor）》出海内容与社区运营拆解 · 求职作品 · 2026 年 8 月
-  </div>
-</div>
+    <div class="support-project reveal">
+      <div class="project-brief">
+        <span class="project-tag">FIRST PROJECT</span>
+        <h3>新手 1-20 级<br>体验反馈闭环</h3>
+        <p>把客服后台、发行渠道、QQ 群和玩家电话中的问题，与等级、订单、活动、设备和付费状态关联起来。输出的不是“玩家觉得难”，而是可以复现、可以追踪、可以确定负责人的问题卡片。</p>
+      </div>
+      <div class="deliverables">
+        <div class="deliverable"><strong>01｜问题标签表</strong><span>体力、合成链、棋盘空间、广告、CD、活动理解、技术异常。</span></div>
+        <div class="deliverable"><strong>02｜复现记录卡</strong><span>版本、平台、等级、操作路径、截图、出现频率与影响范围。</span></div>
+        <div class="deliverable"><strong>03｜每周问题清单</strong><span>按“高频且影响推进 / 高频但影响轻 / 个别异常”排列优先级。</span></div>
+        <div class="deliverable"><strong>04｜玩家回复与跟进</strong><span>明确已知问题、处理进度和替代方案，减少重复咨询与情绪积累。</span></div>
+      </div>
+    </div>
+
+    <div class="timeline reveal">
+      <article class="week"><strong>第 1 周</strong><p>熟悉游戏、客服后台、渠道和现有问题分类，补齐 1-20 级体验记录。</p></article>
+      <article class="week"><strong>第 2 周</strong><p>抽样近期反馈，亲自复现体力、订单和广告问题，完成第一版标签表。</p></article>
+      <article class="week"><strong>第 3 周</strong><p>输出周报，与产品和数值确认优先级、负责人及可行处理方式。</p></article>
+      <article class="week"><strong>第 4 周</strong><p>跟进处理结果，更新客服话术，并比较重复问题数量是否下降。</p></article>
+    </div>
+
+    <div class="small-idea reveal">
+      <h3>一个可以顺手验证的小内容动作</h3>
+      <p>全球版本每周五更新剧情，可以尝试在更新前后发布一次无剧透猜想和一次讨论帖。首轮只观察参与人数、有效评论和常见剧情问题，不预设它一定能提高留存。它是玩家服务和内容运营的结合，而不是一套需要大量资源的营销项目。</p>
+    </div>
+  </section>
+
+  <section class="section" id="fit">
+    <div class="section-heading reveal">
+      <span class="section-number">05</span>
+      <div>
+        <span class="section-kicker">岗位匹配</span>
+        <h2>这份报告想证明的，不只是我喜欢玩游戏</h2>
+        <p>我把 JD 中的五项职责，分别落到真实经历和这份作品的具体动作里。</p>
+      </div>
+    </div>
+
+    <div class="fit-grid reveal">
+      <article class="fit-card">
+        <span class="jd">JD 01 · 快速研究产品</span>
+        <h3>一周完成 20 小时、20 级体验</h3>
+        <p>能在短时间内理解核心循环、商业化入口、活动节奏和主要体验卡点。</p>
+      </article>
+      <article class="fit-card">
+        <span class="jd">JD 02 · 玩家答疑与反馈</span>
+        <h3>独立运营 MC 服务器社群</h3>
+        <p>长期承接玩家问题、处理纠纷、维护秩序，并建立反馈收集到结果复盘的闭环。</p>
+      </article>
+      <article class="fit-card">
+        <span class="jd">JD 03 · 监控运行状态</span>
+        <h3>服务器稳定运行 120 天</h3>
+        <p>持续监控状态、排查模组问题，并通过自研反作弊机制维护正常游玩秩序。</p>
+      </article>
+      <article class="fit-card">
+        <span class="jd">JD 04 · 内部沟通推进</span>
+        <h3>有跨团队需求拆解经验</h3>
+        <p>实习中负责梳理需求、协调多方、跟进落地卡点，能把模糊问题转成可验证任务。</p>
+      </article>
+      <article class="fit-card">
+        <span class="jd">JD 05 · 数据分析建议</span>
+        <h3>用量化评测推动流程优化</h3>
+        <p>曾通过多维指标和结果溯源，使业务日处理量提升 5 倍、耗时从 3-4 小时降至 1 小时内。</p>
+      </article>
+      <article class="fit-card">
+        <span class="jd">任职要求 · 英语与服务意识</span>
+        <h3>CET-4 + 海内外平台观察</h3>
+        <p>能够阅读英文资料，持续关注 Reddit、YouTube、X 等平台的游戏内容和玩家反馈。</p>
+      </article>
+    </div>
+
+    <div class="paper-card resume-proof reveal">
+      <div class="proof"><strong>47 人</strong><span>个人服务器同时在线峰值</span></div>
+      <div class="proof"><strong>20 人</strong><span>热度退散后的稳定日常在线</span></div>
+      <div class="proof"><strong>120 天</strong><span>服务器稳定运行周期</span></div>
+    </div>
+
+    <div class="month-plan reveal">
+      <article class="month-step"><b>Week 1</b><p>吃透产品、后台和问题口径。</p></article>
+      <article class="month-step"><b>Week 2</b><p>独立处理常见问题并形成分类。</p></article>
+      <article class="month-step"><b>Week 3</b><p>完成第一份问题周报和复现记录。</p></article>
+      <article class="month-step"><b>Week 4</b><p>跟进落地结果，复盘重复问题变化。</p></article>
+    </div>
+  </section>
+
+  <section class="paper-card sources" id="sources">
+    <h2>资料来源与说明</h2>
+    <p>数据检索与页面核对日期：2026-08-20。公开资料用于确认产品状态和提供旁证，不替代发行方内部数据。</p>
+    <ol class="source-list">
+      <li id="source-1"><span class="source-no">[1]</span><div><a href="https://develop.sensortower.com/blog/top-10-worldwide-mobile-games-by-revenue-and-downloads-in-july-2026" target="_blank" rel="noreferrer">Sensor Tower：2026 年 7 月全球手游收入与下载榜</a><small>用于确认 Gossip Harbor 位列当月全球手游收入前五，并观察其活动组合。</small></div></li>
+      <li id="source-2"><span class="source-no">[2]</span><div><a href="https://apps.apple.com/ng/app/gossip-harbor-merge-story/id1623318294" target="_blank" rel="noreferrer">App Store：Gossip Harbor - Merge &amp; Story</a><small>用于确认每周五章节更新、公开活动说明及玩家评论案例。</small></div></li>
+      <li id="source-3"><span class="source-no">[3]</span><div><a href="https://www.gamerefinery.com/mobile-game-market-review-april-2026/" target="_blank" rel="noreferrer">GameRefinery：Mobile Game Market Review, April 2026</a><small>用于确认产品持续加入混合 PvE 等 LiveOps 内容。</small></div></li>
+      <li id="source-4"><span class="source-no">[4]</span><div><a href="https://www.reddit.com/r/GossipHarbor/comments/1ttlcg0/events_still_due_and_cards/" target="_blank" rel="noreferrer">Reddit：玩家对活动准备和资源安排的讨论</a><small>只作为社区个案，用于发现问题线索，不代表整体用户。</small></div></li>
+      <li id="source-5"><span class="source-no">[5]</span><div><a href="https://apps.apple.com/cn/app/%E6%A2%A6%E5%B9%BB%E6%B6%88%E9%99%A4%E6%88%98/id6748513887" target="_blank" rel="noreferrer">App Store：《梦幻消除战》产品页</a>；<a href="https://www.taptap.cn/app/747820" target="_blank" rel="noreferrer">TapTap 官方页</a><small>用于确认古风合成经营、茶楼装修、情缘和奇案等产品要素。</small></div></li>
+      <li><span class="source-no">[P]</span><div><strong>个人体验与求职材料</strong><small>7 天、约 20 小时、抖音小程序 20 级、约 20 元付费、广告与 CD 行为来自候选人真实记录；岗位职责和履历数据来自候选人提供的 JD 与简历。</small></div></li>
+    </ol>
+  </section>
+</main>
+
+<footer class="footer">《浪漫餐厅》一周玩家体验与运营思考 · 游戏运营支持求职作品 · 2026 年 8 月</footer>
 
 <script>
 (function () {
-  var bar = document.getElementById('progressBar');
-  var links = Array.prototype.slice.call(document.querySelectorAll('.nav-link'));
+  var progress = document.getElementById("progress");
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll(".nav-link"));
+  var sections = navLinks.map(function (link) {
+    return document.querySelector(link.getAttribute("href"));
+  }).filter(Boolean);
 
-  var onScroll = function () {
+  function updateScrollState() {
     var doc = document.documentElement;
-    var scrolled = window.pageYOffset || doc.scrollTop || document.body.scrollTop || 0;
     var max = doc.scrollHeight - doc.clientHeight;
-    bar.style.width = (max > 0 ? (scrolled / max) * 100 : 0) + '%';
+    var value = max > 0 ? (window.scrollY / max) * 100 : 0;
+    progress.style.width = value + "%";
 
-    var current = '';
-    links.forEach(function (a) {
-      var id = a.getAttribute('href').slice(1);
-      var el = document.getElementById(id);
-      if (el && el.getBoundingClientRect().top <= 120) current = id;
+    var active = "";
+    sections.forEach(function (section) {
+      if (section.getBoundingClientRect().top <= 150) active = section.id;
     });
-    links.forEach(function (a) {
-      var id = a.getAttribute('href').slice(1);
-      a.classList.toggle('active', id === current && current !== '');
+    navLinks.forEach(function (link) {
+      link.classList.toggle("active", link.getAttribute("href") === "#" + active);
     });
-  };
+  }
 
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll, { passive: true });
-  onScroll();
+  window.addEventListener("scroll", updateScrollState, { passive: true });
+  window.addEventListener("resize", updateScrollState, { passive: true });
+  updateScrollState();
 
-  // 滚动进场动画：作用于正文块级元素，避免与封面入场动画冲突
-  var targets = Array.prototype.slice.call(document.querySelectorAll(
-    '.container h1, .container h2, .container figure, .container .table-wrap, .container .callout, .container .toc'
-  ));
-  targets.forEach(function (el) { el.classList.add('reveal'); });
-
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
+  var revealItems = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
+  if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-          io.unobserve(entry.target);
+          entry.target.classList.add("in-view");
+          observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
-    targets.forEach(function (el) { io.observe(el); });
+    }, { threshold: 0.08, rootMargin: "0px 0px -7% 0px" });
+    revealItems.forEach(function (item, index) {
+      item.style.transitionDelay = Math.min(index % 4, 3) * 70 + "ms";
+      observer.observe(item);
+    });
   } else {
-    targets.forEach(function (el) { el.classList.add('in-view'); });
+    revealItems.forEach(function (item) { item.classList.add("in-view"); });
   }
 })();
 </script>
