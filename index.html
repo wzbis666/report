@@ -543,266 +543,6 @@
     line-height: 1.7;
   }
 
-  .play-session {
-    margin: 30px 0 34px;
-    padding: 28px;
-    position: relative;
-    overflow: hidden;
-    border: 2px solid var(--ink);
-    border-radius: 28px 28px 28px 9px;
-    background: var(--white);
-    box-shadow: 11px 13px 0 rgba(23, 50, 77, 0.12);
-  }
-
-  .play-session::before {
-    content: "";
-    position: absolute;
-    inset: 0 auto 0 0;
-    width: 8px;
-    background: repeating-linear-gradient(180deg, var(--orange) 0 16px, var(--yellow) 16px 32px, var(--blue) 32px 48px);
-  }
-
-  .session-head {
-    margin: 0 0 24px 8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 28px;
-  }
-
-  .session-kicker {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--orange);
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: .14em;
-  }
-
-  .session-kicker::before {
-    content: "";
-    width: 24px;
-    height: 2px;
-    background: currentColor;
-  }
-
-  .session-head h3 {
-    margin: 4px 0 5px;
-    font-family: var(--display-font);
-    font-size: clamp(24px, 3.5vw, 34px);
-    line-height: 1.35;
-  }
-
-  .session-head p {
-    max-width: 700px;
-    margin: 0;
-    color: var(--ink-soft);
-    font-size: 14px;
-  }
-
-  .session-play {
-    min-width: 136px;
-    min-height: 46px;
-    padding: 10px 15px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    flex: 0 0 auto;
-    border: 1px solid var(--ink);
-    border-radius: 999px;
-    background: var(--paper);
-    font-size: 13px;
-    font-weight: 800;
-    cursor: pointer;
-    transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
-  }
-
-  .session-play:hover {
-    transform: translateY(-2px);
-    background: var(--yellow-soft);
-    box-shadow: 3px 4px 0 var(--ink);
-  }
-
-  .session-play .ui-icon { width: 18px; height: 18px; }
-
-  .session-body {
-    display: grid;
-    grid-template-columns: minmax(0, 1.08fr) minmax(330px, .92fr);
-    gap: 18px;
-    align-items: stretch;
-  }
-
-  .session-stage {
-    min-height: 378px;
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    overflow: hidden;
-    border-radius: 22px 22px 22px 6px;
-    background: var(--ink);
-    color: var(--white);
-    isolation: isolate;
-    transition: background 260ms ease;
-  }
-
-  .session-stage::after {
-    content: attr(data-step);
-    position: absolute;
-    right: 20px;
-    bottom: -38px;
-    z-index: -1;
-    color: rgba(255, 255, 255, .07);
-    font-family: var(--display-font);
-    font-size: 190px;
-    font-weight: 900;
-    line-height: 1;
-    pointer-events: none;
-  }
-
-  .session-stage[data-tone="blue"] { background: #1e5871; }
-  .session-stage[data-tone="yellow"] { background: #68511d; }
-  .session-stage[data-tone="orange"] { background: #8b452d; }
-  .session-stage[data-tone="green"] { background: #365f43; }
-
-  .session-stage-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-  }
-
-  .session-stage-index {
-    min-width: 58px;
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: .1em;
-  }
-
-  .session-stage-kicker {
-    padding: 5px 10px;
-    border: 1px solid rgba(255, 255, 255, .35);
-    border-radius: 999px;
-    color: rgba(255, 255, 255, .88);
-    font-size: 12px;
-    font-weight: 700;
-  }
-
-  .session-stage-icon {
-    width: 64px;
-    height: 64px;
-    margin: 42px 0 18px;
-    display: grid;
-    place-items: center;
-    border-radius: 20px 20px 20px 5px;
-    background: var(--yellow);
-    color: var(--ink);
-    transform: rotate(-2deg);
-  }
-
-  .session-stage-icon .ui-icon { width: 31px; height: 31px; }
-
-  .session-stage h4 {
-    max-width: 460px;
-    margin: 0;
-    font-family: var(--display-font);
-    font-size: clamp(25px, 3.2vw, 34px);
-    line-height: 1.35;
-  }
-
-  .session-stage-detail {
-    max-width: 590px;
-    margin: 12px 0 26px;
-    color: rgba(255, 255, 255, .82);
-    font-size: 15px;
-    line-height: 1.75;
-  }
-
-  .session-stage-reason {
-    margin-top: auto;
-    padding-top: 17px;
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
-    gap: 14px;
-    align-items: baseline;
-    border-top: 1px solid rgba(255, 255, 255, .22);
-  }
-
-  .session-stage-reason span {
-    color: var(--yellow);
-    font-size: 12px;
-    font-weight: 800;
-  }
-
-  .session-stage-reason strong { font-size: 15px; }
-
-  .session-progress {
-    height: 4px;
-    margin-top: 19px;
-    overflow: hidden;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, .16);
-  }
-
-  .session-progress-fill {
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: inherit;
-    background: var(--yellow);
-    transform: scaleX(.2);
-    transform-origin: left center;
-    transition: transform 320ms cubic-bezier(.22, .75, .25, 1);
-  }
-
-  .session-track {
-    margin: 0;
-    padding: 0;
-    display: grid;
-    gap: 8px;
-    list-style: none;
-  }
-
-  .session-step {
-    width: 100%;
-    min-height: 66px;
-    padding: 10px 12px;
-    display: grid;
-    grid-template-columns: 38px minmax(0, 1fr) auto;
-    gap: 11px;
-    align-items: center;
-    border: 1px solid transparent;
-    border-radius: 14px;
-    background: transparent;
-    text-align: left;
-    cursor: pointer;
-    transition: background 180ms ease, border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
-  }
-
-  .session-step:hover { background: var(--paper); }
-
-  .session-step.active {
-    border-color: var(--ink);
-    background: var(--yellow-soft);
-    box-shadow: 4px 4px 0 var(--ink);
-    transform: translate(-3px, -2px);
-  }
-
-  .session-step-index {
-    color: var(--ink-soft);
-    font-family: var(--display-font);
-    font-size: 15px;
-    font-weight: 900;
-  }
-
-  .session-step-copy { min-width: 0; }
-  .session-step-copy strong { display: block; font-size: 14px; line-height: 1.4; }
-  .session-step-copy small { display: block; margin-top: 2px; color: var(--ink-soft); font-size: 12px; line-height: 1.4; }
-  .session-step > .ui-icon { width: 18px; height: 18px; color: var(--ink-soft); transition: transform 180ms ease; }
-  .session-step.active > .ui-icon { color: var(--ink); transform: translateX(2px); }
-
   .compare-toggle {
     border: 1px solid var(--ink);
     border-radius: 999px;
@@ -1817,8 +1557,6 @@
     .export-chain { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .experiment-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .export-step::after { display: none; }
-    .session-body { grid-template-columns: 1fr; }
-    .session-stage { min-height: 340px; }
     .compare-board { grid-template-columns: 1fr; }
     .vs { min-height: 54px; }
     .friction-lab { grid-template-columns: 1fr; }
@@ -1865,13 +1603,6 @@
     .shot-grid { grid-template-columns: 1fr; max-width: 360px; margin-inline: auto; }
     .shot:nth-child(2), .shot:nth-child(3) { transform: none; }
     .cover-visual img { min-height: 230px; }
-    .play-session { padding: 22px; }
-    .session-head { margin-left: 5px; flex-direction: column; gap: 15px; }
-    .session-play { width: 100%; }
-    .session-stage { min-height: 390px; padding: 24px; }
-    .session-stage-icon { margin-top: 34px; }
-    .session-stage-reason { grid-template-columns: 1fr; gap: 4px; }
-    .session-step { min-height: 70px; }
     .compare-controls { align-items: flex-start; }
     .compare-actions { width: 100%; }
     .compare-toggle { flex: 1; }
@@ -1898,10 +1629,6 @@
     .cover-visual,
     .shot,
     .shot img,
-    .session-step,
-    .session-play,
-    .session-stage,
-    .session-progress-fill,
     .game-card,
     .fit-card,
     .stage-card,
@@ -1929,28 +1656,6 @@
     <path d="m5 14 .8 2.2L8 17l-2.2.8L5 20l-.8-2.2L2 17l2.2-.8L5 14Z"></path>
     <path d="m19 13 .7 1.8 1.8.7-1.8.7L19 18l-.7-1.8-1.8-.7 1.8-.7L19 13Z"></path>
   </symbol>
-  <symbol id="icon-zap" viewBox="0 0 24 24">
-    <path d="M13 2 4 14h7l-1 8 10-13h-7V2Z"></path>
-  </symbol>
-  <symbol id="icon-merge" viewBox="0 0 24 24">
-    <circle cx="6" cy="6" r="3"></circle>
-    <circle cx="18" cy="18" r="3"></circle>
-    <path d="M6 21V9a9 9 0 0 0 9 9"></path>
-  </symbol>
-  <symbol id="icon-coins" viewBox="0 0 24 24">
-    <circle cx="8" cy="8" r="5"></circle>
-    <path d="M13 6.5a5 5 0 1 1-6.5 6.5"></path>
-    <path d="M8 5v6M6 7h4M15.5 11.5v6M13.5 14.5h4"></path>
-  </symbol>
-  <symbol id="icon-search" viewBox="0 0 24 24">
-    <circle cx="11" cy="11" r="7"></circle>
-    <path d="m20 20-4-4"></path>
-  </symbol>
-  <symbol id="icon-target" viewBox="0 0 24 24">
-    <circle cx="12" cy="12" r="9"></circle>
-    <circle cx="12" cy="12" r="5"></circle>
-    <circle cx="12" cy="12" r="1"></circle>
-  </symbol>
   <symbol id="icon-expand" viewBox="0 0 24 24">
     <path d="M15 3h6v6M21 3l-7 7M9 21H3v-6M3 21l7-7"></path>
   </symbol>
@@ -1968,12 +1673,6 @@
   </symbol>
   <symbol id="icon-arrow-up" viewBox="0 0 24 24">
     <path d="M12 19V5M5 12l7-7 7 7"></path>
-  </symbol>
-  <symbol id="icon-pause" viewBox="0 0 24 24">
-    <path d="M9 5v14M15 5v14"></path>
-  </symbol>
-  <symbol id="icon-play" viewBox="0 0 24 24">
-    <path d="m8 5 11 7-11 7V5Z"></path>
   </symbol>
 </svg>
 <div class="progress" id="progress" aria-hidden="true"></div>
@@ -2076,39 +1775,6 @@
         <span class="date">第 3—7 天 · 开始惦记后续</span>
         <blockquote>玩到后面，我已经不太在意咖啡合到了几级，却会记得谁在隐瞒真相。再次打开游戏，通常是想把卡住的那段剧情接着看完。</blockquote>
       </article>
-    </div>
-
-    <div class="play-session reveal" id="core-loop" aria-label="一轮实际游玩路径">
-      <div class="session-head">
-        <div>
-          <span class="session-kicker">一局里，我脑子里的顺序</span>
-          <h3>不是在“跑流程”，只是总觉得还差一点</h3>
-          <p>点生成器时想着把订单凑完，交完订单又想看下一段剧情；等对话结束，新订单已经摆在棋盘上。我的一轮游戏通常就这样被接上了。</p>
-        </div>
-        <button class="session-play" type="button" aria-pressed="true"><svg class="ui-icon" aria-hidden="true"><use href="#icon-pause"></use></svg><span>停在这一步</span></button>
-      </div>
-
-      <div class="session-body">
-        <article class="session-stage" id="session-stage" data-step="01" data-tone="blue" aria-live="off" aria-atomic="true">
-          <div class="session-stage-top">
-            <span class="session-stage-index">01 / 05</span>
-            <span class="session-stage-kicker">刚打开棋盘</span>
-          </div>
-          <span class="session-stage-icon" aria-hidden="true"><svg class="ui-icon"><use href="#icon-zap"></use></svg></span>
-          <h4>先随手点几下</h4>
-          <p class="session-stage-detail">前几次生成几乎不用思考，杯子、面包和咖啡很快铺开。棋盘一有东西，我就会顺手找能合并的那一对。</p>
-          <div class="session-stage-reason"><span>我当时想的是</span><strong>“先把棋盘铺开，看看能合出什么。”</strong></div>
-          <div class="session-progress" aria-hidden="true"><span class="session-progress-fill"></span></div>
-        </article>
-
-        <ol class="session-track" aria-label="选择游玩步骤">
-          <li><button class="session-step active" type="button" aria-pressed="true" aria-controls="session-stage" data-kicker="刚打开棋盘" data-title="先随手点几下" data-detail="前几次生成几乎不用思考，杯子、面包和咖啡很快铺开。棋盘一有东西，我就会顺手找能合并的那一对。" data-reason="“先把棋盘铺开，看看能合出什么。”" data-icon="icon-zap" data-tone="blue"><span class="session-step-index">01</span><span class="session-step-copy"><strong>先点几下</strong><small>棋盘很快有东西可合</small></span><svg class="ui-icon" aria-hidden="true"><use href="#icon-chevron-right"></use></svg></button></li>
-          <li><button class="session-step" type="button" aria-pressed="false" aria-controls="session-stage" data-kicker="订单还差一点" data-title="把能合的都拖到一起" data-detail="订单图标一直摆在上方，我不需要自己找目标。只要还差一两级，我通常会继续消耗体力，把这单做完再停。" data-reason="“只差一两级，这单做完再停。”" data-icon="icon-merge" data-tone="yellow"><span class="session-step-index">02</span><span class="session-step-copy"><strong>凑完这单</strong><small>越接近订单越不想停</small></span><svg class="ui-icon" aria-hidden="true"><use href="#icon-chevron-right"></use></svg></button></li>
-          <li><button class="session-step" type="button" aria-pressed="false" aria-controls="session-stage" data-kicker="交单的一瞬间" data-title="金币和任务进度一起跳出来" data-detail="交出订单后，金币和任务进度马上到账，下一个目标也随之出现。反馈很简单，但刚好能接住上一轮操作。" data-reason="“都领奖了，顺便看看能开哪段剧情。”" data-icon="icon-coins" data-tone="orange"><span class="session-step-index">03</span><span class="session-step-copy"><strong>交单领奖</strong><small>刚才的操作马上有结果</small></span><svg class="ui-icon" aria-hidden="true"><use href="#icon-chevron-right"></use></svg></button></li>
-          <li><button class="session-step" type="button" aria-pressed="false" aria-controls="session-stage" data-kicker="暂时离开棋盘" data-title="我真正等的是这段对话" data-detail="金币换成一段人物对话，任务进度则变成餐厅里一处看得见的变化。到这里，我才觉得刚才的合成有了结果。" data-reason="“终于推进了，看看谁还没说实话。”" data-icon="icon-search" data-tone="green"><span class="session-step-index">04</span><span class="session-step-copy"><strong>看剧情、换装修</strong><small>合成结果终于看得见</small></span><svg class="ui-icon" aria-hidden="true"><use href="#icon-chevron-right"></use></svg></button></li>
-          <li><button class="session-step" type="button" aria-pressed="false" aria-controls="session-stage" data-kicker="本来准备退出" data-title="新订单又出现在棋盘上" data-detail="对话留下新问题，下一块区域也还没修完。等我回过神，新订单已经出现，我往往会再点几下生成器。" data-reason="“新区域都开了，再做一单吧。”" data-icon="icon-target" data-tone="blue"><span class="session-step-index">05</span><span class="session-step-copy"><strong>又回棋盘</strong><small>悬念接上了下一轮目标</small></span><svg class="ui-icon" aria-hidden="true"><use href="#icon-chevron-right"></use></svg></button></li>
-        </ol>
-      </div>
     </div>
 
     <div class="card-grid reveal">
@@ -2643,108 +2309,6 @@
       tiltTarget.style.setProperty("--float-y", "0px");
     });
   }
-
-  var loop = document.getElementById("core-loop");
-  var loopButtons = loop ? Array.prototype.slice.call(loop.querySelectorAll(".session-step")) : [];
-  var loopStage = loop ? loop.querySelector(".session-stage") : null;
-  var loopIndex = loop ? loop.querySelector(".session-stage-index") : null;
-  var loopKicker = loop ? loop.querySelector(".session-stage-kicker") : null;
-  var loopTitle = loop ? loop.querySelector(".session-stage h4") : null;
-  var loopDetail = loop ? loop.querySelector(".session-stage-detail") : null;
-  var loopReason = loop ? loop.querySelector(".session-stage-reason strong") : null;
-  var loopIcon = loop ? loop.querySelector(".session-stage-icon use") : null;
-  var loopProgress = loop ? loop.querySelector(".session-progress-fill") : null;
-  var loopPlay = loop ? loop.querySelector(".session-play") : null;
-  var loopPlayIcon = loopPlay ? loopPlay.querySelector("use") : null;
-  var loopPlayLabel = loopPlay ? loopPlay.querySelector("span") : null;
-  var loopCurrent = 0;
-  var loopWantsAutoplay = !reducedMotion;
-  var loopIsVisible = false;
-  var loopTimer = null;
-
-  function setLoopStep(index) {
-    if (!loopButtons.length) return;
-    loopCurrent = (index + loopButtons.length) % loopButtons.length;
-    loopButtons.forEach(function (button, buttonIndex) {
-      button.classList.toggle("active", buttonIndex === loopCurrent);
-      button.setAttribute("aria-pressed", buttonIndex === loopCurrent ? "true" : "false");
-    });
-    var activeStep = loopButtons[loopCurrent];
-    var stepNumber = String(loopCurrent + 1).padStart(2, "0");
-    loopStage.dataset.step = stepNumber;
-    loopStage.dataset.tone = activeStep.dataset.tone;
-    loopIndex.textContent = stepNumber + " / " + String(loopButtons.length).padStart(2, "0");
-    loopKicker.textContent = activeStep.dataset.kicker;
-    loopTitle.textContent = activeStep.dataset.title;
-    loopDetail.textContent = activeStep.dataset.detail;
-    loopReason.textContent = activeStep.dataset.reason;
-    loopIcon.setAttribute("href", "#" + activeStep.dataset.icon);
-    loopProgress.style.transform = "scaleX(" + ((loopCurrent + 1) / loopButtons.length) + ")";
-  }
-
-  function stopLoopTimer() {
-    if (loopTimer) window.clearInterval(loopTimer);
-    loopTimer = null;
-  }
-
-  function syncLoopPlayback() {
-    stopLoopTimer();
-    if (reducedMotion) {
-      if (loopPlay) {
-        loopPlay.setAttribute("aria-pressed", "false");
-        loopPlayIcon.setAttribute("href", "#icon-chevron-right");
-        loopPlayLabel.textContent = "看下一步";
-      }
-      if (loopStage) loopStage.setAttribute("aria-live", "polite");
-      return;
-    }
-    if (loopStage) loopStage.setAttribute("aria-live", loopWantsAutoplay ? "off" : "polite");
-    if (loopWantsAutoplay && loopIsVisible && !document.hidden) {
-      loopTimer = window.setInterval(function () { setLoopStep(loopCurrent + 1); }, 4200);
-    }
-    if (loopPlay) {
-      loopPlay.setAttribute("aria-pressed", loopWantsAutoplay ? "true" : "false");
-      loopPlayIcon.setAttribute("href", loopWantsAutoplay ? "#icon-pause" : "#icon-play");
-      loopPlayLabel.textContent = loopWantsAutoplay ? "停在这一步" : "继续往下看";
-    }
-  }
-
-  loopButtons.forEach(function (button, index) {
-    button.addEventListener("click", function () {
-      loopWantsAutoplay = false;
-      loopStage.setAttribute("aria-live", "polite");
-      setLoopStep(index);
-      syncLoopPlayback();
-    });
-  });
-  setLoopStep(0);
-
-  if (loopPlay) {
-    if (reducedMotion) {
-      loopPlayIcon.setAttribute("href", "#icon-chevron-right");
-      loopPlayLabel.textContent = "看下一步";
-    }
-    loopPlay.addEventListener("click", function () {
-      if (reducedMotion) {
-        setLoopStep(loopCurrent + 1);
-        return;
-      }
-      loopWantsAutoplay = !loopWantsAutoplay;
-      syncLoopPlayback();
-    });
-  }
-
-  if (loop && "IntersectionObserver" in window) {
-    var loopObserver = new IntersectionObserver(function (entries) {
-      loopIsVisible = entries[0].isIntersecting;
-      syncLoopPlayback();
-    }, { threshold: 0.35 });
-    loopObserver.observe(loop);
-  } else {
-    loopIsVisible = true;
-    syncLoopPlayback();
-  }
-  document.addEventListener("visibilitychange", syncLoopPlayback);
 
   var energyRange = document.getElementById("energy-range");
   var chainRange = document.getElementById("chain-range");
