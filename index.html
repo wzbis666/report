@@ -31,6 +31,10 @@
     --shadow-small: 0 8px 24px rgba(52, 61, 67, 0.09);
     --radius: 24px;
     --radius-small: 15px;
+    --icon-sm: 16px;
+    --icon-md: 20px;
+    --icon-lg: 26px;
+    --icon-stroke: 1.8;
     --body-font: "Noto Sans SC", "Microsoft YaHei", sans-serif;
     --display-font: "Noto Serif SC", "Songti SC", serif;
   }
@@ -61,6 +65,25 @@
   input { font: inherit; }
 
   button { color: inherit; }
+
+  .icon-sprite {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+  }
+
+  .ui-icon {
+    width: var(--icon-md);
+    height: var(--icon-md);
+    display: block;
+    flex: 0 0 auto;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: var(--icon-stroke);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
 
   :focus-visible {
     outline: 3px solid var(--yellow);
@@ -175,10 +198,14 @@
     border-radius: 20px;
     background: rgba(255, 253, 248, 0.88);
     box-shadow: 6px 7px 0 rgba(23, 50, 77, 0.12);
-    font-size: 25px;
     pointer-events: none;
     animation: tokenFloat 5.5s ease-in-out infinite;
   }
+
+  .float-token .ui-icon { width: var(--icon-lg); height: var(--icon-lg); }
+  .float-token.one .ui-icon { color: var(--blue-deep); }
+  .float-token.two .ui-icon { color: var(--green); }
+  .float-token.three .ui-icon { color: var(--orange); }
 
   .float-token.one { left: 3.5vw; bottom: 13%; transform: rotate(-9deg); }
   .float-token.two { right: 4vw; top: 19%; transform: rotate(8deg); animation-delay: -1.8s; }
@@ -545,24 +572,32 @@
   .loop-step:nth-child(5) { background: var(--green-soft); }
 
   .loop-step:not(:last-child)::after {
-    content: "→";
+    content: "";
     position: absolute;
     right: -18px;
     top: 50%;
     z-index: 2;
+    width: 18px;
+    height: 18px;
     transform: translateY(-50%);
-    color: var(--ink);
-    font-size: 22px;
-    font-weight: 900;
+    background: var(--ink);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m9 18 6-6-6-6' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m9 18 6-6-6-6' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
     pointer-events: none;
   }
 
   .loop-step .loop-icon {
-    display: block;
+    display: grid;
+    place-items: center;
     margin-bottom: 5px;
-    font-size: 22px;
-    line-height: 1;
+    color: var(--blue-deep);
   }
+
+  .loop-step .loop-icon .ui-icon { width: var(--icon-lg); height: var(--icon-lg); }
+  .loop-step:nth-child(2) .loop-icon { color: var(--blue-deep); }
+  .loop-step:nth-child(3) .loop-icon { color: #a56a00; }
+  .loop-step:nth-child(4) .loop-icon { color: var(--orange); }
+  .loop-step:nth-child(5) .loop-icon { color: var(--green); }
 
   .loop-step:hover { transform: translateY(-5px); }
 
@@ -653,12 +688,14 @@
     transition: transform 450ms cubic-bezier(.2,.75,.25,1), filter 260ms ease;
   }
 
-  .shot-window::after {
-    content: "点击放大 ↗";
+  .shot-action {
     position: absolute;
     right: 12px;
     bottom: 12px;
     padding: 5px 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
     border-radius: 999px;
     background: rgba(23, 50, 77, 0.88);
     color: white;
@@ -667,12 +704,15 @@
     opacity: 0;
     transform: translateY(6px);
     transition: opacity 200ms ease, transform 200ms ease;
+    pointer-events: none;
   }
+
+  .shot-action .ui-icon { width: 13px; height: 13px; stroke-width: 2; }
 
   .shot:hover { transform: translateY(-8px) rotate(0deg); box-shadow: 10px 13px 0 rgba(23, 50, 77, 0.16); }
   .shot:hover img { transform: translateY(-18px) scale(1.035); filter: saturate(1.05); }
-  .shot:hover .shot-window::after,
-  .shot:focus-visible .shot-window::after { opacity: 1; transform: none; }
+  .shot:hover .shot-action,
+  .shot:focus-visible .shot-action { opacity: 1; transform: none; }
 
   .shot figcaption {
     padding: 13px 5px 0;
@@ -866,7 +906,15 @@
     text-align: center;
   }
 
-  .flow-arrow { font-weight: 900; }
+  .flow-arrow {
+    width: 20px;
+    height: 20px;
+    display: grid;
+    place-items: center;
+    color: var(--ink-soft);
+  }
+
+  .flow-arrow .ui-icon { width: 18px; height: 18px; stroke-width: 2; }
 
   .compare-board {
     display: grid;
@@ -1314,8 +1362,12 @@
     transition: transform 180ms ease, box-shadow 180ms ease;
   }
 
-  .lightbox-close { position: absolute; width: 42px; height: 42px; right: -16px; top: -16px; z-index: 2; font-size: 21px; }
-  .lightbox-nav { position: absolute; width: 46px; height: 46px; top: 50%; transform: translateY(-50%); }
+  .lightbox-close .ui-icon,
+  .lightbox-nav .ui-icon,
+  .back-top .ui-icon { width: var(--icon-md); height: var(--icon-md); stroke-width: 2; }
+
+  .lightbox-close { position: absolute; width: 44px; height: 44px; right: -16px; top: -16px; z-index: 2; }
+  .lightbox-nav { position: absolute; width: 48px; height: 48px; top: 50%; transform: translateY(-50%); }
   .lightbox-prev { left: -68px; }
   .lightbox-next { right: -68px; }
   .lightbox-close:hover { transform: rotate(7deg) scale(1.06); box-shadow: 2px 3px 0 var(--ink); }
@@ -1365,14 +1417,14 @@
     .month-plan { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .loop { grid-template-columns: 1fr; }
     .loop-step { min-height: 86px; padding-block: 11px; line-height: 1.45; }
-    .loop-step .loop-icon { margin-bottom: 3px; font-size: 19px; }
+    .loop-step .loop-icon { margin-bottom: 3px; }
+    .loop-step .loop-icon .ui-icon { width: 22px; height: 22px; }
     .loop-step.active { transform: translateX(7px); }
     .loop-step:not(:last-child)::after {
-      content: "↓";
       top: auto;
       right: 50%;
       bottom: -24px;
-      transform: translateX(50%);
+      transform: translateX(50%) rotate(90deg);
     }
     .compare-board { grid-template-columns: 1fr; }
     .vs { min-height: 54px; }
@@ -1385,7 +1437,8 @@
     .brand { font-size: 13px; }
     .nav-link { font-size: 12px; padding: 6px 9px; }
     .cover { padding: 94px 18px 48px; }
-    .float-token { width: 45px; height: 45px; border-radius: 15px; font-size: 20px; opacity: .78; }
+    .float-token { width: 45px; height: 45px; border-radius: 15px; opacity: .78; }
+    .float-token .ui-icon { width: 21px; height: 21px; }
     .float-token.one { left: -12px; bottom: 31%; }
     .float-token.two { right: -10px; top: 12%; }
     .float-token.three { display: none; }
@@ -1421,7 +1474,7 @@
     .material-button img { height: 52px; }
     .lightbox { padding: 18px; }
     .lightbox-panel { width: min(330px, calc(100vw - 56px)); }
-    .lightbox-nav { top: auto; bottom: 18px; width: 42px; height: 42px; transform: none; }
+    .lightbox-nav { top: auto; bottom: 18px; width: 44px; height: 44px; transform: none; }
     .lightbox-nav:hover { transform: scale(1.06); }
     .lightbox-prev { left: 18px; }
     .lightbox-next { right: 18px; }
@@ -1451,6 +1504,62 @@
 </style>
 </head>
 <body>
+<svg class="icon-sprite" aria-hidden="true" focusable="false">
+  <symbol id="icon-coffee" viewBox="0 0 24 24">
+    <path d="M10 2v2M14 2v2M6 2v2"></path>
+    <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8Z"></path>
+    <path d="M17 10h1a3 3 0 0 1 0 6h-1"></path>
+  </symbol>
+  <symbol id="icon-leaf" viewBox="0 0 24 24">
+    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 18 2 18 2c1 5.5-2.5 15.5-7 18Z"></path>
+    <path d="M2 21c0-3 1.85-5.36 5.08-6.94C9.56 11.85 12 8 12 8"></path>
+  </symbol>
+  <symbol id="icon-sparkles" viewBox="0 0 24 24">
+    <path d="m12 3 1.2 3.8L17 8l-3.8 1.2L12 13l-1.2-3.8L7 8l3.8-1.2L12 3Z"></path>
+    <path d="m5 14 .8 2.2L8 17l-2.2.8L5 20l-.8-2.2L2 17l2.2-.8L5 14Z"></path>
+    <path d="m19 13 .7 1.8 1.8.7-1.8.7L19 18l-.7-1.8-1.8-.7 1.8-.7L19 13Z"></path>
+  </symbol>
+  <symbol id="icon-zap" viewBox="0 0 24 24">
+    <path d="M13 2 4 14h7l-1 8 10-13h-7V2Z"></path>
+  </symbol>
+  <symbol id="icon-merge" viewBox="0 0 24 24">
+    <circle cx="6" cy="6" r="3"></circle>
+    <circle cx="18" cy="18" r="3"></circle>
+    <path d="M6 21V9a9 9 0 0 0 9 9"></path>
+  </symbol>
+  <symbol id="icon-coins" viewBox="0 0 24 24">
+    <circle cx="8" cy="8" r="5"></circle>
+    <path d="M13 6.5a5 5 0 1 1-6.5 6.5"></path>
+    <path d="M8 5v6M6 7h4M15.5 11.5v6M13.5 14.5h4"></path>
+  </symbol>
+  <symbol id="icon-search" viewBox="0 0 24 24">
+    <circle cx="11" cy="11" r="7"></circle>
+    <path d="m20 20-4-4"></path>
+  </symbol>
+  <symbol id="icon-target" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="9"></circle>
+    <circle cx="12" cy="12" r="5"></circle>
+    <circle cx="12" cy="12" r="1"></circle>
+  </symbol>
+  <symbol id="icon-expand" viewBox="0 0 24 24">
+    <path d="M15 3h6v6M21 3l-7 7M9 21H3v-6M3 21l7-7"></path>
+  </symbol>
+  <symbol id="icon-chevron-right" viewBox="0 0 24 24">
+    <path d="m9 18 6-6-6-6"></path>
+  </symbol>
+  <symbol id="icon-close" viewBox="0 0 24 24">
+    <path d="M18 6 6 18M6 6l12 12"></path>
+  </symbol>
+  <symbol id="icon-arrow-left" viewBox="0 0 24 24">
+    <path d="M19 12H5M12 19l-7-7 7-7"></path>
+  </symbol>
+  <symbol id="icon-arrow-right" viewBox="0 0 24 24">
+    <path d="M5 12h14M12 5l7 7-7 7"></path>
+  </symbol>
+  <symbol id="icon-arrow-up" viewBox="0 0 24 24">
+    <path d="M12 19V5M5 12l7-7 7 7"></path>
+  </symbol>
+</svg>
 <div class="progress" id="progress" aria-hidden="true"></div>
 
 <nav class="topbar" aria-label="章节导航">
@@ -1468,9 +1577,9 @@
 </nav>
 
 <header class="cover" id="cover">
-  <span class="float-token one" aria-hidden="true">☕</span>
-  <span class="float-token two" aria-hidden="true">🍋</span>
-  <span class="float-token three" aria-hidden="true">✦</span>
+  <span class="float-token one" aria-hidden="true"><svg class="ui-icon"><use href="#icon-coffee"></use></svg></span>
+  <span class="float-token two" aria-hidden="true"><svg class="ui-icon"><use href="#icon-leaf"></use></svg></span>
+  <span class="float-token three" aria-hidden="true"><svg class="ui-icon"><use href="#icon-sparkles"></use></svg></span>
   <div class="cover-grid">
     <div class="cover-copy reveal">
       <span class="eyebrow">求职作品 · 游戏运营支持</span>
@@ -1553,11 +1662,11 @@
     </div>
 
     <div class="loop reveal" id="core-loop" aria-label="可交互的游戏核心循环">
-      <button class="loop-step active" type="button" data-title="消耗体力" data-detail="点击生成器获得基础物品，第一层即时反馈从这里开始。"><span class="loop-icon" aria-hidden="true">⚡</span>消耗体力<br>生成物品</button>
-      <button class="loop-step" type="button" data-title="两两合成" data-detail="相同物品不断升级，并逐步靠近订单要求。"><span class="loop-icon" aria-hidden="true">🧩</span>两两合成<br>完成订单</button>
-      <button class="loop-step" type="button" data-title="推进任务" data-detail="订单兑换金币与任务进度，让重复操作拥有短期目标。"><span class="loop-icon" aria-hidden="true">🪙</span>获得金币<br>推进任务</button>
-      <button class="loop-step" type="button" data-title="解锁内容" data-detail="悬疑剧情和餐厅装修把数值进度变成看得见的内容奖励。"><span class="loop-icon" aria-hidden="true">🔎</span>解锁剧情<br>装修餐厅</button>
-      <button class="loop-step" type="button" data-title="产生新目标" data-detail="新的角色问题和装修区域，再次把玩家带回合成棋盘。"><span class="loop-icon" aria-hidden="true">🎯</span>产生新目标<br>回到合成</button>
+      <button class="loop-step active" type="button" data-title="消耗体力" data-detail="点击生成器获得基础物品，第一层即时反馈从这里开始。"><span class="loop-icon" aria-hidden="true"><svg class="ui-icon"><use href="#icon-zap"></use></svg></span>消耗体力<br>生成物品</button>
+      <button class="loop-step" type="button" data-title="两两合成" data-detail="相同物品不断升级，并逐步靠近订单要求。"><span class="loop-icon" aria-hidden="true"><svg class="ui-icon"><use href="#icon-merge"></use></svg></span>两两合成<br>完成订单</button>
+      <button class="loop-step" type="button" data-title="推进任务" data-detail="订单兑换金币与任务进度，让重复操作拥有短期目标。"><span class="loop-icon" aria-hidden="true"><svg class="ui-icon"><use href="#icon-coins"></use></svg></span>获得金币<br>推进任务</button>
+      <button class="loop-step" type="button" data-title="解锁内容" data-detail="悬疑剧情和餐厅装修把数值进度变成看得见的内容奖励。"><span class="loop-icon" aria-hidden="true"><svg class="ui-icon"><use href="#icon-search"></use></svg></span>解锁剧情<br>装修餐厅</button>
+      <button class="loop-step" type="button" data-title="产生新目标" data-detail="新的角色问题和装修区域，再次把玩家带回合成棋盘。"><span class="loop-icon" aria-hidden="true"><svg class="ui-icon"><use href="#icon-target"></use></svg></span>产生新目标<br>回到合成</button>
     </div>
 
     <div class="loop-reader reveal" aria-live="polite">
@@ -1583,15 +1692,15 @@
 
     <div class="shot-grid reveal">
       <figure class="shot" role="button" tabindex="0" aria-label="放大查看订单与合成截图">
-        <div class="shot-window"><img src="images/2.jpg" alt="抖音小程序版本的订单与合成棋盘"></div>
+        <div class="shot-window"><img src="images/2.jpg" alt="抖音小程序版本的订单与合成棋盘"><span class="shot-action" aria-hidden="true">点击放大<svg class="ui-icon"><use href="#icon-expand"></use></svg></span></div>
         <figcaption>订单与合成：即时反馈最集中的页面</figcaption>
       </figure>
       <figure class="shot" role="button" tabindex="0" aria-label="放大查看餐厅装修截图">
-        <div class="shot-window"><img src="images/3.jpg" alt="餐厅装修选择页面"></div>
+        <div class="shot-window"><img src="images/3.jpg" alt="餐厅装修选择页面"><span class="shot-action" aria-hidden="true">点击放大<svg class="ui-icon"><use href="#icon-expand"></use></svg></span></div>
         <figcaption>餐厅装修：把进度变成可见成果</figcaption>
       </figure>
       <figure class="shot" role="button" tabindex="0" aria-label="放大查看悬疑剧情截图">
-        <div class="shot-window"><img src="images/4.jpg" alt="悬疑剧情对话页面"></div>
+        <div class="shot-window"><img src="images/4.jpg" alt="悬疑剧情对话页面"><span class="shot-action" aria-hidden="true">点击放大<svg class="ui-icon"><use href="#icon-expand"></use></svg></span></div>
         <figcaption>悬疑剧情：为下一轮合成提供目标</figcaption>
       </figure>
     </div>
@@ -1640,7 +1749,7 @@
       </article>
     </div>
 
-    <div class="impact-line reveal">体力不足 + 合成链变长 → 订单完成变慢 → 剧情与装修同步停滞 → 玩家更容易产生“今天先不玩了”的念头</div>
+    <div class="impact-line reveal">体力不足与合成链变长，会拖慢订单完成，进而让剧情和装修同步停滞，最终更容易让玩家产生“今天先不玩了”的念头。</div>
 
     <div class="friction-lab reveal" id="friction-lab">
       <div class="lab-copy">
@@ -1679,13 +1788,13 @@
       <h3>如果我是运营支持，我不会直接下结论，而是这样闭环</h3>
       <div class="flow-row">
         <span class="flow-pill">收集客服 / QQ 群反馈</span>
-        <span class="flow-arrow">→</span>
+        <span class="flow-arrow" aria-hidden="true"><svg class="ui-icon"><use href="#icon-chevron-right"></use></svg></span>
         <span class="flow-pill">按等级与订单分类</span>
-        <span class="flow-arrow">→</span>
+        <span class="flow-arrow" aria-hidden="true"><svg class="ui-icon"><use href="#icon-chevron-right"></use></svg></span>
         <span class="flow-pill">复现并记录截图</span>
-        <span class="flow-arrow">→</span>
+        <span class="flow-arrow" aria-hidden="true"><svg class="ui-icon"><use href="#icon-chevron-right"></use></svg></span>
         <span class="flow-pill">同步产品与数值</span>
-        <span class="flow-arrow">→</span>
+        <span class="flow-arrow" aria-hidden="true"><svg class="ui-icon"><use href="#icon-chevron-right"></use></svg></span>
         <span class="flow-pill">跟进结果并回复玩家</span>
       </div>
     </div>
@@ -1873,15 +1982,15 @@
 
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-caption" hidden>
   <div class="lightbox-panel">
-    <button class="lightbox-close" type="button" aria-label="关闭大图">×</button>
-    <button class="lightbox-nav lightbox-prev" type="button" aria-label="上一张">←</button>
+    <button class="lightbox-close" type="button" aria-label="关闭大图"><svg class="ui-icon" aria-hidden="true"><use href="#icon-close"></use></svg></button>
+    <button class="lightbox-nav lightbox-prev" type="button" aria-label="上一张"><svg class="ui-icon" aria-hidden="true"><use href="#icon-arrow-left"></use></svg></button>
     <div class="lightbox-image-wrap"><img id="lightbox-image" src="images/2.jpg" alt="抖音小程序版本的订单与合成棋盘"></div>
     <div class="lightbox-meta"><span id="lightbox-caption"></span><span class="lightbox-count" id="lightbox-count"></span></div>
-    <button class="lightbox-nav lightbox-next" type="button" aria-label="下一张">→</button>
+    <button class="lightbox-nav lightbox-next" type="button" aria-label="下一张"><svg class="ui-icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></button>
   </div>
 </div>
 
-<button class="back-top" id="back-top" type="button" aria-label="返回页面顶部">↑</button>
+<button class="back-top" id="back-top" type="button" aria-label="返回页面顶部"><svg class="ui-icon" aria-hidden="true"><use href="#icon-arrow-up"></use></svg></button>
 
 <script>
 (function () {
