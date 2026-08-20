@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="650" viewBox="0 0 1200 650" role="img" aria-labelledby="title desc">
+  <title id="title">12 周内容与社区运营试点路线图</title>
+  <desc id="desc">从 2026 年 9 月 7 日到 11 月 29 日，依次进行基线准备、首轮实验、重复验证、分层触达和节日复盘。</desc>
+  <rect width="1200" height="650" rx="28" fill="#fffdf9"/>
+  <text x="60" y="66" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="30" font-weight="700" fill="#5a3523">12 周内容与社区运营试点路线图</text>
+  <text x="60" y="102" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" fill="#8a7a6a">2026-09-07 — 2026-11-29（示意，实际日期与版本排期对齐）</text>
+
+  <g font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="13" fill="#8a7a6a" text-anchor="middle">
+    <text x="280" y="154">W1</text><text x="355" y="154">W2</text><text x="430" y="154">W3</text><text x="505" y="154">W4</text>
+    <text x="580" y="154">W5</text><text x="655" y="154">W6</text><text x="730" y="154">W7</text><text x="805" y="154">W8</text>
+    <text x="880" y="154">W9</text><text x="955" y="154">W10</text><text x="1030" y="154">W11</text><text x="1105" y="154">W12</text>
+  </g>
+
+  <g stroke="#eadfce" stroke-width="1">
+    <line x1="242" y1="170" x2="1142" y2="170"/>
+    <line x1="242" y1="530" x2="1142" y2="530"/>
+    <line x1="242" y1="170" x2="242" y2="530"/>
+    <line x1="317" y1="170" x2="317" y2="530"/>
+    <line x1="392" y1="170" x2="392" y2="530"/>
+    <line x1="467" y1="170" x2="467" y2="530"/>
+    <line x1="542" y1="170" x2="542" y2="530"/>
+    <line x1="617" y1="170" x2="617" y2="530"/>
+    <line x1="692" y1="170" x2="692" y2="530"/>
+    <line x1="767" y1="170" x2="767" y2="530"/>
+    <line x1="842" y1="170" x2="842" y2="530"/>
+    <line x1="917" y1="170" x2="917" y2="530"/>
+    <line x1="992" y1="170" x2="992" y2="530"/>
+    <line x1="1067" y1="170" x2="1067" y2="530"/>
+    <line x1="1142" y1="170" x2="1142" y2="530"/>
+  </g>
+
+  <g font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="700" fill="#4a3b2a">
+    <text x="60" y="220">基线与准备</text>
+    <text x="60" y="292">首轮实验</text>
+    <text x="60" y="364">重复验证</text>
+    <text x="60" y="436">分层触达</text>
+    <text x="60" y="508">节日与复盘</text>
+  </g>
+
+  <rect x="252" y="190" width="130" height="42" rx="12" fill="#9ac4ea"/>
+  <text x="317" y="217" text-anchor="middle" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="700" fill="#234f79">指标 / 审核 / 基线</text>
+
+  <rect x="402" y="262" width="130" height="42" rx="12" fill="#5aa9e6"/>
+  <text x="467" y="289" text-anchor="middle" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="700" fill="#ffffff">Reddit + Facebook</text>
+
+  <rect x="552" y="334" width="280" height="42" rx="12" fill="#3d82c4"/>
+  <text x="692" y="361" text-anchor="middle" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="700" fill="#ffffff">两轮重复 · W8 万圣节主题</text>
+
+  <rect x="852" y="406" width="130" height="42" rx="12" fill="#e8a24e"/>
+  <text x="917" y="433" text-anchor="middle" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="700" fill="#ffffff">剧情 / 装修分层</text>
+
+  <rect x="1002" y="478" width="130" height="42" rx="12" fill="#1e9c70"/>
+  <text x="1067" y="505" text-anchor="middle" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="700" fill="#ffffff">感恩节 + 总复盘</text>
+
+  <g fill="#d98a2b">
+    <circle cx="280" cy="560" r="6"/><circle cx="355" cy="560" r="6"/><circle cx="430" cy="560" r="6"/><circle cx="505" cy="560" r="6"/>
+    <circle cx="580" cy="560" r="6"/><circle cx="655" cy="560" r="6"/><circle cx="730" cy="560" r="6"/><circle cx="805" cy="560" r="6"/>
+    <circle cx="880" cy="560" r="6"/><circle cx="955" cy="560" r="6"/><circle cx="1030" cy="560" r="6"/><circle cx="1105" cy="560" r="6"/>
+  </g>
+  <text x="60" y="566" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="15" font-weight="700" fill="#7a4a32">每周固定节奏</text>
+  <text x="242" y="610" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="15" fill="#8a7a6a">● 周四猜想 / 周五更新 / 周末讨论；每一阶段结束均设置继续、调整或停止评审</text>
+</svg>

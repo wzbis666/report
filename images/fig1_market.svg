@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+  <title id="title">2026 年合成手游市场公开数据摘要</title>
+  <desc id="desc">2026 上半年全球合成手游内购收入超过 21 亿美元，Merge-2 收入占比超过 90%，2026 第二季度全球合成手游内购收入同比增长 70%。</desc>
+  <rect width="1200" height="420" rx="28" fill="#fffdf9"/>
+  <text x="60" y="66" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="30" font-weight="700" fill="#5a3523">2026 年合成手游市场公开数据摘要</text>
+  <text x="60" y="102" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" fill="#8a7a6a">指标来自不同统计周期，仅用于判断赛道规模与结构</text>
+
+  <g transform="translate(60 140)">
+    <rect width="330" height="190" rx="20" fill="#eaf4fb" stroke="#c9dfef"/>
+    <text x="28" y="45" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="17" fill="#4a3b2a">全球合成手游内购收入</text>
+    <text x="28" y="112" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="48" font-weight="800" fill="#2d6aa8">&gt; 21 亿美元</text>
+    <text x="28" y="158" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="17" fill="#6f7f8d">统计周期：2026H1</text>
+  </g>
+
+  <g transform="translate(435 140)">
+    <rect width="330" height="190" rx="20" fill="#fdf1dd" stroke="#efd4ac"/>
+    <text x="28" y="45" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="17" fill="#4a3b2a">Merge-2 收入占比</text>
+    <text x="28" y="112" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="48" font-weight="800" fill="#d98a2b">&gt; 90%</text>
+    <text x="28" y="158" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="17" fill="#8a7a6a">统计周期：2026H1</text>
+  </g>
+
+  <g transform="translate(810 140)">
+    <rect width="330" height="190" rx="20" fill="#edf8f3" stroke="#cce8dc"/>
+    <text x="28" y="45" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="17" fill="#4a3b2a">全球合成手游内购收入增速</text>
+    <text x="28" y="112" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="48" font-weight="800" fill="#1e9c70">+70% YoY</text>
+    <text x="28" y="158" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="17" fill="#6f7f78">统计周期：2026Q2</text>
+  </g>
+
+  <text x="60" y="380" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="15" fill="#8a7a6a">来源：Sensor Tower（2026）；口径：移动端消费者内购支出估算，具体定义以原报告为准</text>
+</svg>
