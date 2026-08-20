@@ -543,266 +543,101 @@
     line-height: 1.7;
   }
 
-  .play-session {
-    margin: 30px 0 34px;
-    padding: 28px;
-    position: relative;
-    overflow: hidden;
-    border: 2px solid var(--ink);
-    border-radius: 28px 28px 28px 9px;
-    background: var(--white);
-    box-shadow: 11px 13px 0 rgba(23, 50, 77, 0.12);
-  }
-
-  .play-session::before {
-    content: "";
-    position: absolute;
-    inset: 0 auto 0 0;
-    width: 8px;
-    background: repeating-linear-gradient(180deg, var(--orange) 0 16px, var(--yellow) 16px 32px, var(--blue) 32px 48px);
-  }
-
-  .session-head {
-    margin: 0 0 24px 8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 28px;
-  }
-
-  .session-kicker {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--orange);
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: .14em;
-  }
-
-  .session-kicker::before {
-    content: "";
-    width: 24px;
-    height: 2px;
-    background: currentColor;
-  }
-
-  .session-head h3 {
-    margin: 4px 0 5px;
-    font-family: var(--display-font);
-    font-size: clamp(24px, 3.5vw, 34px);
-    line-height: 1.35;
-  }
-
-  .session-head p {
-    max-width: 700px;
-    margin: 0;
-    color: var(--ink-soft);
-    font-size: 14px;
-  }
-
-  .session-play {
-    min-width: 136px;
-    min-height: 46px;
-    padding: 10px 15px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    flex: 0 0 auto;
-    border: 1px solid var(--ink);
-    border-radius: 999px;
-    background: var(--paper);
-    font-size: 13px;
-    font-weight: 800;
-    cursor: pointer;
-    transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
-  }
-
-  .session-play:hover {
-    transform: translateY(-2px);
-    background: var(--yellow-soft);
-    box-shadow: 3px 4px 0 var(--ink);
-  }
-
-  .session-play .ui-icon { width: 18px; height: 18px; }
-
-  .session-body {
+  .loop {
+    margin: 26px 0;
     display: grid;
-    grid-template-columns: minmax(0, 1.08fr) minmax(330px, .92fr);
-    gap: 18px;
-    align-items: stretch;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
   }
 
-  .session-stage {
-    min-height: 378px;
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
+  .loop-step {
     position: relative;
-    overflow: hidden;
-    border-radius: 22px 22px 22px 6px;
-    background: var(--ink);
-    color: var(--white);
-    isolation: isolate;
-    transition: background 260ms ease;
+    min-height: 118px;
+    padding: 18px 14px;
+    display: grid;
+    align-content: center;
+    border: 2px solid var(--ink);
+    border-radius: 18px;
+    background: var(--white);
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 220ms ease, box-shadow 220ms ease, filter 220ms ease;
   }
 
-  .session-stage::after {
-    content: attr(data-step);
+  .loop-step:nth-child(2) { background: var(--blue-soft); }
+  .loop-step:nth-child(3) { background: var(--yellow-soft); }
+  .loop-step:nth-child(4) { background: var(--orange-soft); }
+  .loop-step:nth-child(5) { background: var(--green-soft); }
+
+  .loop-step:not(:last-child)::after {
+    content: "";
     position: absolute;
-    right: 20px;
-    bottom: -38px;
-    z-index: -1;
-    color: rgba(255, 255, 255, .07);
-    font-family: var(--display-font);
-    font-size: 190px;
-    font-weight: 900;
-    line-height: 1;
+    right: -18px;
+    top: 50%;
+    z-index: 2;
+    width: 18px;
+    height: 18px;
+    transform: translateY(-50%);
+    background: var(--ink);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m9 18 6-6-6-6' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m9 18 6-6-6-6' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
     pointer-events: none;
   }
 
-  .session-stage[data-tone="blue"] { background: #1e5871; }
-  .session-stage[data-tone="yellow"] { background: #68511d; }
-  .session-stage[data-tone="orange"] { background: #8b452d; }
-  .session-stage[data-tone="green"] { background: #365f43; }
-
-  .session-stage-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-  }
-
-  .session-stage-index {
-    min-width: 58px;
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: .1em;
-  }
-
-  .session-stage-kicker {
-    padding: 5px 10px;
-    border: 1px solid rgba(255, 255, 255, .35);
-    border-radius: 999px;
-    color: rgba(255, 255, 255, .88);
-    font-size: 12px;
-    font-weight: 700;
-  }
-
-  .session-stage-icon {
-    width: 64px;
-    height: 64px;
-    margin: 42px 0 18px;
+  .loop-step .loop-icon {
     display: grid;
     place-items: center;
-    border-radius: 20px 20px 20px 5px;
-    background: var(--yellow);
-    color: var(--ink);
-    transform: rotate(-2deg);
+    margin-bottom: 5px;
+    color: var(--blue-deep);
   }
 
-  .session-stage-icon .ui-icon { width: 31px; height: 31px; }
+  .loop-step .loop-icon .ui-icon { width: var(--icon-lg); height: var(--icon-lg); }
+  .loop-step:nth-child(2) .loop-icon { color: var(--blue-deep); }
+  .loop-step:nth-child(3) .loop-icon { color: #a56a00; }
+  .loop-step:nth-child(4) .loop-icon { color: var(--orange); }
+  .loop-step:nth-child(5) .loop-icon { color: var(--green); }
 
-  .session-stage h4 {
-    max-width: 460px;
-    margin: 0;
-    font-family: var(--display-font);
-    font-size: clamp(25px, 3.2vw, 34px);
-    line-height: 1.35;
+  .loop-step:hover { transform: translateY(-5px); }
+
+  .loop-step.active {
+    z-index: 3;
+    transform: translateY(-8px) rotate(-1deg);
+    box-shadow: 7px 9px 0 var(--ink);
+    filter: saturate(1.08);
   }
 
-  .session-stage-detail {
-    max-width: 590px;
-    margin: 12px 0 26px;
-    color: rgba(255, 255, 255, .82);
-    font-size: 15px;
-    line-height: 1.75;
-  }
-
-  .session-stage-reason {
-    margin-top: auto;
-    padding-top: 17px;
+  .loop-reader {
+    margin: -4px 0 26px;
+    padding: 18px 20px;
     display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
-    gap: 14px;
-    align-items: baseline;
-    border-top: 1px solid rgba(255, 255, 255, .22);
-  }
-
-  .session-stage-reason span {
-    color: var(--yellow);
-    font-size: 12px;
-    font-weight: 800;
-  }
-
-  .session-stage-reason strong { font-size: 15px; }
-
-  .session-progress {
-    height: 4px;
-    margin-top: 19px;
-    overflow: hidden;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, .16);
-  }
-
-  .session-progress-fill {
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: inherit;
-    background: var(--yellow);
-    transform: scaleX(.2);
-    transform-origin: left center;
-    transition: transform 320ms cubic-bezier(.22, .75, .25, 1);
-  }
-
-  .session-track {
-    margin: 0;
-    padding: 0;
-    display: grid;
-    gap: 8px;
-    list-style: none;
-  }
-
-  .session-step {
-    width: 100%;
-    min-height: 66px;
-    padding: 10px 12px;
-    display: grid;
-    grid-template-columns: 38px minmax(0, 1fr) auto;
-    gap: 11px;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 16px;
     align-items: center;
-    border: 1px solid transparent;
-    border-radius: 14px;
-    background: transparent;
-    text-align: left;
-    cursor: pointer;
-    transition: background 180ms ease, border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: rgba(255, 253, 248, 0.9);
+    box-shadow: var(--shadow-small);
   }
 
-  .session-step:hover { background: var(--paper); }
-
-  .session-step.active {
-    border-color: var(--ink);
-    background: var(--yellow-soft);
-    box-shadow: 4px 4px 0 var(--ink);
-    transform: translate(-3px, -2px);
-  }
-
-  .session-step-index {
-    color: var(--ink-soft);
+  .loop-reader-index {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--yellow);
     font-family: var(--display-font);
-    font-size: 15px;
+    font-size: 20px;
     font-weight: 900;
   }
 
-  .session-step-copy { min-width: 0; }
-  .session-step-copy strong { display: block; font-size: 14px; line-height: 1.4; }
-  .session-step-copy small { display: block; margin-top: 2px; color: var(--ink-soft); font-size: 12px; line-height: 1.4; }
-  .session-step > .ui-icon { width: 18px; height: 18px; color: var(--ink-soft); transition: transform 180ms ease; }
-  .session-step.active > .ui-icon { color: var(--ink); transform: translateX(2px); }
+  .loop-reader strong { display: block; }
+  .loop-reader p { margin: 2px 0 0; color: var(--ink-soft); font-size: 14px; }
 
+  .loop-play,
   .compare-toggle {
     border: 1px solid var(--ink);
     border-radius: 999px;
@@ -812,6 +647,8 @@
     transition: transform 180ms ease, background 180ms ease, color 180ms ease, box-shadow 180ms ease;
   }
 
+  .loop-play { padding: 9px 14px; white-space: nowrap; }
+  .loop-play:hover,
   .compare-toggle:hover { transform: translateY(-2px); box-shadow: 3px 4px 0 var(--ink); }
 
   .shot-grid {
@@ -1817,8 +1654,17 @@
     .export-chain { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .experiment-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .export-step::after { display: none; }
-    .session-body { grid-template-columns: 1fr; }
-    .session-stage { min-height: 340px; }
+    .loop { grid-template-columns: 1fr; }
+    .loop-step { min-height: 86px; padding-block: 11px; line-height: 1.45; }
+    .loop-step .loop-icon { margin-bottom: 3px; }
+    .loop-step .loop-icon .ui-icon { width: 22px; height: 22px; }
+    .loop-step.active { transform: translateX(7px); }
+    .loop-step:not(:last-child)::after {
+      top: auto;
+      right: 50%;
+      bottom: -24px;
+      transform: translateX(50%) rotate(90deg);
+    }
     .compare-board { grid-template-columns: 1fr; }
     .vs { min-height: 54px; }
     .friction-lab { grid-template-columns: 1fr; }
@@ -1865,13 +1711,8 @@
     .shot-grid { grid-template-columns: 1fr; max-width: 360px; margin-inline: auto; }
     .shot:nth-child(2), .shot:nth-child(3) { transform: none; }
     .cover-visual img { min-height: 230px; }
-    .play-session { padding: 22px; }
-    .session-head { margin-left: 5px; flex-direction: column; gap: 15px; }
-    .session-play { width: 100%; }
-    .session-stage { min-height: 390px; padding: 24px; }
-    .session-stage-icon { margin-top: 34px; }
-    .session-stage-reason { grid-template-columns: 1fr; gap: 4px; }
-    .session-step { min-height: 70px; }
+    .loop-reader { grid-template-columns: auto minmax(0, 1fr); }
+    .loop-play { grid-column: 1 / -1; width: 100%; }
     .compare-controls { align-items: flex-start; }
     .compare-actions { width: 100%; }
     .compare-toggle { flex: 1; }
@@ -1898,10 +1739,7 @@
     .cover-visual,
     .shot,
     .shot img,
-    .session-step,
-    .session-play,
-    .session-stage,
-    .session-progress-fill,
+    .loop-step,
     .game-card,
     .fit-card,
     .stage-card,
@@ -1968,12 +1806,6 @@
   </symbol>
   <symbol id="icon-arrow-up" viewBox="0 0 24 24">
     <path d="M12 19V5M5 12l7-7 7 7"></path>
-  </symbol>
-  <symbol id="icon-pause" viewBox="0 0 24 24">
-    <path d="M9 5v14M15 5v14"></path>
-  </symbol>
-  <symbol id="icon-play" viewBox="0 0 24 24">
-    <path d="m8 5 11 7-11 7V5Z"></path>
   </symbol>
 </svg>
 <div class="progress" id="progress" aria-hidden="true"></div>
@@ -2078,37 +1910,18 @@
       </article>
     </div>
 
-    <div class="play-session reveal" id="core-loop" aria-label="一轮实际游玩路径">
-      <div class="session-head">
-        <div>
-          <span class="session-kicker">一轮游戏</span>
-          <h3>从点下生成器，到又想再做一单</h3>
-          <p>我连续玩下去，不是因为合成本身有多复杂，而是每次交单都能让我离下一段剧情和下一处装修更近一点。</p>
-        </div>
-        <button class="session-play" type="button" aria-pressed="true"><svg class="ui-icon" aria-hidden="true"><use href="#icon-pause"></use></svg><span>停在这一步</span></button>
-      </div>
+    <div class="loop reveal" id="core-loop" aria-label="可交互的游戏核心循环">
+      <button class="loop-step active" type="button" data-title="消耗体力" data-detail="点击生成器获得基础物品，第一层即时反馈从这里开始。"><span class="loop-icon" aria-hidden="true"><svg class="ui-icon"><use href="#icon-zap"></use></svg></span>消耗体力<br>生成物品</button>
+      <button class="loop-step" type="button" data-title="两两合成" data-detail="相同物品不断升级，并逐步靠近订单要求。"><span class="loop-icon" aria-hidden="true"><svg class="ui-icon"><use href="#icon-merge"></use></svg></span>两两合成<br>完成订单</button>
+      <button class="loop-step" type="button" data-title="推进任务" data-detail="订单兑换金币与任务进度，让重复操作拥有短期目标。"><span class="loop-icon" aria-hidden="true"><svg class="ui-icon"><use href="#icon-coins"></use></svg></span>获得金币<br>推进任务</button>
+      <button class="loop-step" type="button" data-title="解锁内容" data-detail="悬疑剧情和餐厅装修把数值进度变成看得见的内容奖励。"><span class="loop-icon" aria-hidden="true"><svg class="ui-icon"><use href="#icon-search"></use></svg></span>解锁剧情<br>装修餐厅</button>
+      <button class="loop-step" type="button" data-title="产生新目标" data-detail="新的角色问题和装修区域，再次把玩家带回合成棋盘。"><span class="loop-icon" aria-hidden="true"><svg class="ui-icon"><use href="#icon-target"></use></svg></span>产生新目标<br>回到合成</button>
+    </div>
 
-      <div class="session-body">
-        <article class="session-stage" id="session-stage" data-step="01" data-tone="blue" aria-live="off" aria-atomic="true">
-          <div class="session-stage-top">
-            <span class="session-stage-index">01 / 05</span>
-            <span class="session-stage-kicker">刚打开棋盘</span>
-          </div>
-          <span class="session-stage-icon" aria-hidden="true"><svg class="ui-icon"><use href="#icon-zap"></use></svg></span>
-          <h4>先点几下生成器</h4>
-          <p class="session-stage-detail">体力换成杯子、面包和咖啡，棋盘马上热闹起来。前几分钟几乎不用学，我很快就进入“再合一次”的节奏。</p>
-          <div class="session-stage-reason"><span>这一步为什么有效</span><strong>每一次点击都立刻有回应</strong></div>
-          <div class="session-progress" aria-hidden="true"><span class="session-progress-fill"></span></div>
-        </article>
-
-        <ol class="session-track" aria-label="选择游玩步骤">
-          <li><button class="session-step active" type="button" aria-pressed="true" aria-controls="session-stage" data-kicker="刚打开棋盘" data-title="先点几下生成器" data-detail="体力换成杯子、面包和咖啡，棋盘马上热闹起来。前几分钟几乎不用学，我很快就进入“再合一次”的节奏。" data-reason="每一次点击都立刻有回应" data-icon="icon-zap" data-tone="blue"><span class="session-step-index">01</span><span class="session-step-copy"><strong>点生成器</strong><small>体力马上变成可合物品</small></span><svg class="ui-icon" aria-hidden="true"><use href="#icon-chevron-right"></use></svg></button></li>
-          <li><button class="session-step" type="button" aria-pressed="false" aria-controls="session-stage" data-kicker="订单还差一点" data-title="顺手把物品合到订单要求" data-detail="相同物品一拖就能升级，订单图标一直给我目标。只要还差一两级，我通常会继续点，而不是立刻退出。" data-reason="目标看得见，而且总像快完成了" data-icon="icon-merge" data-tone="yellow"><span class="session-step-index">02</span><span class="session-step-copy"><strong>凑订单</strong><small>把相同物品一层层合上去</small></span><svg class="ui-icon" aria-hidden="true"><use href="#icon-chevron-right"></use></svg></button></li>
-          <li><button class="session-step" type="button" aria-pressed="false" aria-controls="session-stage" data-kicker="交单那一刻" data-title="金币和任务进度一起到账" data-detail="交出订单后，金币、任务进度和下一项目标同时出现。奖励并不复杂，但足够让我知道刚才那轮操作没有白费。" data-reason="短期收获很清楚，不用猜值不值得" data-icon="icon-coins" data-tone="orange"><span class="session-step-index">03</span><span class="session-step-copy"><strong>领奖励</strong><small>这一轮操作马上有结果</small></span><svg class="ui-icon" aria-hidden="true"><use href="#icon-chevron-right"></use></svg></button></li>
-          <li><button class="session-step" type="button" aria-pressed="false" aria-controls="session-stage" data-kicker="暂时离开棋盘" data-title="奖励终于变成剧情和装修" data-detail="金币很快换成一段人物对话，或餐厅里一处看得见的变化。到这里，合成不再只是堆等级，而是在推进我真正关心的内容。" data-reason="数值进度被换成了故事和空间变化" data-icon="icon-search" data-tone="green"><span class="session-step-index">04</span><span class="session-step-copy"><strong>看故事、换装修</strong><small>把进度变成看得见的内容</small></span><svg class="ui-icon" aria-hidden="true"><use href="#icon-chevron-right"></use></svg></button></li>
-          <li><button class="session-step" type="button" aria-pressed="false" aria-controls="session-stage" data-kicker="准备退出之前" data-title="新的悬念又把我带回棋盘" data-detail="新人物抛出问题，下一块区域等着修，新的订单也跟着出现。我往往不是为了合出某件道具回来，而是想知道后面发生了什么。" data-reason="真正让我回来的，是还没讲完的事" data-icon="icon-target" data-tone="blue"><span class="session-step-index">05</span><span class="session-step-copy"><strong>再做一单</strong><small>新问题带来下一轮目标</small></span><svg class="ui-icon" aria-hidden="true"><use href="#icon-chevron-right"></use></svg></button></li>
-        </ol>
-      </div>
+    <div class="loop-reader reveal" aria-live="polite">
+      <span class="loop-reader-index">01</span>
+      <div><strong>消耗体力</strong><p>点击生成器获得基础物品，第一层即时反馈从这里开始。</p></div>
+      <button class="loop-play" type="button" aria-pressed="true">暂停自动演示</button>
     </div>
 
     <div class="card-grid reveal">
@@ -2645,18 +2458,12 @@
   }
 
   var loop = document.getElementById("core-loop");
-  var loopButtons = loop ? Array.prototype.slice.call(loop.querySelectorAll(".session-step")) : [];
-  var loopStage = loop ? loop.querySelector(".session-stage") : null;
-  var loopIndex = loop ? loop.querySelector(".session-stage-index") : null;
-  var loopKicker = loop ? loop.querySelector(".session-stage-kicker") : null;
-  var loopTitle = loop ? loop.querySelector(".session-stage h4") : null;
-  var loopDetail = loop ? loop.querySelector(".session-stage-detail") : null;
-  var loopReason = loop ? loop.querySelector(".session-stage-reason strong") : null;
-  var loopIcon = loop ? loop.querySelector(".session-stage-icon use") : null;
-  var loopProgress = loop ? loop.querySelector(".session-progress-fill") : null;
-  var loopPlay = loop ? loop.querySelector(".session-play") : null;
-  var loopPlayIcon = loopPlay ? loopPlay.querySelector("use") : null;
-  var loopPlayLabel = loopPlay ? loopPlay.querySelector("span") : null;
+  var loopButtons = loop ? Array.prototype.slice.call(loop.querySelectorAll(".loop-step")) : [];
+  var loopReader = document.querySelector(".loop-reader");
+  var loopIndex = loopReader ? loopReader.querySelector(".loop-reader-index") : null;
+  var loopTitle = loopReader ? loopReader.querySelector("strong") : null;
+  var loopDetail = loopReader ? loopReader.querySelector("p") : null;
+  var loopPlay = loopReader ? loopReader.querySelector(".loop-play") : null;
   var loopCurrent = 0;
   var loopWantsAutoplay = !reducedMotion;
   var loopIsVisible = false;
@@ -2669,17 +2476,9 @@
       button.classList.toggle("active", buttonIndex === loopCurrent);
       button.setAttribute("aria-pressed", buttonIndex === loopCurrent ? "true" : "false");
     });
-    var activeStep = loopButtons[loopCurrent];
-    var stepNumber = String(loopCurrent + 1).padStart(2, "0");
-    loopStage.dataset.step = stepNumber;
-    loopStage.dataset.tone = activeStep.dataset.tone;
-    loopIndex.textContent = stepNumber + " / " + String(loopButtons.length).padStart(2, "0");
-    loopKicker.textContent = activeStep.dataset.kicker;
-    loopTitle.textContent = activeStep.dataset.title;
-    loopDetail.textContent = activeStep.dataset.detail;
-    loopReason.textContent = activeStep.dataset.reason;
-    loopIcon.setAttribute("href", "#" + activeStep.dataset.icon);
-    loopProgress.style.transform = "scaleX(" + ((loopCurrent + 1) / loopButtons.length) + ")";
+    loopIndex.textContent = String(loopCurrent + 1).padStart(2, "0");
+    loopTitle.textContent = loopButtons[loopCurrent].dataset.title;
+    loopDetail.textContent = loopButtons[loopCurrent].dataset.detail;
   }
 
   function stopLoopTimer() {
@@ -2689,30 +2488,18 @@
 
   function syncLoopPlayback() {
     stopLoopTimer();
-    if (reducedMotion) {
-      if (loopPlay) {
-        loopPlay.setAttribute("aria-pressed", "false");
-        loopPlayIcon.setAttribute("href", "#icon-chevron-right");
-        loopPlayLabel.textContent = "看下一步";
-      }
-      if (loopStage) loopStage.setAttribute("aria-live", "polite");
-      return;
-    }
-    if (loopStage) loopStage.setAttribute("aria-live", loopWantsAutoplay ? "off" : "polite");
     if (loopWantsAutoplay && loopIsVisible && !document.hidden) {
-      loopTimer = window.setInterval(function () { setLoopStep(loopCurrent + 1); }, 4200);
+      loopTimer = window.setInterval(function () { setLoopStep(loopCurrent + 1); }, 1500);
     }
     if (loopPlay) {
       loopPlay.setAttribute("aria-pressed", loopWantsAutoplay ? "true" : "false");
-      loopPlayIcon.setAttribute("href", loopWantsAutoplay ? "#icon-pause" : "#icon-play");
-      loopPlayLabel.textContent = loopWantsAutoplay ? "停在这一步" : "继续往下看";
+      loopPlay.textContent = loopWantsAutoplay ? "暂停自动演示" : "继续自动演示";
     }
   }
 
   loopButtons.forEach(function (button, index) {
     button.addEventListener("click", function () {
       loopWantsAutoplay = false;
-      loopStage.setAttribute("aria-live", "polite");
       setLoopStep(index);
       syncLoopPlayback();
     });
@@ -2720,10 +2507,7 @@
   setLoopStep(0);
 
   if (loopPlay) {
-    if (reducedMotion) {
-      loopPlayIcon.setAttribute("href", "#icon-chevron-right");
-      loopPlayLabel.textContent = "看下一步";
-    }
+    if (reducedMotion) loopPlay.textContent = "播放下一步";
     loopPlay.addEventListener("click", function () {
       if (reducedMotion) {
         setLoopStep(loopCurrent + 1);
