@@ -745,6 +745,215 @@
   .signal p { margin: 0; font-size: 13px; color: #d8e4ec; }
   .signal a { color: white; }
 
+  .market-proof {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .market-metric {
+    position: relative;
+    min-height: 184px;
+    padding: 24px;
+    overflow: hidden;
+    border: 2px solid var(--ink);
+    border-radius: 22px;
+    background: var(--white);
+    box-shadow: 7px 8px 0 rgba(23, 50, 77, 0.1);
+    transition: transform 220ms ease, box-shadow 220ms ease;
+  }
+
+  .market-metric:nth-child(1) { background: var(--blue-soft); }
+  .market-metric:nth-child(2) { background: var(--yellow-soft); }
+  .market-metric:nth-child(3) { background: var(--green-soft); }
+  .market-metric:hover { transform: translateY(-5px); box-shadow: 9px 11px 0 rgba(23, 50, 77, 0.14); }
+
+  .market-metric .metric-label {
+    display: block;
+    color: var(--ink-soft);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .08em;
+  }
+
+  .market-metric strong {
+    display: block;
+    margin: 12px 0 8px;
+    font-family: var(--display-font);
+    font-size: clamp(38px, 5vw, 58px);
+    line-height: 1;
+  }
+
+  .market-metric p { margin: 0; color: var(--ink-soft); font-size: 13px; }
+
+  .market-method {
+    margin: 16px 0 0;
+    color: var(--ink-soft);
+    font-size: 13px;
+  }
+
+  .market-evidence {
+    margin-top: 28px;
+    padding: clamp(22px, 4vw, 32px);
+    display: grid;
+    grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+    gap: 30px;
+    align-items: center;
+    border: 2px solid var(--ink);
+    border-radius: 24px;
+    background: var(--ink);
+    color: var(--white);
+    box-shadow: 9px 10px 0 var(--orange-soft);
+  }
+
+  .market-evidence h3 { margin: 0 0 8px; font-size: 23px; }
+  .market-evidence p { margin: 0; color: #d8e4ec; font-size: 14px; }
+
+  .trend-bars { display: grid; gap: 14px; }
+  .trend-row { display: grid; grid-template-columns: 94px minmax(0, 1fr) 74px; gap: 10px; align-items: center; }
+  .trend-row > span { color: #d8e4ec; font-size: 12px; font-weight: 700; }
+  .trend-row strong { color: var(--yellow); font-size: 14px; text-align: right; }
+
+  .trend-track {
+    height: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, .56);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .12);
+  }
+
+  .trend-track span {
+    display: block;
+    width: var(--trend-width);
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--orange), var(--yellow));
+  }
+
+  .audience-intro {
+    margin-top: 52px;
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    align-items: end;
+  }
+
+  .audience-intro h3 { margin: 0; font-family: var(--display-font); font-size: clamp(25px, 4vw, 36px); }
+  .audience-intro p { max-width: 590px; margin: 0; color: var(--ink-soft); }
+
+  .player-segments {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .segment-card {
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-left: 6px solid var(--blue);
+    border-radius: 18px;
+    background: rgba(255, 253, 248, .9);
+    box-shadow: var(--shadow-small);
+    transition: transform 200ms ease, border-color 200ms ease;
+  }
+
+  .segment-card:nth-child(2) { border-left-color: var(--rose); }
+  .segment-card:nth-child(3) { border-left-color: var(--yellow); }
+  .segment-card:nth-child(4) { border-left-color: var(--orange); }
+  .segment-card:hover { transform: translateY(-4px); border-color: var(--ink); }
+  .segment-card h4 { margin: 0 0 14px; font-size: 19px; }
+
+  .segment-card dl {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 68px minmax(0, 1fr);
+    gap: 8px 12px;
+    font-size: 13px;
+  }
+
+  .segment-card dt { color: var(--ink); font-weight: 800; }
+  .segment-card dd { margin: 0; color: var(--ink-soft); }
+
+  .audience-note {
+    margin-top: 16px;
+    padding: 14px 18px;
+    border-radius: 14px;
+    background: var(--paper-deep);
+    color: var(--ink-soft);
+    font-size: 13px;
+  }
+
+  .export-logic {
+    margin-top: 42px;
+    padding: 28px;
+    border: 2px dashed var(--ink);
+    border-radius: 22px;
+    background: var(--blue-soft);
+  }
+
+  .export-logic h3 { margin: 0 0 6px; }
+  .export-logic > p { margin: 0; color: var(--ink-soft); }
+
+  .export-chain {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .export-step {
+    position: relative;
+    min-height: 146px;
+    padding: 20px;
+    border: 1px solid var(--ink);
+    border-radius: 16px;
+    background: var(--white);
+  }
+
+  .export-step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: -18px;
+    top: 50%;
+    width: 18px;
+    height: 18px;
+    z-index: 2;
+    transform: translateY(-50%);
+    background: var(--ink);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m9 18 6-6-6-6' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m9 18 6-6-6-6' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  }
+
+  .export-step b { display: block; color: var(--orange); font-size: 12px; letter-spacing: .1em; }
+  .export-step strong { display: block; margin: 6px 0; font-size: 17px; }
+  .export-step span { display: block; color: var(--ink-soft); font-size: 13px; line-height: 1.65; }
+
+  .global-compare { margin-top: 34px; }
+  .global-compare > h3 { margin: 0 0 5px; font-family: var(--display-font); font-size: 25px; }
+  .global-compare > p { margin: 0; color: var(--ink-soft); }
+
+  .global-game-grid {
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .global-game {
+    padding: 22px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: var(--white);
+    box-shadow: var(--shadow-small);
+  }
+
+  .global-game.primary { border: 2px solid var(--ink); background: var(--yellow-soft); }
+  .global-game .publisher { color: var(--orange); font-size: 11px; font-weight: 800; letter-spacing: .08em; }
+  .global-game h4 { margin: 5px 0 8px; font-size: 18px; }
+  .global-game p { margin: 0; color: var(--ink-soft); font-size: 13px; }
+  .global-game .watch { display: block; margin-top: 12px; color: var(--ink); font-weight: 800; }
+
   .friction-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1174,6 +1383,32 @@
   .small-idea h3 { margin: 0 0 8px; }
   .small-idea p { margin: 0; }
 
+  .experiment-grid {
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .experiment-step {
+    padding: 16px;
+    border: 1px solid rgba(23, 50, 77, .35);
+    border-radius: 14px;
+    background: rgba(255, 253, 248, .76);
+  }
+
+  .experiment-step b { display: block; color: var(--orange); font-size: 12px; letter-spacing: .08em; }
+  .experiment-step strong { display: block; margin: 5px 0; font-size: 14px; }
+  .experiment-step p { color: var(--ink-soft); font-size: 12px; line-height: 1.65; }
+
+  .experiment-rule {
+    margin-top: 16px !important;
+    padding-top: 14px;
+    border-top: 1px dashed rgba(23, 50, 77, .35);
+    color: var(--ink-soft);
+    font-size: 13px;
+  }
+
   .fit-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1415,6 +1650,10 @@
     .public-signals,
     .timeline,
     .month-plan { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .market-evidence { grid-template-columns: 1fr; }
+    .export-chain { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .experiment-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .export-step::after { display: none; }
     .loop { grid-template-columns: 1fr; }
     .loop-step { min-height: 86px; padding-block: 11px; line-height: 1.45; }
     .loop-step .loop-icon { margin-bottom: 3px; }
@@ -1445,6 +1684,15 @@
     .cover h1 { font-size: 42px; }
     .cover-lead { font-size: 16px; }
     .stat-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .market-proof,
+    .player-segments,
+    .export-chain,
+    .global-game-grid,
+    .experiment-grid { grid-template-columns: 1fr; }
+    .market-metric { min-height: 0; }
+    .audience-intro { align-items: start; flex-direction: column; }
+    .trend-row { grid-template-columns: 78px minmax(0, 1fr) 68px; gap: 8px; }
+    .export-logic { padding: 22px; }
     .level-sticker { width: 74px; height: 74px; right: -12px; top: -24px; font-size: 13px; }
     main { width: calc(100% - 28px); }
     .section { padding-top: 76px; }
@@ -1568,6 +1816,7 @@
     <div class="nav-links">
       <a class="nav-link" href="#summary">先说结论</a>
       <a class="nav-link" href="#experience">真实体验</a>
+      <a class="nav-link" href="#market">市场出海</a>
       <a class="nav-link" href="#friction">卡点观察</a>
       <a class="nav-link" href="#compare">同类对比</a>
       <a class="nav-link" href="#support">运营支持</a>
@@ -1726,9 +1975,96 @@
     </div>
   </section>
 
-  <section class="section" id="friction">
+  <section class="section" id="market">
     <div class="section-heading reveal">
       <span class="section-number">02</span>
+      <div>
+        <span class="section-kicker">市场与出海</span>
+        <h2>从“我愿意花 20 元”，走到一款全球头部 Merge-2 的增长逻辑</h2>
+        <p>初版报告关注市场规模和用户结构；这一版把公开数据重新接回我的实玩行为，避免只谈感受，也避免假装掌握内部经营数据。</p>
+      </div>
+    </div>
+
+    <div class="market-proof reveal" aria-label="《浪漫餐厅》市场规模公开数据摘要">
+      <article class="market-metric">
+        <span class="metric-label">2025 全球移动端 IAP 估算</span>
+        <strong>$550M</strong>
+        <p>AppMagic 估算《Gossip Harbor》2025 年收入约 5.5 亿美元。<a href="#source-6">[6]</a></p>
+      </article>
+      <article class="market-metric">
+        <span class="metric-label">占 Merge 品类收入</span>
+        <strong>33%</strong>
+        <p>单款产品贡献约三分之一品类收入，头部地位不是只靠榜单名次判断。<a href="#source-6">[6]</a></p>
+      </article>
+      <article class="market-metric">
+        <span class="metric-label">Merge 品类 Top 10 集中度</span>
+        <strong>≈80%</strong>
+        <p>赛道仍在增长，但收入高度集中，竞争已经进入长线内容和运营效率阶段。<a href="#source-6">[6]</a></p>
+      </article>
+    </div>
+    <p class="market-method reveal">口径说明：以上为 AppMagic 对全球 App Store 与 Google Play 移动端内购的第三方估算，不包含广告、网页商店等收入，也不等同于发行方财报。</p>
+
+    <div class="market-evidence reveal">
+      <div>
+        <h3>美国市场不是只靠下载堆出来的</h3>
+        <p>Sensor Tower 公开数据中，2025 年第四季度美国市场周收入由 9 月末约 560 万美元升至 12 月末约 820 万美元；同期周下载峰值约 24.7 万，活跃用户超过 120 万。它能说明规模与增长，但不能替代 ARPU、LTV 和投放回收。<a href="#source-7">[7]</a></p>
+      </div>
+      <div class="trend-bars" role="img" aria-label="2025年第四季度美国市场周收入由约560万美元增长至约820万美元">
+        <div class="trend-row"><span>9 月末</span><div class="trend-track"><span style="--trend-width:68%;"></span></div><strong>$5.6M</strong></div>
+        <div class="trend-row"><span>12 月末</span><div class="trend-track"><span style="--trend-width:100%;"></span></div><strong>$8.2M</strong></div>
+      </div>
+    </div>
+
+    <div class="audience-intro reveal">
+      <h3>不把“女性玩家”当成一个标签</h3>
+      <p>人口属性只能帮助确定内容语气，真正可执行的运营分层必须落到行为。下面四类来自初版框架，并结合本次体验重新收敛；真实人数和价值仍需内部 BI 校准。</p>
+    </div>
+
+    <div class="player-segments reveal">
+      <article class="segment-card">
+        <h4>剧情推进型</h4>
+        <dl><dt>行为</dt><dd>章节推进快、关注更新、愿意为“再看一段”补充体力。</dd><dt>价值</dt><dd>周更回流、进度礼包与社区讨论的核心人群。</dd><dt>验证</dt><dd>更新后 24h 回流、章节完成率、对应礼包转化。</dd></dl>
+      </article>
+      <article class="segment-card">
+        <h4>装修收集型</h4>
+        <dl><dt>行为</dt><dd>反复调整装饰，重视主题活动、卡册和限定外观。</dd><dt>价值</dt><dd>为长期目标和表达空间留下来，不只追求效率。</dd><dt>验证</dt><dd>活动参与、装饰使用、收集完成与外观礼包转化。</dd></dl>
+      </article>
+      <article class="segment-card">
+        <h4>合成效率型</h4>
+        <dl><dt>行为</dt><dd>订单完成多、资源规划强，频繁观看激励广告。</dd><dt>价值</dt><dd>贡献活跃和广告收益，也最敏感于棋盘与产出效率。</dd><dt>验证</dt><dd>订单数、广告观看、活动完成率和卡点负面反馈。</dd></dl>
+      </article>
+      <article class="segment-card">
+        <h4>买量承接风险型</h4>
+        <dl><dt>行为</dt><dd>被情感冲突素材吸引，但教程或首章尚未完成。</dd><dt>价值</dt><dd>决定买量承诺能否被真实玩法接住，是获客质量的前置信号。</dd><dt>验证</dt><dd>按素材 cohort 查看教程、首章完成和 D1 留存。</dd></dl>
+      </article>
+    </div>
+    <p class="audience-note reveal">公开的欧洲广告画像提供了“女性约占 74%、25–44 岁更集中”的方向性信号，但它只代表特定地区与投放样本，不能写成全球玩家定论。<a href="#source-8">[8]</a></p>
+
+    <div class="export-logic reveal">
+      <h3>出海运营不是翻译，而是让四段承诺接得上</h3>
+      <p>初版强调短剧式获客和分层运营；结合这次实玩后，我更关注用户从看到广告到形成付费的每个断点。</p>
+      <div class="export-chain">
+        <article class="export-step"><b>01 · 获客</b><strong>情感冲突先建立关心</strong><span>素材先让玩家关心人物困境，再展示合成与修复；按素材主题保留渠道 cohort。<a href="#source-8">[8]</a></span></article>
+        <article class="export-step"><b>02 · 承接</b><strong>首日体验兑现广告承诺</strong><span>前 10 分钟尽快交付同类角色冲突、装修反馈和合成目标，避免“广告像短剧，进游戏只剩棋盘”。</span></article>
+        <article class="export-step"><b>03 · 留存</b><strong>周更剧情叠加 LiveOps</strong><span>每周五章节提供固定回流节点，收集、竞赛和 PvE 活动填补等待期。<a href="#source-2">[2]</a><a href="#source-3">[3]</a></span></article>
+        <article class="export-step"><b>04 · 变现</b><strong>在停止点承接即时需求</strong><span>体力、广告和活动礼包共同缩短等待；头部 Merge 商品多为 1–25 美元的循环特惠。<a href="#source-6">[6]</a></span></article>
+      </div>
+    </div>
+
+    <div class="global-compare reveal">
+      <h3>全球竞品看商业结构，国内同类看题材本地化</h3>
+      <p>《梦幻消除战》的对比仍然保留；另外补入两款全球 Merge 产品，避免竞品观察只停留在画风差异。</p>
+      <div class="global-game-grid">
+        <article class="global-game primary"><span class="publisher">MICROFUN</span><h4>Gossip Harbor</h4><p>餐厅重建、关系悬疑和周更章节形成持续追更理由，LiveOps 再把体力需求和活动目标叠在一起。</p><span class="watch">重点看：剧情承接与活动变现效率</span></article>
+        <article class="global-game"><span class="publisher">MOON ACTIVE</span><h4>Travel Town</h4><p>官方页面突出 500 多种物品、55 位居民、城镇修复和持续活动，内容广度与长期收集目标更明显。<a href="#source-9">[9]</a></p><span class="watch">重点看：内容量、活动密度与订单压力</span></article>
+        <article class="global-game"><span class="publisher">MICROFUN</span><h4>Seaside Escape</h4><p>同样采用“合成 + 人物低谷 + 海滨重建 + 秘密”的结构，可用来观察柠檬微趣如何复用叙事合成方法。<a href="#source-10">[10]</a></p><span class="watch">重点看：同厂矩阵的题材区隔与复用</span></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="friction">
+    <div class="section-heading reveal">
+      <span class="section-number">03</span>
       <div>
         <span class="section-kicker">卡点观察</span>
         <h2>20 级以后，“解压”开始被等待打断</h2>
@@ -1802,7 +2138,7 @@
 
   <section class="section" id="compare">
     <div class="section-heading reveal">
-      <span class="section-number">03</span>
+      <span class="section-number">04</span>
       <div>
         <span class="section-kicker">同类观察</span>
         <h2>同一套循环，换成古风茶楼会发生什么</h2>
@@ -1872,7 +2208,7 @@
 
   <section class="section" id="support">
     <div class="section-heading reveal">
-      <span class="section-number">04</span>
+      <span class="section-number">05</span>
       <div>
         <span class="section-kicker">运营支持</span>
         <h2>如果入职，我会先做一份“新手 20 级体验问题周报”</h2>
@@ -1902,14 +2238,21 @@
     </div>
 
     <div class="small-idea reveal">
-      <h3>一个可以顺手验证的小内容动作</h3>
-      <p>全球版本每周五更新剧情，可以尝试在更新前后发布一次无剧透猜想和一次讨论帖。首轮只观察参与人数、有效评论和常见剧情问题，不预设它一定能提高留存。它是玩家服务和内容运营的结合，而不是一套需要大量资源的营销项目。</p>
+      <h3>把初版的“剧情猜想”活动，收敛成一轮可验证实验</h3>
+      <p>全球版本每周五更新剧情。与其一上来做 12 周大活动，我会先跑一轮低成本闭环，确认社区讨论是否真的能承接版本回流。</p>
+      <div class="experiment-grid">
+        <article class="experiment-step"><b>D-3 · 预热</b><strong>发布无剧透三选一猜想</strong><p>首轮只选一个主要社区，记录有效投票人数和评论质量。</p></article>
+        <article class="experiment-step"><b>D0 · 更新</b><strong>上线讨论帖并保留对照</strong><p>区分触达与未触达 cohort，观察剧情更新后 24h 回流。</p></article>
+        <article class="experiment-step"><b>D1–D2 · 承接</b><strong>回复高质量讨论</strong><p>同步收集剧透、剧情理解和卡进度问题，整理给客服与产品。</p></article>
+        <article class="experiment-step"><b>D3 · 复盘</b><strong>只给“继续 / 调整 / 停止”</strong><p>结合历史基线判断结果，不把自然版本波动算成运营增量。</p></article>
+      </div>
+      <p class="experiment-rule"><strong>判断原则：</strong>先用过去 4 周同类内容建立基线；若有效参与和目标 cohort 回流都没有改善，或负面反馈明显上升，就调整题型、渠道或停止，而不是继续扩大投入。</p>
     </div>
   </section>
 
   <section class="section" id="fit">
     <div class="section-heading reveal">
-      <span class="section-number">05</span>
+      <span class="section-number">06</span>
       <div>
         <span class="section-kicker">岗位匹配</span>
         <h2>这份报告想证明的，不只是我喜欢玩游戏</h2>
@@ -1966,13 +2309,18 @@
 
   <section class="paper-card sources" id="sources">
     <h2>资料来源与说明</h2>
-    <p>数据检索与页面核对日期：2026-08-20。公开资料用于确认产品状态和提供旁证，不替代发行方内部数据。</p>
+    <p>数据检索与页面核对日期：2026-08-21。公开资料用于确认产品状态和提供旁证，不替代发行方内部数据；第三方收入均为估算值，并按原始范围和口径使用。</p>
     <ol class="source-list">
       <li id="source-1"><span class="source-no">[1]</span><div><a href="https://develop.sensortower.com/blog/top-10-worldwide-mobile-games-by-revenue-and-downloads-in-july-2026" target="_blank" rel="noreferrer">Sensor Tower：2026 年 7 月全球手游收入与下载榜</a><small>用于确认 Gossip Harbor 位列当月全球手游收入前五，并观察其活动组合。</small></div></li>
       <li id="source-2"><span class="source-no">[2]</span><div><a href="https://apps.apple.com/ng/app/gossip-harbor-merge-story/id1623318294" target="_blank" rel="noreferrer">App Store：Gossip Harbor - Merge &amp; Story</a><small>用于确认每周五章节更新、公开活动说明及玩家评论案例；对比卡中的人物、餐厅和合成素材取自该页面官方截图。</small></div></li>
       <li id="source-3"><span class="source-no">[3]</span><div><a href="https://www.gamerefinery.com/mobile-game-market-review-april-2026/" target="_blank" rel="noreferrer">GameRefinery：Mobile Game Market Review, April 2026</a><small>用于确认产品持续加入混合 PvE 等 LiveOps 内容。</small></div></li>
       <li id="source-4"><span class="source-no">[4]</span><div><a href="https://www.reddit.com/r/GossipHarbor/comments/1ttlcg0/events_still_due_and_cards/" target="_blank" rel="noreferrer">Reddit：玩家对活动准备和资源安排的讨论</a><small>只作为社区个案，用于发现问题线索，不代表整体用户。</small></div></li>
       <li id="source-5"><span class="source-no">[5]</span><div><a href="https://apps.apple.com/cn/app/%E6%A2%A6%E5%B9%BB%E6%B6%88%E9%99%A4%E6%88%98/id6748513887" target="_blank" rel="noreferrer">App Store：《梦幻消除战》产品页</a>；<a href="https://www.taptap.cn/app/747820" target="_blank" rel="noreferrer">TapTap 官方页</a><small>用于确认古风合成经营、茶楼装修、情缘和奇案等产品要素；对比卡中的古风人物、场景与道具均取自 App Store 官方截图。</small></div></li>
+      <li id="source-6"><span class="source-no">[6]</span><div><a href="https://appmagic.rocks/files/view/upload/Reports/EN_MobileMarkeLandscape2026.pdf" target="_blank" rel="noreferrer">AppMagic：Mobile Market Landscape 2026</a><small>用于观察 2025 年 Merge 品类收入集中度、Gossip Harbor 移动端 IAP 估算及头部商品价格带；数据覆盖 App Store 与 Google Play，不包含广告和网页商店收入。</small></div></li>
+      <li id="source-7"><span class="source-no">[7]</span><div><a href="https://sensortower.com/blog/2025-q4-unified-top-5-drama-games-revenue-us-602160ea241bc16eb8940bf3" target="_blank" rel="noreferrer">Sensor Tower：2025 Q4 美国剧情游戏表现</a><small>用于观察 Gossip Harbor 在美国市场的周收入、下载和活跃用户变化，不外推内部 ARPU、LTV 或投放回收。</small></div></li>
+      <li id="source-8"><span class="source-no">[8]</span><div><a href="https://www.creativescope.ai/blog/gossip-harbor-ua-teardown-drama-before-gameplay" target="_blank" rel="noreferrer">CreativeScope：Gossip Harbor UA 素材拆解</a><small>用于观察“先情绪、后玩法”的素材结构及欧洲广告画像方向性信号；监测记录和地区样本不代表全球投放预算、安装量或完整用户画像。</small></div></li>
+      <li id="source-9"><span class="source-no">[9]</span><div><a href="https://apps.apple.com/us/app/travel-town-merge-adventure/id1521236603" target="_blank" rel="noreferrer">App Store：Travel Town - Merge Adventure</a>；<a href="https://support.traveltowngame.com/hc/en-us/sections/21376503696530-Events" target="_blank" rel="noreferrer">官方活动帮助中心</a><small>用于确认其合成物品规模、居民与城镇修复结构，以及竞赛、寻宝等持续活动。</small></div></li>
+      <li id="source-10"><span class="source-no">[10]</span><div><a href="https://apps.apple.com/us/app/seaside-escape-merge-story/id6443755785" target="_blank" rel="noreferrer">App Store：Seaside Escape - Merge &amp; Story</a><small>用于确认其人物低谷、海滨重建、合成与秘密叙事结构，并观察同厂产品方法的复用与区隔。</small></div></li>
       <li><span class="source-no">[P]</span><div><strong>个人体验与求职材料</strong><small>7 天、约 20 小时、抖音小程序 20 级、约 20 元付费、广告与 CD 行为来自候选人真实记录；岗位职责和履历数据来自候选人提供的 JD 与简历。</small></div></li>
     </ol>
   </section>
@@ -1997,11 +2345,13 @@
   var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var progress = document.getElementById("progress");
   var backTop = document.getElementById("back-top");
+  var navLinksContainer = document.querySelector(".nav-links");
   var navLinks = Array.prototype.slice.call(document.querySelectorAll(".nav-link"));
   var sections = navLinks.map(function (link) {
     return document.querySelector(link.getAttribute("href"));
   }).filter(Boolean);
   var scrollQueued = false;
+  var currentActiveSection = "";
 
   function updateScrollState() {
     var doc = document.documentElement;
@@ -2014,9 +2364,17 @@
     sections.forEach(function (section) {
       if (section.getBoundingClientRect().top <= 150) active = section.id;
     });
+    var activeLink = null;
     navLinks.forEach(function (link) {
-      link.classList.toggle("active", link.getAttribute("href") === "#" + active);
+      var isActive = link.getAttribute("href") === "#" + active;
+      link.classList.toggle("active", isActive);
+      if (isActive) activeLink = link;
     });
+    if (active && active !== currentActiveSection && activeLink && navLinksContainer) {
+      var centeredLeft = activeLink.offsetLeft - (navLinksContainer.clientWidth - activeLink.offsetWidth) / 2;
+      navLinksContainer.scrollTo({ left: centeredLeft, behavior: reducedMotion ? "auto" : "smooth" });
+      currentActiveSection = active;
+    }
     scrollQueued = false;
   }
 
