@@ -1343,41 +1343,6 @@
   .fit-card h3 { margin: 7px 0 8px; font-size: 19px; }
   .fit-card p { margin: 0; color: var(--ink-soft); font-size: 14px; }
 
-  .resume-proof {
-    margin-top: 24px;
-    padding: 28px;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 18px;
-    background: var(--ink);
-    color: var(--white);
-  }
-
-  .proof strong {
-    display: block;
-    color: var(--yellow);
-    font-size: 28px;
-  }
-
-  .proof span { color: #d8e4ec; font-size: 13px; }
-
-  .month-plan {
-    margin-top: 24px;
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 12px;
-  }
-
-  .month-step {
-    padding: 20px;
-    border-radius: 18px;
-    background: var(--white);
-    border: 1px solid var(--line);
-  }
-
-  .month-step b { color: var(--orange); }
-  .month-step p { margin: 7px 0 0; color: var(--ink-soft); font-size: 13px; }
-
   .sources {
     margin: 86px 0 76px;
     padding: clamp(25px, 5vw, 44px);
@@ -1551,8 +1516,7 @@
     .cover-visual { width: min(620px, 94%); margin: 0 auto; }
     .card-grid,
     .public-signals,
-    .timeline,
-    .month-plan { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .market-evidence { grid-template-columns: 1fr; }
     .export-chain { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .experiment-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -1596,10 +1560,8 @@
     .friction-grid,
     .feedback-proof,
     .fit-grid,
-    .resume-proof,
     .public-signals,
-    .timeline,
-    .month-plan { grid-template-columns: 1fr; }
+    .timeline { grid-template-columns: 1fr; }
     .shot-grid { grid-template-columns: 1fr; max-width: 360px; margin-inline: auto; }
     .shot:nth-child(2), .shot:nth-child(3) { transform: none; }
     .cover-visual img { min-height: 230px; }
@@ -2146,18 +2108,6 @@
       </article>
     </div>
 
-    <div class="paper-card resume-proof reveal">
-      <div class="proof"><strong>47 人</strong><span>个人服务器同时在线峰值</span></div>
-      <div class="proof"><strong>20 人</strong><span>热度退散后的稳定日常在线</span></div>
-      <div class="proof"><strong>120 天</strong><span>服务器稳定运行周期</span></div>
-    </div>
-
-    <div class="month-plan reveal">
-      <article class="month-step"><b>Week 1</b><p>熟悉产品和后台，先能独立跟完一条玩家反馈。</p></article>
-      <article class="month-step"><b>Week 2</b><p>独立处理常见问题，把高频类型沉淀成自己的分类和话术。</p></article>
-      <article class="month-step"><b>Week 3</b><p>独立完成一份问题周报，并讲清楚优先级和判断依据。</p></article>
-      <article class="month-step"><b>Week 4</b><p>跟进并复盘结果，形成稳定的处理节奏。</p></article>
-    </div>
   </section>
 
   <section class="paper-card sources" id="sources">
