@@ -529,10 +529,18 @@
 
   </section>
 
-  <section class="paper-card sources" id="sources">
-    <h2>资料来源与说明</h2>
-    <p>数据检索与页面核对日期：2026-08-21。公开资料用于确认产品状态和提供旁证，不替代发行方内部数据；第三方收入均为估算值，并按原始范围和口径使用。</p>
-    <ol class="source-list">
+  <section class="sources-wrap reveal" id="sources" aria-labelledby="sources-title">
+    <details class="sources">
+      <summary class="sources-summary">
+        <span class="sources-summary-copy">
+          <span class="sources-badge" aria-hidden="true">[ 10 + P ]</span>
+          <h2 id="sources-title">资料来源与说明</h2>
+        </span>
+        <span class="sources-toggle" aria-hidden="true"><svg class="ui-icon"><use href="#icon-chevron-right"></use></svg></span>
+      </summary>
+      <div class="sources-body">
+        <p>数据检索与页面核对日期：2026-08-21。公开资料用于确认产品状态和提供旁证，不替代发行方内部数据；第三方收入均为估算值，并按原始范围和口径使用。</p>
+        <ol class="source-list">
       <li id="source-1"><span class="source-no">[1]</span><div><a href="https://develop.sensortower.com/blog/top-10-worldwide-mobile-games-by-revenue-and-downloads-in-july-2026" target="_blank" rel="noreferrer">Sensor Tower：2026 年 7 月全球手游收入与下载榜</a><small>核对 Gossip Harbor 当月的全球手游收入排名和活动组合。</small></div></li>
       <li id="source-2"><span class="source-no">[2]</span><div><a href="https://apps.apple.com/ng/app/gossip-harbor-merge-story/id1623318294" target="_blank" rel="noreferrer">App Store：Gossip Harbor - Merge &amp; Story</a><small>核对每周五章节更新、公开活动说明和玩家评论；对比卡素材也取自该页面官方截图。</small></div></li>
       <li id="source-3"><span class="source-no">[3]</span><div><a href="https://www.gamerefinery.com/mobile-game-market-review-april-2026/" target="_blank" rel="noreferrer">GameRefinery：Mobile Game Market Review, April 2026</a><small>核对游戏持续加入混合 PvE 等活动的情况。</small></div></li>
@@ -544,7 +552,9 @@
       <li id="source-9"><span class="source-no">[9]</span><div><a href="https://apps.apple.com/us/app/travel-town-merge-adventure/id1521236603" target="_blank" rel="noreferrer">App Store：Travel Town - Merge Adventure</a>；<a href="https://support.traveltowngame.com/hc/en-us/sections/21376503696530-Events" target="_blank" rel="noreferrer">官方活动帮助中心</a><small>核对合成物品数量、居民与城镇修复设定，以及竞赛、寻宝等活动。</small></div></li>
       <li id="source-10"><span class="source-no">[10]</span><div><a href="https://apps.apple.com/us/app/seaside-escape-merge-story/id6443755785" target="_blank" rel="noreferrer">App Store：Seaside Escape - Merge &amp; Story</a><small>核对人物低谷、海滨重建、合成和秘密叙事等设定。</small></div></li>
       <li><span class="source-no">[P]</span><div><strong>个人体验与求职材料</strong><small>2 周、约 20 小时、抖音小程序 20 级、100 元以上付费、广告与 CD 行为来自候选人真实记录；岗位职责和履历数据来自候选人提供的 JD 与简历。</small></div></li>
-    </ol>
+        </ol>
+      </div>
+    </details>
   </section>
 </main>
 
@@ -630,6 +640,19 @@
       window.scrollTo(0, Math.max(0, targetTop));
     });
   });
+
+  var sourcesDetails = document.querySelector(".sources");
+  function revealSourceFromHash() {
+    var sourceId = window.location.hash.slice(1);
+    var sourceTarget = sourceId ? document.getElementById(sourceId) : null;
+    if (!sourcesDetails || !sourceTarget || !sourcesDetails.contains(sourceTarget)) return;
+    sourcesDetails.open = true;
+    window.requestAnimationFrame(function () {
+      sourceTarget.scrollIntoView({ block: "center", behavior: reducedMotion ? "auto" : "smooth" });
+    });
+  }
+  revealSourceFromHash();
+  window.addEventListener("hashchange", revealSourceFromHash);
 
   var revealItems = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
   if ("IntersectionObserver" in window && !reducedMotion) {
