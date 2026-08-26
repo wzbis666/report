@@ -65,6 +65,7 @@
 - **桌面结果**：`C:\Users\WZB\AppData\Local\Temp\microfun-portfolio-qa\microfun-logo-desktop-1440x900.png`
 - **手机结果**：`C:\Users\WZB\AppData\Local\Temp\microfun-portfolio-qa\microfun-logo-mobile-390x844.png`
 - **替换结果**：删除已不再使用的生成图 `images/brand-lemon.png`；可通过前一提交 `0093d96` 恢复。
+- **浏览器标签页**：`<link rel="icon">` 同步指向 `images/microfun-lemon.ico`，不再显示旧的“浪”字圆形图标。
 - **运行状态**：桌面端实际显示 26 × 26px，390px 手机端显示 22 × 22px；资源加载成功、无横向溢出，浏览器控制台无 warning / error。
 
 **final result: passed**
