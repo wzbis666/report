@@ -45,4 +45,16 @@
 - [x] 390px 全屏菜单、可访问键盘关闭、卡片与资料来源响应式布局。
 - [x] 桌面与手机端视觉及核心交互检查。
 
+**Previous result: passed**
+
+## 迭代：第 05 节精简与页头标识统一
+
+- **桌面结果**：`C:\Users\WZB\AppData\Local\Temp\microfun-portfolio-qa\support-compact-desktop-1440x900.png`
+- **手机结果（首段）**：`C:\Users\WZB\AppData\Local\Temp\microfun-portfolio-qa\support-compact-mobile-390x844.png`
+- **手机结果（下半段）**：`C:\Users\WZB\AppData\Local\Temp\microfun-portfolio-qa\support-compact-mobile-lower-390x844.png`
+- **检查范围**：将原“周报明细 + 筛选 + 完整案例 + 四周排期 + 社区实验”收为单张问题信号卡、三步闭环和一句交付原则。核心信息仍保留为体力等待、高阶订单、剧情卡点及其下一步观察项。
+- **可读性**：桌面与 390px 手机端均检查了新卡片的实际计算色值；白字只保留在深色介绍面板，浅色信号卡、步骤卡和提示条均使用深色文字。页面无横向溢出。
+- **标识边界**：使用项目现有图标精灵中的叶形图标，结合已建立的黄边绿底方形标记；没有复制参考官网的官方 Logo 或其资产。
+- **运行状态**：移动端三张信号卡、三步闭环和交付提示均可完整显示；浏览器控制台无 warning / error。
+
 **final result: passed**

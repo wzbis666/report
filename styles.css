@@ -3536,6 +3536,254 @@ main {
   }
 }
 
+/* Section 05: compact, high-contrast operations summary. */
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.brand-mark .ui-icon {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2.35;
+}
+
+.support-brief {
+  max-width: 1060px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(245px, 0.82fr) minmax(0, 1.42fr);
+  overflow: hidden;
+  border: 1px solid rgba(107, 176, 46, 0.25);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 20px 48px rgba(27, 27, 27, 0.08);
+}
+
+.support-brief-intro {
+  min-height: 284px;
+  padding: clamp(30px, 4vw, 48px);
+  color: #fff;
+  background: linear-gradient(145deg, #1b1b1b 0%, #24321a 100%);
+}
+
+.support-eyebrow {
+  display: block;
+  color: var(--mf-yellow);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.support-brief h3 {
+  max-width: 270px;
+  margin: 18px 0 16px;
+  color: #fff;
+  font-family: var(--display-font);
+  font-size: clamp(29px, 3vw, 42px);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.06em;
+}
+
+.support-brief-intro p {
+  max-width: 286px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 14px;
+  line-height: 1.78;
+}
+
+.support-signals {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  background: #f3f7ed;
+}
+
+.support-signals article {
+  min-height: 284px;
+  padding: 42px 26px 28px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: var(--mf-charcoal);
+  border-left: 1px solid rgba(27, 27, 27, 0.09);
+}
+
+.support-signals article::before {
+  width: 24px;
+  height: 4px;
+  margin-bottom: auto;
+  content: "";
+  background: var(--mf-lime);
+}
+
+.support-signals article:nth-child(2)::before {
+  background: var(--mf-yellow);
+}
+
+.support-signals span {
+  margin-top: 26px;
+  color: #547b2a;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.support-signals strong {
+  margin-top: 9px;
+  color: #1b1b1b;
+  font-size: 18px;
+  line-height: 1.36;
+}
+
+.support-signals p {
+  margin: 10px 0 0;
+  color: #5c6656;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.support-steps {
+  max-width: 1060px;
+  margin: 16px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.support-steps article {
+  min-height: 116px;
+  padding: 24px 25px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  column-gap: 15px;
+  border: 1px solid rgba(27, 27, 27, 0.1);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 10px 26px rgba(27, 27, 27, 0.045);
+}
+
+.support-steps b {
+  grid-row: 1 / span 2;
+  color: var(--mf-lime-deep);
+  font-size: 21px;
+  font-variant-numeric: tabular-nums;
+}
+
+.support-steps strong {
+  color: #1b1b1b;
+  font-size: 16px;
+}
+
+.support-steps span {
+  margin-top: 4px;
+  color: #5c6656;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.support-note {
+  max-width: 1060px;
+  margin: 16px auto 0;
+  padding: 22px 28px;
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+  border-left: 4px solid var(--mf-yellow);
+  background: #eff7e6;
+}
+
+.support-note strong {
+  flex: 0 0 auto;
+  color: #356b22;
+  font-size: 14px;
+}
+
+.support-note p {
+  margin: 0;
+  color: #455043;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+@media (max-width: 760px) {
+  .brand-mark .ui-icon {
+    width: 15px;
+    height: 15px;
+  }
+
+  .support-brief {
+    grid-template-columns: 1fr;
+    border-radius: 10px;
+  }
+
+  .support-brief-intro {
+    min-height: 0;
+    padding: 30px 25px;
+  }
+
+  .support-brief h3 {
+    margin: 14px 0 12px;
+    font-size: 30px;
+  }
+
+  .support-signals {
+    grid-template-columns: 1fr;
+  }
+
+  .support-signals article {
+    min-height: 0;
+    padding: 23px 24px;
+    display: grid;
+    grid-template-columns: 24px minmax(0, 1fr);
+    column-gap: 14px;
+    border-top: 1px solid rgba(27, 27, 27, 0.09);
+    border-left: 0;
+  }
+
+  .support-signals article::before {
+    grid-row: 1 / span 3;
+    margin: 7px 0 0;
+  }
+
+  .support-signals span,
+  .support-signals strong,
+  .support-signals p {
+    grid-column: 2;
+  }
+
+  .support-signals span {
+    margin-top: 0;
+  }
+
+  .support-steps {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  .support-steps article {
+    min-height: 92px;
+    padding: 19px 21px;
+  }
+
+  .support-note {
+    margin-top: 12px;
+    padding: 20px 22px;
+    display: block;
+  }
+
+  .support-note p {
+    margin-top: 8px;
+  }
+}
+
 @media print {
   .topbar,
   .progress,

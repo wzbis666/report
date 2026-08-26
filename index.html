@@ -52,7 +52,7 @@
 
 <nav class="topbar" aria-label="章节导航">
   <div class="topbar-inner">
-    <a class="brand" href="#cover"><span class="brand-mark" aria-hidden="true">浪</span><span class="brand-copy">浪漫餐厅 · 玩家观察手账</span></a>
+    <a class="brand" href="#cover"><span class="brand-mark" aria-hidden="true"><svg class="ui-icon"><use href="#icon-leaf"></use></svg></span><span class="brand-copy">浪漫餐厅 · 玩家观察手账</span></a>
     <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
       <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span><span class="sr-only">打开章节导航</span>
     </button>
@@ -448,130 +448,31 @@
       <span class="section-number">05</span>
       <div>
         <span class="section-kicker">运营支持</span>
-        <h2>如果入职，我会先做一份“新手 20 级体验问题周报”</h2>
-        <p>我会先把玩家问题整理清楚：发生在哪一级、哪张订单、什么平台，能不能复现，再交给产品判断。</p>
+        <h2>把“今天玩不下去”变成团队能处理的问题</h2>
+        <p>先定位发生节点，再判断影响范围，最后让玩家和团队都知道下一步。</p>
       </div>
     </div>
 
-    <div class="support-project reveal">
-      <div class="project-brief">
-        <span class="project-tag">FIRST PROJECT</span>
-        <h3>新手 1-20 级<br>体验问题跟进表</h3>
-        <p>把客服后台、发行渠道、QQ 群和玩家来电里的问题，按等级、订单、活动、设备和付费状态归类。每张问题卡写清复现路径、影响范围、处理人和跟进结果。</p>
+    <div class="support-brief reveal" aria-label="新手体验问题周报的工作框架">
+      <div class="support-brief-intro">
+        <span class="support-eyebrow">FIRST PROJECT · 1—20 级</span>
+        <h3>新手体验问题跟进表</h3>
+        <p>一条反馈只保留团队能继续行动的信息：版本、等级、触发路径与影响范围。</p>
       </div>
-      <div class="deliverables">
-        <div class="deliverable"><strong>01｜问题标签表</strong><span>体力、合成链、棋盘空间、广告、CD、活动理解、技术异常。</span></div>
-        <div class="deliverable"><strong>02｜复现记录卡</strong><span>版本、平台、等级、操作路径、截图、出现频率与影响范围。</span></div>
-        <div class="deliverable"><strong>03｜每周问题清单</strong><span>按“高频且影响推进 / 高频但影响轻 / 个别异常”排列优先级。</span></div>
-        <div class="deliverable"><strong>04｜玩家回复与跟进</strong><span>明确已知问题、处理进度和替代方案，减少重复咨询与情绪积累。</span></div>
+      <div class="support-signals">
+        <article><span>体力等待</span><strong>推进被打断</strong><p>观察退出、广告完成与回访。</p></article>
+        <article><span>高阶订单</span><strong>合成链过长</strong><p>记录棋盘空间与完成耗时。</p></article>
+        <article><span>剧情节点</span><strong>悬念叠加卡点</strong><p>核对礼包转化与流失。</p></article>
       </div>
     </div>
 
-    <div class="issue-report reveal" id="issue-report" aria-labelledby="issue-report-title">
-      <div class="report-header">
-        <div>
-          <span class="report-kicker">WEEKLY REPORT · SAMPLE 01</span>
-          <h3 id="issue-report-title">新手 1—20 级体验问题周报（样例）</h3>
-          <p>基于我的抖音小程序两周实玩和公开玩家反馈整理，用来展示问题记录方式；没有使用公司后台数据，优先级是候选人的初步判断。</p>
-        </div>
-        <div class="report-stamp" aria-label="第一期候选人体验版周报"><strong>W01</strong><span>候选人体验版</span></div>
-      </div>
-
-      <div class="report-metrics" aria-label="周报记录概览">
-        <div><strong>6</strong><span>条问题记录</span></div>
-        <div><strong>4</strong><span>条个人实玩</span></div>
-        <div><strong>2</strong><span>条公开反馈</span></div>
-        <div><strong>3</strong><span>条 P1 初判</span></div>
-      </div>
-
-      <div class="report-toolbar">
-        <p><strong id="issue-visible-count">6</strong> 条记录显示</p>
-        <div class="report-filters" role="group" aria-label="按记录来源筛选">
-          <button class="report-filter active" type="button" data-issue-filter="all" aria-pressed="true">全部 <span>6</span></button>
-          <button class="report-filter" type="button" data-issue-filter="self" aria-pressed="false">个人实玩 <span>4</span></button>
-          <button class="report-filter" type="button" data-issue-filter="public" aria-pressed="false">公开反馈 <span>2</span></button>
-        </div>
-      </div>
-
-      <div class="issue-list" id="issue-list">
-        <div class="issue-list-head" aria-hidden="true"><span>记录</span><span>问题与证据</span><span>建议验证</span><span>优先级</span></div>
-
-        <article class="issue-entry" data-issue-source="self">
-          <div class="issue-id"><strong>RR-01</strong><span>个人实玩</span></div>
-          <div class="issue-main"><strong>体力耗尽让订单、剧情和装修同步停住</strong><p>20 级附近制作高阶订单时，连续使用生成器后体力很快见底；我会在看广告、等待恢复和购买低价礼包之间选择。</p><small>复现：准备高阶订单 → 连续生成中间物品 → 体力耗尽 → 主线推进中断</small></div>
-          <div class="issue-next"><span>建议验证</span><p>记录体力归零后的退出、广告完成、礼包购买和 30 分钟回访。</p></div>
-          <div class="issue-priority"><span class="priority p1">P1</span><small>高</small></div>
-        </article>
-
-        <article class="issue-entry" data-issue-source="self">
-          <div class="issue-id"><strong>RR-02</strong><span>个人实玩</span></div>
-          <div class="issue-main"><strong>合成链变长后，半成品持续占用棋盘</strong><p>等级提高后，同一订单需要更多中间物品，棋盘被半成品填满，整理和等待时间增加，完成订单的轻松感明显下降。</p><small>复现：选择高阶目标 → 记录链路层级 → 连续生成 → 观察剩余空格与完成耗时</small></div>
-          <div class="issue-next"><span>建议验证</span><p>按等级记录链路深度、棋盘空格、订单耗时和放弃订单次数。</p></div>
-          <div class="issue-priority"><span class="priority p1">P1</span><small>高</small></div>
-        </article>
-
-        <article class="issue-entry" data-issue-source="self">
-          <div class="issue-id"><strong>RR-03</strong><span>个人实玩</span></div>
-          <div class="issue-main"><strong>剧情悬念与资源卡点叠加，短期促付费也可能促退出</strong><p>剧情停在悬念点、订单又差最后一截时，我更容易买小礼包；连续几轮都被打断时，感受会从“差一点”变成“算了”。</p><small>证据：两周付费 100 元以上；付费动机是接上被打断的进度，而不是追求战力</small></div>
-          <div class="issue-next"><span>建议验证</span><p>比较悬念点前后礼包转化、退出率、次日回访与连续卡点次数。</p></div>
-          <div class="issue-priority"><span class="priority p1">P1</span><small>高</small></div>
-        </article>
-
-        <article class="issue-entry" data-issue-source="self">
-          <div class="issue-id"><strong>RR-04</strong><span>个人实玩</span></div>
-          <div class="issue-main"><strong>广告和跳过 CD 能补进度，但重复出现会切碎体验</strong><p>体力或等待时间不足时，我通常先看激励广告或跳过 CD。单次可以接受，连续出现时会让订单推进变得断断续续。</p><small>观察范围：抖音小程序版本，等级 1—20；尚未获得广告频次和完成率后台数据</small></div>
-          <div class="issue-next"><span>建议验证</span><p>记录单局广告触发次数、完成率、关闭后退出和同日再次观看情况。</p></div>
-          <div class="issue-priority"><span class="priority p2">P2</span><small>中</small></div>
-        </article>
-
-        <article class="issue-entry" data-issue-source="public">
-          <div class="issue-id"><strong>RR-05</strong><span>公开反馈</span></div>
-          <div class="issue-main"><strong>卡牌活动中的重复卡可能放大“不公平”感受</strong><p>App Store 有长期玩家反映，即使每日参与也会因为重复卡较多而难以完成收集。这是个案，需要先确认是否持续出现。</p><small>线索来源：App Store 公开评论 <a href="#source-2">[2]</a></small></div>
-          <div class="issue-next"><span>建议验证</span><p>按活动阶段聚类重复卡反馈，再对照参与天数、缺卡数量和完成率。</p></div>
-          <div class="issue-priority"><span class="priority p2">P2</span><small>待聚类</small></div>
-        </article>
-
-        <article class="issue-entry" data-issue-source="public">
-          <div class="issue-id"><strong>RR-06</strong><span>公开反馈</span></div>
-          <div class="issue-main"><strong>高消耗活动让部分玩家提前囤积资源或直接放弃</strong><p>Reddit 中有玩家会提前囤积体力和订单准备活动，也有人认为高消耗活动“不值得投入”，说明资源压力已经影响活动决策。</p><small>线索来源：Reddit 社区讨论 <a href="#source-4">[4]</a></small></div>
-          <div class="issue-next"><span>建议验证</span><p>对照活动前后体力存量、参与率、阶段完成率和负面反馈标签。</p></div>
-          <div class="issue-priority"><span class="priority p2">P2</span><small>待聚类</small></div>
-        </article>
-      </div>
-
-      <details class="issue-case">
-        <summary><span><b>完整记录卡 · RR-01</b><small>从玩家抱怨到内部验证与回复</small></span><svg class="ui-icon" aria-hidden="true"><use href="#icon-chevron-right"></use></svg></summary>
-        <div class="issue-case-body">
-          <div class="case-grid">
-            <div><span>复现环境</span><p>抖音小程序版本，约 20 级；高阶订单需要连续生成多级中间物品。</p></div>
-            <div><span>影响判断</span><p>核心订单中断会连带暂停剧情和装修；反复出现时可能同时影响体验、广告和付费选择。</p></div>
-            <div><span>内部同步</span><p>交给产品与数值前，补齐订单、目标层级、初始体力、耗尽步骤和棋盘截图，避免只转述“体力不够”。</p></div>
-            <div><span>数据观察</span><p>体力归零后的退出率、广告完成率、礼包购买率、30 分钟与次日回访，以及相同订单的重复反馈量。</p></div>
-          </div>
-          <div class="reply-sample"><span>玩家回复话术样例</span><p>“理解你在订单快完成时被体力打断的感受。我已经记录了你的等级、订单阶段和平台信息，并会继续核对是否集中发生。如果方便，也可以补充订单截图和当时剩余体力；处理进度确认后我会继续回复。”</p></div>
-          <p class="case-boundary"><strong>当前边界：</strong>个人体验能证明问题可以发生，但影响人数、优先级和是否调整仍需客服反馈与后台数据确认。</p>
-        </div>
-      </details>
+    <div class="support-steps reveal" aria-label="运营支持工作步骤">
+      <article><b>01</b><strong>当天归类</strong><span>体验、规则或异常</span></article>
+      <article><b>02</b><strong>每周复盘</strong><span>问题、影响与验证项</span></article>
+      <article><b>03</b><strong>反馈闭环</strong><span>进度、公告与回访</span></article>
     </div>
 
-    <div class="timeline reveal">
-      <article class="week"><strong>第 1 周</strong><p>熟悉游戏、客服后台、渠道和现有问题分类，补齐 1-20 级体验记录。</p></article>
-      <article class="week"><strong>第 2 周</strong><p>抽样近期反馈，亲自复现体力、订单和广告问题，完成第一版标签表。</p></article>
-      <article class="week"><strong>第 3 周</strong><p>输出周报，与产品和数值确认优先级、负责人及可行处理方式。</p></article>
-      <article class="week"><strong>第 4 周</strong><p>跟进处理结果，更新客服话术，并比较重复问题数量是否下降。</p></article>
-    </div>
-
-    <div class="small-idea reveal">
-      <h3>我还想先试一周“剧情猜想”</h3>
-      <p>全球版本每周五更新剧情。我会先在一个主要社区试一轮：更新前猜剧情，更新后开讨论帖，再看看参与讨论的人有没有回来继续玩。</p>
-      <div class="experiment-grid">
-        <article class="experiment-step"><b>D-3 · 预热</b><strong>发布无剧透三选一猜想</strong><p>首轮只选一个主要社区，记录有效投票人数和评论质量。</p></article>
-        <article class="experiment-step"><b>D0 · 更新</b><strong>上线讨论帖并保留对照</strong><p>分别记录看过活动内容和没看过的玩家，比较更新后 24 小时回访。</p></article>
-        <article class="experiment-step"><b>D1–D2 · 跟进</b><strong>回复高质量讨论</strong><p>同时收集剧透、剧情理解和卡进度问题，整理给客服与产品。</p></article>
-        <article class="experiment-step"><b>D3 · 复盘</b><strong>给出“继续 / 调整 / 停止”</strong><p>拿过去 4 周同类内容作基线，看看本周变化是否超出正常波动。</p></article>
-      </div>
-      <p class="experiment-rule"><strong>怎么决定下一步：</strong>有效参与和回访都没有改善，就换题型或渠道；负面反馈明显增加，就先停下来查原因。</p>
-    </div>
+    <aside class="support-note reveal"><strong>我的交付重点</strong><p>不是罗列抱怨，而是清楚回答：谁在什么节点被什么打断，团队下一步先验证什么。</p></aside>
   </section>
 
   <section class="section" id="fit">
@@ -760,31 +661,6 @@
   }
   revealSourceFromHash();
   window.addEventListener("hashchange", revealSourceFromHash);
-
-  var issueFilters = Array.prototype.slice.call(document.querySelectorAll("[data-issue-filter]"));
-  var issueEntries = Array.prototype.slice.call(document.querySelectorAll("[data-issue-source]"));
-  var issueVisibleCount = document.getElementById("issue-visible-count");
-
-  function setIssueFilter(filter) {
-    var visibleCount = 0;
-    issueEntries.forEach(function (entry) {
-      var visible = filter === "all" || entry.dataset.issueSource === filter;
-      entry.hidden = !visible;
-      if (visible) visibleCount += 1;
-    });
-    issueFilters.forEach(function (button) {
-      var active = button.dataset.issueFilter === filter;
-      button.classList.toggle("active", active);
-      button.setAttribute("aria-pressed", active ? "true" : "false");
-    });
-    if (issueVisibleCount) issueVisibleCount.textContent = String(visibleCount);
-  }
-
-  issueFilters.forEach(function (button) {
-    button.addEventListener("click", function () {
-      setIssueFilter(button.dataset.issueFilter);
-    });
-  });
 
   var revealItems = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
   if ("IntersectionObserver" in window && !reducedMotion) {
