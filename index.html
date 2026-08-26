@@ -53,7 +53,10 @@
 <nav class="topbar" aria-label="章节导航">
   <div class="topbar-inner">
     <a class="brand" href="#cover"><span class="brand-mark" aria-hidden="true">浪</span><span class="brand-copy">浪漫餐厅 · 玩家观察手账</span></a>
-    <div class="nav-links">
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span><span class="sr-only">打开章节导航</span>
+    </button>
+    <div class="nav-links" id="primary-nav">
       <a class="nav-link" href="#summary">先说结论</a>
       <a class="nav-link" href="#experience">真实体验</a>
       <a class="nav-link" href="#market">市场与出海</a>
@@ -666,6 +669,7 @@
   var backTop = document.getElementById("back-top");
   var topbar = document.querySelector(".topbar");
   var navLinksContainer = document.querySelector(".nav-links");
+  var navToggle = document.getElementById("nav-toggle");
   var navLinks = Array.prototype.slice.call(document.querySelectorAll(".nav-link"));
   var sections = navLinks.map(function (link) {
     return document.querySelector(link.getAttribute("href"));
@@ -716,6 +720,21 @@
     window.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" });
   });
 
+  function closeNavigation(returnFocus) {
+    if (!topbar || !navToggle) return;
+    if (!topbar.classList.contains("menu-open")) return;
+    topbar.classList.remove("menu-open");
+    navToggle.setAttribute("aria-expanded", "false");
+    if (returnFocus) navToggle.focus();
+  }
+
+  if (navToggle && topbar) {
+    navToggle.addEventListener("click", function () {
+      var open = topbar.classList.toggle("menu-open");
+      navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+  }
+
   Array.prototype.slice.call(document.querySelectorAll(".brand, .nav-link, .nav-cta, .scroll-cue")).forEach(function (link) {
     link.addEventListener("click", function (event) {
       var hash = link.getAttribute("href");
@@ -725,6 +744,7 @@
       if (window.location.hash !== hash) history.pushState(null, "", hash);
       var targetTop = target.id === "cover" ? 0 : window.scrollY + target.getBoundingClientRect().top - 88;
       window.scrollTo(0, Math.max(0, targetTop));
+      closeNavigation(false);
     });
   });
 
@@ -1000,6 +1020,10 @@
     if (event.target === lightbox) closeLightbox();
   });
   document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && topbar && topbar.classList.contains("menu-open")) {
+      closeNavigation(true);
+      return;
+    }
     if (lightbox.hidden) return;
     if (event.key === "Escape") closeLightbox();
     if (event.key === "ArrowLeft") moveLightbox(-1);
