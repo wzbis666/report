@@ -5139,7 +5139,7 @@ main {
   }
 }
 
-/* Official Microfun favicon selected by the user for the compact header mark. */
+/* Original lemon-slice mark for the compact header and browser-tab icon. */
 
 .brand-mark {
   width: 26px;
@@ -5155,6 +5155,16 @@ main {
   height: 100%;
   display: block;
   object-fit: contain;
+}
+
+.footer-disclaimer {
+  max-width: 560px;
+  margin: 9px auto 0;
+  display: block;
+  color: rgba(255, 255, 255, 0.47);
+  font-size: 10px;
+  letter-spacing: 0.01em;
+  line-height: 1.65;
 }
 
 @media (max-width: 760px) {
