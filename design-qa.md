@@ -57,4 +57,14 @@
 - **标识边界**：使用项目现有图标精灵中的叶形图标，结合已建立的黄边绿底方形标记；没有复制参考官网的官方 Logo 或其资产。
 - **运行状态**：移动端三张信号卡、三步闭环和交付提示均可完整显示；浏览器控制台无 warning / error。
 
+**Previous result: passed**
+
+## 迭代：页头柠檬标识
+
+- **新增资源**：`images/brand-lemon.png`；1254 × 1254 RGBA 透明 PNG。
+- **桌面结果**：`C:\Users\WZB\AppData\Local\Temp\microfun-portfolio-qa\lemon-logo-desktop-1440x900.png`
+- **手机结果**：`C:\Users\WZB\AppData\Local\Temp\microfun-portfolio-qa\lemon-logo-mobile-390x844.png`
+- **视觉边界**：替换为原创的黄色柠檬与绿叶标识，借用参考站的明亮水果气质，但未复制其官方 Logo、文字或资产。
+- **运行状态**：桌面端实际显示 34 × 34px，390px 手机端显示 27 × 27px；资源加载成功、无横向溢出，浏览器控制台无 warning / error。
+
 **final result: passed**
