@@ -59,12 +59,12 @@
 
 **Previous result: passed**
 
-## 迭代：页头柠檬标识
+## 迭代：官网柠檬标识
 
-- **新增资源**：`images/brand-lemon.png`；1254 × 1254 RGBA 透明 PNG。
-- **桌面结果**：`C:\Users\WZB\AppData\Local\Temp\microfun-portfolio-qa\lemon-logo-desktop-1440x900.png`
-- **手机结果**：`C:\Users\WZB\AppData\Local\Temp\microfun-portfolio-qa\lemon-logo-mobile-390x844.png`
-- **视觉边界**：替换为原创的黄色柠檬与绿叶标识，借用参考站的明亮水果气质，但未复制其官方 Logo、文字或资产。
-- **运行状态**：桌面端实际显示 34 × 34px，390px 手机端显示 27 × 27px；资源加载成功、无横向溢出，浏览器控制台无 warning / error。
+- **新增资源**：`images/microfun-lemon.ico`；来自用户确认的官网标签页图标（16 × 16 RGBA ICO）。
+- **桌面结果**：`C:\Users\WZB\AppData\Local\Temp\microfun-portfolio-qa\microfun-logo-desktop-1440x900.png`
+- **手机结果**：`C:\Users\WZB\AppData\Local\Temp\microfun-portfolio-qa\microfun-logo-mobile-390x844.png`
+- **替换结果**：删除已不再使用的生成图 `images/brand-lemon.png`；可通过前一提交 `0093d96` 恢复。
+- **运行状态**：桌面端实际显示 26 × 26px，390px 手机端显示 22 × 22px；资源加载成功、无横向溢出，浏览器控制台无 warning / error。
 
 **final result: passed**
