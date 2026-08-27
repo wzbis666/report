@@ -5183,15 +5183,15 @@ main {
   left: max(34px, calc((100% - 1320px) / 2 + 18px));
   z-index: 3;
   color: #fff;
-  font-family: "STXingkai", "FZShuTi", "KaiTi", var(--display-font);
-  font-size: clamp(42px, 4.15vw, 64px);
-  font-weight: 700;
-  font-style: italic;
+  font-family: "ZCOOL KuaiLe", "Microsoft YaHei", sans-serif;
+  font-size: clamp(44px, 4.3vw, 68px);
+  font-weight: 400;
+  font-style: normal;
   line-height: 0.88;
-  letter-spacing: -0.14em;
+  letter-spacing: -0.1em;
   text-align: left;
   text-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
-  transform: rotate(-3deg) skewX(-7deg);
+  transform: rotate(-3deg) skewX(-4deg);
   transform-origin: left center;
   pointer-events: none;
   animation: cover-manifesto-in 820ms 140ms var(--ease-out) both;
@@ -5212,12 +5212,12 @@ main {
 @keyframes cover-manifesto-in {
   from {
     opacity: 0;
-    transform: translateY(18px) rotate(-3deg) skewX(-7deg);
+    transform: translateY(18px) rotate(-3deg) skewX(-4deg);
   }
 
   to {
     opacity: 1;
-    transform: rotate(-3deg) skewX(-7deg);
+    transform: rotate(-3deg) skewX(-4deg);
   }
 }
 
