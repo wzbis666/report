@@ -5173,3 +5173,77 @@ main {
     height: 22px;
   }
 }
+
+/* Original first-screen manifesto: expressive display text without company assets. */
+
+.cover-manifesto {
+  margin: 0;
+  position: absolute;
+  top: clamp(112px, 17vh, 158px);
+  left: max(34px, calc((100% - 1320px) / 2 + 18px));
+  z-index: 3;
+  color: #fff;
+  font-family: "STXingkai", "FZShuTi", "KaiTi", var(--display-font);
+  font-size: clamp(42px, 4.15vw, 64px);
+  font-weight: 700;
+  font-style: italic;
+  line-height: 0.88;
+  letter-spacing: -0.14em;
+  text-align: left;
+  text-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
+  transform: rotate(-3deg) skewX(-7deg);
+  transform-origin: left center;
+  pointer-events: none;
+  animation: cover-manifesto-in 820ms 140ms var(--ease-out) both;
+}
+
+.cover-manifesto span {
+  display: block;
+}
+
+.cover-manifesto span:nth-child(2) {
+  margin-left: 0.4em;
+}
+
+.cover-manifesto span:nth-child(3) {
+  margin-left: 0.08em;
+}
+
+@keyframes cover-manifesto-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) rotate(-3deg) skewX(-7deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotate(-3deg) skewX(-7deg);
+  }
+}
+
+@media (max-width: 1180px) {
+  .cover-manifesto {
+    top: 88px;
+    left: 30px;
+    font-size: 35px;
+    line-height: 0.86;
+  }
+}
+
+@media (max-width: 760px) {
+  .cover-manifesto {
+    display: block;
+    top: 59px;
+    left: 22px;
+    font-size: 23px;
+    line-height: 0.84;
+    letter-spacing: -0.15em;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cover-manifesto {
+    animation: none !important;
+  }
+}
