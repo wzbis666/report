@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="《浪漫餐厅》两周实玩、问题诊断与游戏运营交付项目">
-<title>《浪漫餐厅》两周实玩与运营诊断</title>
+<meta name="description" content="连续体验《浪漫餐厅》两周后，从个人付费记录与推进卡点形成 GH-EXP-01 游戏运营问题单">
+<title>付费 ¥100+ 后，我为什么仍在 Lv.20 被打断？</title>
 <link rel="icon" href="images/portfolio-lemon-slice.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;800&amp;family=ZCOOL+KuaiLe&amp;family=ZCOOL+XiaoWei&amp;display=swap" rel="stylesheet">
 <script>if("scrollRestoration" in history) history.scrollRestoration = "manual";</script>
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=20260830-casefile-2">
 </head>
 <body>
 <a class="skip-link" href="#main-content">跳到正文</a>
@@ -74,16 +74,20 @@
   <p class="cover-manifesto" aria-label="认真记录每一次玩家体验"><span aria-hidden="true">认真记录</span><span aria-hidden="true">每一次</span><span aria-hidden="true">玩家体验</span></p>
   <div class="cover-grid">
     <div class="cover-copy reveal">
-      <span class="eyebrow">项目产出 · 游戏运营支持</span>
-      <h1>《浪漫餐厅》<br><span class="title-mark">两周实玩</span><br>与运营诊断</h1>
-      <p class="cover-lead">基于抖音小程序约 20 小时的实玩记录，我梳理了剧情留存、付费触发与 20 级后的推进卡点，并把个人感受整理成可复现、可验证、可回复的运营问题。</p>
+      <span class="eyebrow cover-case-label"><span>CASE FILE · GH-EXP-01</span><span>《浪漫餐厅》· 两周实玩</span></span>
+      <h1>我为什么愿意付费 <span class="title-mark">¥100+</span><br><span class="cover-question">又为什么在 Lv.20 被打断？</span></h1>
+      <p class="cover-lead">连续体验 2 周、约 20 小时后，我把一次次“还差一点”的个人体验，整理成一条可复现、可查数、可回复的运营问题单。</p>
+      <div class="cover-actions" aria-label="项目快速入口">
+        <a class="cover-action primary" href="#summary">30 秒看懂项目<svg class="ui-icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></a>
+        <a class="cover-action secondary" href="#issue-report-title">查看 GH-EXP-01</a>
+      </div>
       <div class="stat-row" aria-label="体验数据">
         <div class="stat"><strong data-count="2" data-suffix=" 周">2 周</strong><span>连续体验</span></div>
         <div class="stat"><strong data-count="20" data-suffix="h">20h</strong><span>累计时长</span></div>
         <div class="stat"><strong data-count="20" data-prefix="Lv.">Lv.20</strong><span>当前等级</span></div>
-        <div class="stat"><strong data-count="100" data-prefix="¥" data-suffix="+">¥100+</strong><span>真实付费</span></div>
+        <div class="stat"><strong data-count="100" data-prefix="¥" data-suffix="+">¥100+</strong><span>个人付费记录</span></div>
       </div>
-      <p class="cover-note">体验结论来自本人实玩与付费记录；市场信息来自公开资料；留存、转化与流失相关判断均列为待后台验证，不作为既定结论。</p>
+      <p class="cover-note">一手体验仅代表本人；留存、转化与流失影响均等待后台数据确认。</p>
     </div>
 
     <div class="cover-gallery" aria-label="《浪漫餐厅》体验画面精选">
@@ -99,7 +103,7 @@
       <figure class="gallery-card gallery-card-far-right" aria-hidden="true"><img src="images/4.jpg" alt="" width="540" height="1206" decoding="async"></figure>
     </div>
   </div>
-  <a class="scroll-cue" href="#summary"><span>先看结论</span><svg class="ui-icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></a>
+  <a class="scroll-cue" href="#summary"><span>进入案卷</span><svg class="ui-icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></a>
 </header>
 
 <main id="main-content" tabindex="-1">
@@ -108,32 +112,49 @@
       <span class="section-number">00</span>
       <div>
         <span class="section-kicker">项目概览</span>
-        <h2>三条结论：为什么留下、在哪里卡住、该验证什么</h2>
-        <p>先把两周实玩压缩成面试官可以快速判断的项目结论。</p>
+        <h2>30 秒看懂：证据如何变成运营动作</h2>
+        <p>从个人实玩出发，沿着证据、诊断、动作和指标走完一条可验证的闭环。</p>
       </div>
+    </div>
+
+    <div class="quick-read reveal" aria-label="项目四步闭环">
+      <a class="quick-step" href="#experience">
+        <span class="quick-index" aria-hidden="true">01</span>
+        <span class="evidence-chip first-hand">一手体验</span>
+        <strong>实玩证据</strong>
+        <p>剧情悬念让我继续清订单，装修提供看得见的阶段成果。</p>
+        <small>查看 3 张关键截图</small>
+      </a>
+      <a class="quick-step" href="#friction">
+        <span class="quick-index" aria-hidden="true">02</span>
+        <span class="evidence-chip inference">分析推断</span>
+        <strong>问题诊断</strong>
+        <p>到达 Lv.20 时，高阶订单与体力不足叠加，推进被反复打断。</p>
+        <small>查看复现路径</small>
+      </a>
+      <a class="quick-step" href="#support">
+        <span class="quick-index" aria-hidden="true">03</span>
+        <span class="evidence-chip delivered">已完成交付</span>
+        <strong>运营动作</strong>
+        <p>形成 GH-EXP-01 问题单，并输出内部同步与玩家回复草稿。</p>
+        <small>查看交付清单</small>
+      </a>
+      <a class="quick-step" href="#issue-report-title" data-case-open="case-validation-tab">
+        <span class="quick-index" aria-hidden="true">04</span>
+        <span class="evidence-chip pending">待内部验证</span>
+        <strong>验证指标</strong>
+        <p>查询订单耗时、退出、广告完成与 24 小时回访，再决定优先级。</p>
+        <small>打开数据验证视图</small>
+      </a>
     </div>
 
     <div class="paper-card intro-card reveal">
       <div>
-        <h3>我的核心判断</h3>
-        <p>玩到 20 级后，我发现自己合成咖啡和甜点，往往只是为了赶紧解锁下一段剧情。订单给我短目标，悬疑线让我惦记后续，装修则让我看见这段时间到底推进了多少。</p>
+        <span class="evidence-chip inference">核心判断 · 分析推断</span>
+        <h3>剧情把我拉回来，资源中断又把我推开</h3>
+        <p>到达 Lv.20 时，我发现自己合成咖啡和甜点，往往只是为了赶紧解锁下一段剧情。订单给我短目标，悬疑线让我惦记后续，装修则让我看见这段时间到底推进了多少。</p>
       </div>
       <div class="summary-quote">“我不是为了做出更高级的咖啡而合成，我是想赶紧看看接下来是谁在说谎。”</div>
-    </div>
-
-    <div class="card-grid reveal">
-      <article class="note-card blue">
-        <h3>留存动力</h3>
-        <p>剧情悬念推动我持续清订单，装修则把两周的推进变成看得见的阶段成果。</p>
-      </article>
-      <article class="note-card orange">
-        <h3>付费触发</h3>
-        <p>当体力不足与剧情悬念同时出现时，我会先看广告，再考虑购买低价礼包接上进度。</p>
-      </article>
-      <article class="note-card green">
-        <h3>风险假设</h3>
-        <p>体力不足与长合成链连续叠加，可能把“差一点”变成“今天先不玩了”，需要用退出点与回访数据验证。</p>
-      </article>
     </div>
 
     <div class="evidence-note reveal"><strong>证据边界：</strong>小程序实玩、付费选择和截图属于一手记录；市场规模与产品节奏来自公开资料；留存率、付费率和流失影响只有公司后台能够确认。</div>
@@ -144,7 +165,7 @@
       <span class="section-number">01</span>
       <div>
         <span class="section-kicker">实玩证据</span>
-        <h2>从首次上手，到 20 级后的推进卡点</h2>
+        <h2>从首次上手，到达 Lv.20 时的推进卡点</h2>
         <p>以下只记录我亲自经历的版本、节点、行为和付费选择，不用公开市场数据替代个人体验。</p>
       </div>
     </div>
@@ -153,7 +174,7 @@
       <article class="evidence-step">
         <span class="evidence-time">第 1 天</span>
         <strong>首次上手</strong>
-        <p>拖动一次就能理解二合，早期订单短，几乎没有学习门槛。</p>
+        <p>我拖动一次就理解了二合，早期订单短，很快进入状态。</p>
         <small>证据：订单与合成截图</small>
       </article>
       <article class="evidence-step">
@@ -165,7 +186,7 @@
       <article class="evidence-step">
         <span class="evidence-time">1—20 级</span>
         <strong>观察范围</strong>
-        <p>高阶订单逐渐拉长，体力耗尽后，订单、剧情与装修同步停住。</p>
+        <p>到达 Lv.20 时，高阶订单逐渐拉长；体力耗尽后，订单、剧情与装修同步停住。</p>
         <small>证据：体验日志与付费记录</small>
       </article>
     </div>
@@ -174,7 +195,7 @@
     <div class="card-grid reveal">
       <article class="note-card blue">
         <h3>我先喜欢上二合</h3>
-        <p>拖动一次就能明白怎么玩，早期订单也短，很容易进入状态。到了 20 级，目标链变长，轻松感开始被等待取代。</p>
+        <p>我拖动一次就理解了二合，早期订单也短，很快进入状态。到达 Lv.20 时，目标链变长，轻松感开始被等待取代。</p>
       </article>
       <article class="note-card orange">
         <h3>后来只想看剧情</h3>
@@ -186,18 +207,42 @@
       </article>
     </div>
 
-    <div class="shot-grid reveal">
-      <figure class="shot" role="button" tabindex="0" aria-label="放大查看订单与合成截图">
-        <div class="shot-window"><img src="images/2.jpg" alt="抖音小程序版本的订单与合成棋盘" width="540" height="1206" loading="lazy" decoding="async"><span class="shot-action" aria-hidden="true">点击放大<svg class="ui-icon"><use href="#icon-expand"></use></svg></span></div>
-        <figcaption>我停留最久的页面：订单与合成棋盘</figcaption>
+    <div class="shot-grid reveal" aria-label="可交互实玩截图证据">
+      <figure class="shot">
+        <div class="shot-window">
+          <button class="shot-expand" type="button" aria-label="放大查看订单与合成截图"><img src="images/2.jpg" alt="抖音小程序版本的订单与合成棋盘" width="540" height="1206" loading="lazy" decoding="async"><span class="shot-action" aria-hidden="true">点击放大<svg class="ui-icon"><use href="#icon-expand"></use></svg></span></button>
+          <button class="evidence-hotspot" type="button" style="--hotspot-x: 50%; --hotspot-y: 27%;" aria-expanded="false" aria-controls="shot-evidence-orders"><span aria-hidden="true">01</span><span class="sr-only">查看订单截图证据标注</span></button>
+        </div>
+        <figcaption><strong>订单与合成棋盘</strong><span>点击图中 01 查看证据</span></figcaption>
+        <div class="shot-evidence" id="shot-evidence-orders" hidden>
+          <p><span class="evidence-chip first-hand">一手体验</span>Lv.12 截图：上方同时展示 3 个订单，棋盘内可寻找对应合成链。</p>
+          <p><span class="evidence-chip inference">分析推断</span>订单给合成行为一个明确短目标，降低“接下来做什么”的判断成本。</p>
+          <p><span class="evidence-chip pending">待内部验证</span>更高等级的长合成链是否降低订单完成率，需要后台数据确认。</p>
+        </div>
       </figure>
-      <figure class="shot" role="button" tabindex="0" aria-label="放大查看餐厅装修截图">
-        <div class="shot-window"><img src="images/3.jpg" alt="餐厅装修选择页面" width="540" height="1206" loading="lazy" decoding="async"><span class="shot-action" aria-hidden="true">点击放大<svg class="ui-icon"><use href="#icon-expand"></use></svg></span></div>
-        <figcaption>每做完一段任务，餐厅真的会变一点</figcaption>
+      <figure class="shot">
+        <div class="shot-window">
+          <button class="shot-expand" type="button" aria-label="放大查看餐厅装修截图"><img src="images/3.jpg" alt="餐厅装修选择页面" width="540" height="1206" loading="lazy" decoding="async"><span class="shot-action" aria-hidden="true">点击放大<svg class="ui-icon"><use href="#icon-expand"></use></svg></span></button>
+          <button class="evidence-hotspot" type="button" style="--hotspot-x: 50%; --hotspot-y: 83%;" aria-expanded="false" aria-controls="shot-evidence-decoration"><span aria-hidden="true">02</span><span class="sr-only">查看装修截图证据标注</span></button>
+        </div>
+        <figcaption><strong>餐厅装修选择</strong><span>点击图中 02 查看证据</span></figcaption>
+        <div class="shot-evidence" id="shot-evidence-decoration" hidden>
+          <p><span class="evidence-chip first-hand">一手体验</span>任务推进后进入装修选择，当前画面提供 3 套样式。</p>
+          <p><span class="evidence-chip inference">分析推断</span>可选装修把推进结果外显，也让我感到餐厅在逐步变成自己的。</p>
+          <p><span class="evidence-chip pending">待内部验证</span>装修完成是否提升章节推进或后续回访，需要查看节点数据。</p>
+        </div>
       </figure>
-      <figure class="shot" role="button" tabindex="0" aria-label="放大查看悬疑剧情截图">
-        <div class="shot-window"><img src="images/4.jpg" alt="悬疑剧情对话页面" width="540" height="1206" loading="lazy" decoding="async"><span class="shot-action" aria-hidden="true">点击放大<svg class="ui-icon"><use href="#icon-expand"></use></svg></span></div>
-        <figcaption>我清订单真正想换来的，是下一段对话</figcaption>
+      <figure class="shot">
+        <div class="shot-window">
+          <button class="shot-expand" type="button" aria-label="放大查看悬疑剧情截图"><img src="images/4.jpg" alt="悬疑剧情对话页面" width="540" height="1206" loading="lazy" decoding="async"><span class="shot-action" aria-hidden="true">点击放大<svg class="ui-icon"><use href="#icon-expand"></use></svg></span></button>
+          <button class="evidence-hotspot" type="button" style="--hotspot-x: 54%; --hotspot-y: 31%;" aria-expanded="false" aria-controls="shot-evidence-story"><span aria-hidden="true">03</span><span class="sr-only">查看剧情截图证据标注</span></button>
+        </div>
+        <figcaption><strong>悬疑剧情对话</strong><span>点击图中 03 查看证据</span></figcaption>
+        <div class="shot-evidence" id="shot-evidence-story" hidden>
+          <p><span class="evidence-chip first-hand">一手体验</span>当前对话仍在追查线索，剧情没有在这一屏给出答案。</p>
+          <p><span class="evidence-chip inference">分析推断</span>这段未完成的悬念，是我愿意继续清订单的主要动机。</p>
+          <p><span class="evidence-chip pending">待内部验证</span>剧情中断是否影响补充体力、礼包购买与回访，需要查看同节点行为。</p>
+        </div>
       </figure>
     </div>
 
@@ -208,7 +253,7 @@
         <div><span>选择</span><p>先看激励广告或跳过 CD，再购买新手礼包、低价活动礼包。</p></div>
         <div><span>风险</span><p>偶尔补给可以接受；连续几轮被打断，就会从“差一点”变成“算了”。</p></div>
       </div>
-      <p class="payment-total">两周累计实际付费 100 元以上。</p>
+      <p class="payment-total">个人记录：两周累计付费 100 元以上；本页不展示支付凭证。</p>
     </div>
   </section>
 
@@ -217,7 +262,7 @@
       <span class="section-number">02</span>
       <div>
         <span class="section-kicker">问题诊断</span>
-        <h2>体验问题 GH-EXP-01：推进被体力与长合成链同时打断</h2>
+        <h2>体验问题 GH-EXP-01：Lv.20 阶段的推进被连续打断</h2>
         <p>这是个人反复遇到的体验问题，不代表整体玩家；下面只给出复现路径、影响假设和需要后台验证的指标。</p>
       </div>
     </div>
@@ -235,13 +280,13 @@
       </article>
     </div>
 
-    <div class="impact-line reveal">观察链路：高阶订单变长 → 体力耗尽 → 单次订单被拆成多段 → 剧情与装修同步停滞 → 玩家更容易产生“今天先不玩了”的念头。</div>
+    <div class="impact-line reveal"><strong>个人观察链路：</strong>高阶订单变长 → 体力耗尽 → 单次订单被拆成多段 → 剧情与装修同步停滞 → 我产生过“今天先不玩了”的念头；其普遍性等待后台验证。</div>
 
     <article class="issue-report reveal" aria-labelledby="issue-report-title">
       <header class="report-header">
         <div>
           <span class="report-kicker">EXPERIENCE ISSUE · GH-EXP-01</span>
-          <h3 id="issue-report-title">20 级后，高阶订单推进被连续切断</h3>
+          <h3 id="issue-report-title">到达 Lv.20 时，高阶订单推进被连续切断</h3>
           <p>把一句“玩不下去了”拆成团队可以继续复现、查询和讨论的问题记录。</p>
         </div>
         <div class="report-stamp" aria-label="优先级待数据确认"><strong>P?</strong><span>待数据确认</span></div>
@@ -258,33 +303,51 @@
         <p><strong>当前状态</strong>：一手体验已记录，影响范围与优先级等待后台数据和更多玩家反馈确认。</p>
       </div>
 
-      <div class="issue-list" role="table" aria-label="GH-EXP-01 问题摘要">
-        <div class="issue-list-head" role="row">
-          <span role="columnheader">编号 / 阶段</span>
-          <span role="columnheader">问题与证据</span>
-          <span role="columnheader">下一步</span>
-          <span role="columnheader">优先级</span>
+      <div class="case-workbench">
+        <div class="case-tabs" role="tablist" aria-label="GH-EXP-01 案卷视图">
+          <button id="case-feeling-tab" role="tab" type="button" aria-selected="true" aria-controls="case-feeling-panel" tabindex="0"><span>01</span>玩家感受</button>
+          <button id="case-facts-tab" role="tab" type="button" aria-selected="false" aria-controls="case-facts-panel" tabindex="-1"><span>02</span>已知事实</button>
+          <button id="case-validation-tab" role="tab" type="button" aria-selected="false" aria-controls="case-validation-panel" tabindex="-1"><span>03</span>数据验证</button>
+          <button id="case-reply-tab" role="tab" type="button" aria-selected="false" aria-controls="case-reply-panel" tabindex="-1"><span>04</span>回复方案</button>
         </div>
-        <div class="issue-entry" role="row">
-          <div class="issue-id" role="cell"><strong>GH-EXP-01</strong><span>抖音小程序 · Lv.20 后</span></div>
-          <div class="issue-main" role="cell"><strong>高阶订单、体力不足与长合成链叠加</strong><p>个人体验中，单次订单需要分多段完成，剧情与装修同步停滞。</p><small>证据：实玩日志、订单截图、付费触发记录</small></div>
-          <div class="issue-next" role="cell"><span>待验证</span><p>订单耗时、资源耗尽后退出、广告完成、补充体力后的回访。</p></div>
-          <div class="issue-priority" role="cell"><span class="priority p2">待定</span><small>按影响量级调整</small></div>
+
+        <div class="case-panel" id="case-feeling-panel" role="tabpanel" aria-labelledby="case-feeling-tab" tabindex="0">
+          <div class="case-panel-lead">
+            <span class="evidence-chip first-hand">一手体验</span>
+            <blockquote>“只差一点”时，整条推进链一起停住。</blockquote>
+            <p>到达 Lv.20 时，高阶订单需要多轮生成与合成；体力耗尽后，我只能等待、看广告或购买礼包。订单未完成时，剧情与装修也无法继续推进。</p>
+          </div>
+          <aside class="case-boundary-card"><strong>判断边界</strong><p>仅代表本人两周实玩体验，不能据此推断整体玩家流失或商业化影响。</p></aside>
+        </div>
+
+        <div class="case-panel" id="case-facts-panel" role="tabpanel" aria-labelledby="case-facts-tab" tabindex="0" hidden>
+          <div class="case-panel-heading"><span class="evidence-chip first-hand">一手体验</span><h4>现有材料足以复现问题，但不足以判断影响范围</h4></div>
+          <div class="case-fact-list">
+            <div><span>记录范围</span><p>抖音小程序，Lv.1—20，约 20 小时。</p></div>
+            <div><span>复现路径</span><p>接取高阶订单 → 多轮生成与合成 → 体力耗尽 → 等待、广告或购买。</p></div>
+            <div><span>现有证据</span><p>实玩日志、Lv.12 棋盘截图与个人付费触发记录。</p></div>
+            <div><span>个人行为</span><p>曾因订单“差最后一截”选择付费。</p></div>
+          </div>
+        </div>
+
+        <div class="case-panel" id="case-validation-panel" role="tabpanel" aria-labelledby="case-validation-tab" tabindex="0" hidden>
+          <div class="case-panel-heading"><span class="evidence-chip pending">待内部验证</span><h4>现在不能定优先级，也不能推断总体流失</h4><p>先查询四项指标，再结合影响人数判断问题优先级。</p></div>
+          <div class="verification-grid" aria-label="待验证指标">
+            <div><small>01 · 待查</small><strong>订单完成耗时</strong><span>按等级与订单类型分层</span></div>
+            <div><small>02 · 待查</small><strong>体力耗尽后 5 分钟退出</strong><span>确认中断是否对应离开</span></div>
+            <div><small>03 · 待查</small><strong>广告完成率</strong><span>识别补给路径是否顺畅</span></div>
+            <div><small>04 · 待查</small><strong>24 小时回访</strong><span>观察补充体力后的继续意愿</span></div>
+          </div>
+        </div>
+
+        <div class="case-panel" id="case-reply-panel" role="tabpanel" aria-labelledby="case-reply-tab" tabindex="0" hidden>
+          <div class="case-panel-heading"><span class="evidence-chip delivered">已完成交付</span><h4>同一条问题，同时给团队下一步和玩家明确回应</h4></div>
+          <div class="response-grid">
+            <article><span>玩家回复草稿</span><p>收到你反馈高阶订单阶段体力不足、推进反复中断。我们已记录发生等级和订单路径；如方便，请补充订单截图与发生时间，便于继续定位。后续有进展会及时同步。</p></article>
+            <article><span>内部动作</span><p>按等级、订单类型和体力耗尽节点查询退出、广告、礼包与回访表现，再决定优先级和处理方式。</p></article>
+          </div>
         </div>
       </div>
-
-      <details class="issue-case" open>
-        <summary><span><b>查看复现路径与判断边界</b><small>区分已经观察到的事实与需要后台确认的假设</small></span><svg class="ui-icon" aria-hidden="true"><use href="#icon-chevron-right"></use></svg></summary>
-        <div class="issue-case-body">
-          <div class="case-grid">
-            <div><span>触发路径</span><p>接取高阶订单 → 多轮生成 → 体力耗尽 → 等待、看广告或购买礼包。</p></div>
-            <div><span>已经观察</span><p>订单、剧情与装修会同时停住；个人曾因“差最后一截”选择付费。</p></div>
-            <div><span>影响假设</span><p>连续中断可能提高中途退出，降低当日继续意愿与次日回访。</p></div>
-            <div><span>验证指标</span><p>订单完成耗时、体力耗尽后 5 分钟退出、广告完成率、24 小时回访。</p></div>
-          </div>
-          <p class="case-boundary"><strong>边界：</strong>这是一条个人体验问题单，不代表总体玩家结论；优先级、影响人数与商业化效果必须结合后台数据判断。</p>
-        </div>
-      </details>
     </article>
   </section>
 
@@ -312,15 +375,9 @@
       </div>
     </div>
 
-    <div class="feedback-proof delivery-proof reveal">
-      <article class="feedback-item">
-        <span class="source-label">内部同步摘要</span>
-        <p><strong>已知：</strong>Lv.20 后高阶订单需要多轮生成，个人体验中出现体力耗尽与推进中断。<br><strong>需要：</strong>按等级、订单类型和体力耗尽节点查询退出、广告、礼包与回访表现，再决定优先级和处理方式。</p>
-      </article>
-      <article class="feedback-item">
-        <span class="source-label">玩家回复草稿</span>
-        <p>收到你在高阶订单阶段体力不足、推进反复中断的反馈。我们已记录发生等级和订单路径；如方便，可补充订单截图与发生时间，便于继续定位。后续有进展会及时同步。</p>
-      </article>
+    <div class="case-handoff reveal">
+      <div><span class="evidence-chip delivered">已纳入 GH-EXP-01</span><h3>内部同步与玩家回复，已经并入同一份案卷</h3><p>避免把结论重复铺满页面；在“回复方案”视图中可以直接查看完整文本及下一步查数动作。</p></div>
+      <a class="case-handoff-link" href="#issue-report-title" data-case-open="case-reply-tab">打开回复方案<svg class="ui-icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></a>
     </div>
 
     <aside class="support-note reveal"><strong>这份项目最终交付了什么</strong><p>一份实玩记录、一条完整问题单、一组后台验证指标、一份内部同步摘要与玩家回复草稿，以及用于旁证的市场研究附录。</p></aside>
@@ -337,9 +394,10 @@
     </div>
 
     <div class="research-scope reveal" aria-label="研究证据口径">
-      <article><span class="scope-tag primary">一手体验</span><strong>负责发现问题</strong><p>2 周、约 20 小时、1—20 级与 100 元以上真实付费记录。</p></article>
-      <article><span class="scope-tag public">公开资料</span><strong>负责交叉验证</strong><p>官方商店页、更新说明和行业报告用于确认产品与品类背景。</p></article>
-      <article><span class="scope-tag pending">内部数据</span><strong>负责判断优先级</strong><p>退出、回访、广告、礼包与订单数据均标记为待后台验证。</p></article>
+      <article><span class="evidence-chip first-hand">一手体验</span><strong>负责发现问题</strong><p>2 周、约 20 小时、1—20 级与 100 元以上个人付费记录。</p></article>
+      <article><span class="evidence-chip public">官方公开</span><strong>负责确认产品</strong><p>官方商店页与更新说明用于核对产品信息、题材和素材来源。</p></article>
+      <article><span class="evidence-chip estimate">第三方估算</span><strong>负责补充背景</strong><p>行业报告用于观察品类规模与竞争位置，不等同于发行方财报。</p></article>
+      <article><span class="evidence-chip pending">待内部验证</span><strong>负责判断优先级</strong><p>退出、回访、广告、礼包与订单表现必须回到后台确认。</p></article>
     </div>
 
     <div class="market-proof reveal" aria-label="《浪漫餐厅》市场规模公开数据摘要">
@@ -359,7 +417,7 @@
         <p>大部分收入集中在少数产品手里，后来者很难只靠换题材追上。<a href="#source-3">[3]</a></p>
       </article>
     </div>
-    <p class="market-method reveal">口径说明：以上为 AppMagic 对全球 App Store 与 Google Play 移动端内购的第三方估算，不包含广告、网页商店等收入，也不等同于发行方财报。</p>
+    <p class="market-method reveal"><span class="evidence-chip estimate">第三方估算</span>口径说明：以上为 AppMagic 对全球 App Store 与 Google Play 移动端内购的估算，不包含广告、网页商店等收入，也不等同于发行方财报。</p>
 
     <div class="audience-intro reveal">
       <h3>同样是来玩合成，想要的东西并不一样</h3>
@@ -568,7 +626,7 @@
     });
   }
 
-  Array.prototype.slice.call(document.querySelectorAll(".brand, .nav-link, .nav-cta, .scroll-cue")).forEach(function (link) {
+  Array.prototype.slice.call(document.querySelectorAll(".brand, .nav-link, .nav-cta, .scroll-cue, .cover-action, .quick-step, .case-handoff-link")).forEach(function (link) {
     link.addEventListener("click", function (event) {
       var hash = link.getAttribute("href");
       var target = hash && hash.charAt(0) === "#" ? document.querySelector(hash) : null;
@@ -659,6 +717,39 @@
     });
   }
 
+  var caseTabs = Array.prototype.slice.call(document.querySelectorAll(".case-tabs [role='tab']"));
+  function activateCaseTab(tab, shouldFocus) {
+    if (!tab) return;
+    caseTabs.forEach(function (item) {
+      var selected = item === tab;
+      var panel = document.getElementById(item.getAttribute("aria-controls"));
+      item.setAttribute("aria-selected", selected ? "true" : "false");
+      item.tabIndex = selected ? 0 : -1;
+      if (panel) panel.hidden = !selected;
+    });
+    if (shouldFocus) tab.focus();
+  }
+
+  caseTabs.forEach(function (tab, index) {
+    tab.addEventListener("click", function () { activateCaseTab(tab, false); });
+    tab.addEventListener("keydown", function (event) {
+      var nextIndex = index;
+      if (event.key === "ArrowRight") nextIndex = (index + 1) % caseTabs.length;
+      else if (event.key === "ArrowLeft") nextIndex = (index - 1 + caseTabs.length) % caseTabs.length;
+      else if (event.key === "Home") nextIndex = 0;
+      else if (event.key === "End") nextIndex = caseTabs.length - 1;
+      else return;
+      event.preventDefault();
+      activateCaseTab(caseTabs[nextIndex], true);
+    });
+  });
+
+  Array.prototype.slice.call(document.querySelectorAll("[data-case-open]")).forEach(function (link) {
+    link.addEventListener("click", function () {
+      activateCaseTab(document.getElementById(link.dataset.caseOpen), false);
+    });
+  });
+
   var compareBoard = document.querySelector(".compare-board");
   var compareButtons = Array.prototype.slice.call(document.querySelectorAll(".compare-toggle"));
   var compareNote = document.getElementById("compare-note");
@@ -707,6 +798,21 @@
     });
   });
 
+  Array.prototype.slice.call(document.querySelectorAll(".evidence-hotspot")).forEach(function (button) {
+    button.addEventListener("click", function () {
+      var panel = document.getElementById(button.getAttribute("aria-controls"));
+      if (!panel) return;
+      var willOpen = button.getAttribute("aria-expanded") !== "true";
+      button.setAttribute("aria-expanded", willOpen ? "true" : "false");
+      panel.hidden = !willOpen;
+      if (willOpen) {
+        window.requestAnimationFrame(function () {
+          panel.scrollIntoView({ block: "nearest", behavior: reducedMotion ? "auto" : "smooth" });
+        });
+      }
+    });
+  });
+
   var shots = Array.prototype.slice.call(document.querySelectorAll(".shot"));
   var lightbox = document.getElementById("lightbox");
   var lightboxImage = document.getElementById("lightbox-image");
@@ -730,7 +836,8 @@
   function renderLightbox() {
     var shot = shots[lightboxCurrent];
     var image = shot.querySelector("img");
-    var caption = shot.querySelector("figcaption").textContent;
+    var captionNode = shot.querySelector("figcaption strong") || shot.querySelector("figcaption");
+    var caption = captionNode.textContent;
     lightboxImage.src = image.getAttribute("src");
     lightboxImage.alt = image.alt;
     lightboxCaption.textContent = caption;
@@ -766,13 +873,8 @@
   }
 
   shots.forEach(function (shot, index) {
-    shot.addEventListener("click", function () { openLightbox(index); });
-    shot.addEventListener("keydown", function (event) {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        openLightbox(index);
-      }
-    });
+    var expandButton = shot.querySelector(".shot-expand");
+    if (expandButton) expandButton.addEventListener("click", function () { openLightbox(index); });
   });
 
   lightboxClose.addEventListener("click", closeLightbox);
