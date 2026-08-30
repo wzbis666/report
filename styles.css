@@ -773,7 +773,7 @@ main {
 }
 
 .intro-card::after {
-  content: "PLAYER NOTE";
+  content: "个人感受";
   position: absolute;
   right: 24px;
   top: 20px;
@@ -3755,7 +3755,7 @@ main {
 }
 
 .section-number::before {
-  content: "SECTION ";
+  content: "章节 ";
 }
 
 .section-heading h2 {
