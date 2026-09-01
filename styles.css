@@ -305,11 +305,11 @@ a[href] {
 /* Editorial cover */
 .cover {
   position: relative;
-  min-height: min(880px, 100svh);
+  min-height: 0;
   padding-top: var(--nav-height);
   overflow: hidden;
   color: var(--ink);
-  background: var(--paper-pale);
+  background: #9dc1d8;
   border-bottom: 1px solid var(--line-strong);
 }
 
@@ -327,29 +327,29 @@ a[href] {
 }
 
 .cover-grid {
-  width: min(100%, 1510px);
-  min-height: calc(min(880px, 100svh) - var(--nav-height));
+  width: 100%;
+  min-height: 0;
   margin-inline: auto;
-  display: grid;
-  grid-template-columns: minmax(540px, 0.98fr) minmax(480px, 1.02fr);
-  grid-template-areas: "copy gallery";
+  position: relative;
+  aspect-ratio: 1080 / 608;
 }
 
 .cover-copy {
-  grid-area: copy;
-  position: relative;
+  position: absolute;
+  inset: 0 auto 0 0;
   z-index: 3;
-  align-self: center;
-  max-width: 760px;
-  padding: clamp(72px, 8vh, 108px) clamp(42px, 5vw, 82px) clamp(110px, 13vh, 150px) max(var(--gutter), calc((100vw - var(--page)) / 2));
+  width: min(660px, 49vw);
+  min-height: 100%;
+  padding: clamp(44px, 5vw, 70px) clamp(38px, 5vw, 72px) 40px max(var(--gutter), calc((100vw - var(--page)) / 2));
+  background: linear-gradient(90deg, rgba(250, 247, 239, 0.985) 0%, rgba(250, 247, 239, 0.955) 70%, rgba(250, 247, 239, 0.68) 86%, rgba(250, 247, 239, 0) 100%);
 }
 
 .cover-copy::after {
   position: absolute;
-  right: -22px;
-  bottom: 78px;
-  width: 130px;
-  height: 22px;
+  right: 10px;
+  bottom: 20px;
+  width: 94px;
+  height: 16px;
   content: "";
   background: var(--lemon);
   opacity: 0.94;
@@ -383,10 +383,10 @@ a[href] {
 }
 
 .cover h1 {
-  max-width: 720px;
+  max-width: 590px;
   margin: 0;
   font-family: var(--display);
-  font-size: clamp(54px, 5.4vw, 82px);
+  font-size: clamp(48px, 4.55vw, 66px);
   font-weight: 400;
   line-height: 1.08;
   letter-spacing: -0.045em;
@@ -415,15 +415,15 @@ a[href] {
 }
 
 .cover-lead {
-  max-width: 650px;
-  margin: 28px 0 0;
+  max-width: 530px;
+  margin: 20px 0 0;
   color: var(--ink-2);
-  font-size: 17px;
-  line-height: 1.85;
+  font-size: 15px;
+  line-height: 1.78;
 }
 
 .cover-actions {
-  margin-top: 30px;
+  margin-top: 21px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -464,8 +464,8 @@ a[href] {
 }
 
 .stat-row {
-  max-width: 700px;
-  margin-top: 38px;
+  max-width: 570px;
+  margin-top: 24px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   border-block: 1px solid var(--line-strong);
@@ -473,14 +473,14 @@ a[href] {
 
 .stat {
   position: relative;
-  padding: 18px 12px 16px 0;
+  padding: 12px 10px 11px 0;
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
 
 .stat + .stat {
-  padding-left: 18px;
+  padding-left: 13px;
   border-left: 1px solid var(--line);
 }
 
@@ -499,20 +499,21 @@ a[href] {
 }
 
 .cover-note {
-  max-width: 650px;
-  margin: 15px 0 0;
+  max-width: 545px;
+  margin: 10px 0 0;
   color: var(--muted);
   font-size: 12px;
   line-height: 1.7;
 }
 
 .cover-gallery {
-  grid-area: gallery;
-  position: relative;
-  min-height: 100%;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  min-height: 0;
   overflow: hidden;
   background: #8c8a72;
-  border-left: 1px solid var(--ink);
+  border: 0;
 }
 
 .cover-gallery::before {
@@ -521,9 +522,7 @@ a[href] {
   z-index: 2;
   content: "";
   pointer-events: none;
-  background:
-    linear-gradient(90deg, rgba(18, 21, 18, 0.24), transparent 24%),
-    linear-gradient(0deg, rgba(18, 21, 18, 0.18), transparent 38%);
+  background: linear-gradient(0deg, rgba(18, 21, 18, 0.1), transparent 34%);
 }
 
 .cover-gallery::after {
@@ -548,10 +547,10 @@ a[href] {
 }
 
 .cover-visual img {
-  object-fit: cover;
-  object-position: 52% center;
-  filter: saturate(0.84) contrast(1.04);
-  transform: scale(1.02);
+  object-fit: contain;
+  object-position: center;
+  filter: saturate(0.9) contrast(1.03);
+  transform: none;
 }
 
 .scroll-cue {
@@ -2477,24 +2476,36 @@ main {
 
   .cover-grid {
     min-height: auto;
+    display: grid;
+    aspect-ratio: auto;
     grid-template-columns: 1fr;
     grid-template-areas: "gallery" "copy";
   }
 
   .cover-gallery {
-    height: clamp(340px, 49svh, 500px);
+    grid-area: gallery;
+    position: relative;
+    inset: auto;
+    height: auto;
     min-height: 0;
+    aspect-ratio: 1080 / 608;
     border-left: 0;
     border-bottom: 1px solid var(--ink);
   }
 
   .cover-visual img {
-    object-position: center 39%;
+    object-position: center;
   }
 
   .cover-copy {
+    grid-area: copy;
+    position: relative;
+    inset: auto;
+    width: auto;
+    min-height: 0;
     max-width: none;
     padding: clamp(45px, 8vw, 76px) var(--gutter) 92px;
+    background: var(--paper-pale);
   }
 
   .cover-copy::after {
@@ -2558,7 +2569,8 @@ main {
   }
 
   .cover-gallery {
-    height: clamp(290px, 43svh, 430px);
+    height: auto;
+    aspect-ratio: 1080 / 608;
   }
 
   .cover-gallery::after {
@@ -2918,11 +2930,11 @@ main {
   }
 
   .cover-gallery {
-    height: 285px;
+    height: auto;
   }
 
   .cover-visual img {
-    object-position: 53% center;
+    object-position: center;
   }
 
   .cover-gallery::after {
@@ -3047,20 +3059,28 @@ main {
 
 @media (max-height: 540px) and (orientation: landscape) {
   .cover-grid {
-    min-height: 570px;
-    grid-template-columns: 1.03fr 0.97fr;
-    grid-template-areas: "copy gallery";
+    min-height: auto;
+    grid-template-columns: 1fr;
+    grid-template-areas: "gallery" "copy";
   }
 
   .cover-copy {
+    position: relative;
+    inset: auto;
+    width: auto;
+    min-height: 0;
     padding: 36px 30px 70px var(--gutter);
+    background: var(--paper-pale);
   }
 
   .cover-gallery {
+    position: relative;
+    inset: auto;
     height: auto;
-    min-height: 570px;
-    border-left: 1px solid var(--ink);
-    border-bottom: 0;
+    min-height: 0;
+    aspect-ratio: 1080 / 608;
+    border-left: 0;
+    border-bottom: 1px solid var(--ink);
   }
 
   .cover h1 {
