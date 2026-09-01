@@ -1,6 +1,6 @@
 # 视觉 QA：柠檬微趣风格作品页重构
 
-> 本文件保留历次视觉迭代记录。页面当前状态与最终验收以“当前迭代：全页文案自然化”和前一轮 CASE FILE 证据链改造为准。
+> 本文件保留历次视觉迭代记录。页面当前状态与最终验收以“当前迭代：招聘阅读与发布质量收尾”为准。
 
 ## 对照目标与证据
 
@@ -114,6 +114,38 @@
 - 本轮未引入外部素材，也未增加未经支持的玩家数据、支付凭证或后台结论。
 
 **current result: passed**
+
+## 当前迭代：招聘阅读与发布质量收尾
+
+- **首屏产出前置**：说明改为“1 条问题单、4 项待查数据、1 份玩家回复草稿”，主按钮改为“直接看问题单”；保留 `2 周 / 20h / Lv.20 / ¥100+`，但不再用计数动画短暂展示错误数字。
+- **首屏视觉修复**：删除压住左上官方游戏 Logo 的手写标语，也移除 4 张永久隐藏却会抢先下载的旧画廊图；首屏只加载实际展示的宣传图。
+- **资源体积**：原创柠檬标识从 `1254 × 1254 / 654.3 KB` 缩为 `128 × 128 / 15.6 KB`，桌面和手机显示尺寸不变；灯箱占位图改为懒加载。当前页面直接使用的非懒加载图片合计约 62.4 KB。
+- **阅读长度**：玩家分层和同类产品对照收进默认折叠的“研究附录”，核心案例仍直接展示；桌面默认页高从 `11053px` 降到 `8882px`，减少约 19.6%。
+- **分享预览**：补齐 canonical、Open Graph、Twitter Card、主题色和 1080 × 608 分享图，外链统一使用 `noopener noreferrer`。
+- **可读性**：白底/浅灰底正文、章节标签和章节编号实测对比度分别为 `5.54:1 / 5.15:1`、`6.43:1`、`4.86:1`；这里只确认抽查文本的颜色对比度，不宣称整页完成 WCAG 认证。
+- **交互修复**：手机菜单展开时锁定底层滚动；主按钮使用实际导航高度和元素布局位置计算锚点，问题单完整头部停在导航下方；桌面导航 hover 线恢复可见。
+- **打印兜底**：新增末尾打印覆盖，避免渐变标题在关闭背景图形时变透明，并去除导航、返回顶部和首屏背景图。
+
+### 本轮截图证据
+
+- 桌面首屏：`C:\Users\WZB\AppData\Local\Temp\romantic-restaurant-audit-20260831\after-01-desktop-hero.png`
+- 桌面公开资料：`C:\Users\WZB\AppData\Local\Temp\romantic-restaurant-audit-20260831\after-02-desktop-market.png`
+- 桌面研究附录：`C:\Users\WZB\AppData\Local\Temp\romantic-restaurant-audit-20260831\after-03-desktop-appendix-closed.png`、`after-04-desktop-appendix-open.png`
+- 手机首屏与菜单：`C:\Users\WZB\AppData\Local\Temp\romantic-restaurant-audit-20260831\after-05-mobile-hero.png`、`after-06-mobile-menu.png`
+- 手机问题单：`C:\Users\WZB\AppData\Local\Temp\romantic-restaurant-audit-20260831\after-07-mobile-issue.png`
+- 320px 与横屏：`C:\Users\WZB\AppData\Local\Temp\romantic-restaurant-audit-20260831\after-08-mobile-320.png`、`after-09-landscape-844.png`
+
+### 本轮运行验收
+
+- 1440 × 900、1280 × 720、390 × 844、375 × 812、320 × 720、844 × 390，以及 760/761px 断点均无横向溢出。
+- 320px 下首屏按钮转为单列；760px 使用手机菜单，761px 使用桌面导航；844px 横屏导航保持单行。
+- 手机菜单打开后按 PageDown，页面滚动位置保持 `0`；点击菜单项后菜单关闭并恢复滚动。
+- 问题单标签点击、方向键切换、面板显隐和焦点同步通过；截图标注、灯箱 Escape 关闭及焦点恢复通过。
+- 研究附录默认收起且可展开；竞品视角切换、资料来源展开通过。
+- 两段内联脚本可编译，ID 无重复，CSS 花括号配平，本地图片与内部锚点完整，外链安全属性通过。
+- 当前仍缺一张可公开的 Lv.20 脱敏实玩截图；本轮没有伪造等级画面、支付凭证、后台指标或玩家群体结论。
+
+**current result: passed（证据增强待补 Lv.20 脱敏截图）**
 
 ## 历史迭代：首屏原创体验标语（当前版本已弱化）
 
