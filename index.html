@@ -25,11 +25,28 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;800&amp;family=Noto+Serif+SC:wght@500;600&amp;display=swap" rel="stylesheet">
-<script>if("scrollRestoration" in history) history.scrollRestoration = "manual";</script>
+<script>document.documentElement.classList.add("js"); if("scrollRestoration" in history) history.scrollRestoration = "manual";</script>
 <link rel="stylesheet" href="styles.css?v=20260901-cover-2">
 </head>
 <body>
 <a class="skip-link" href="#main-content">跳到正文</a>
+<section class="entry-gate" id="entry-gate" role="dialog" aria-modal="true" aria-labelledby="entry-gate-title">
+  <div class="entry-gate-copy">
+    <p class="entry-kicker">FIELD NOTE / 2026 / 01</p>
+    <h2 id="entry-gate-title"><span>打开一份</span><span>实玩档案</span></h2>
+    <p class="entry-gate-lead">从一次愿意付费的体验，走到 Lv.20 被打断的那一刻。</p>
+    <div class="entry-actions">
+      <button class="entry-button" id="entry-enter" type="button">进入档案<svg class="ui-icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></button>
+      <button class="entry-skip" id="entry-skip" type="button">跳过开场</button>
+    </div>
+    <p class="entry-hint" aria-hidden="true"><span></span>SCROLL / EXPLORE</p>
+  </div>
+  <div class="entry-gate-visual" aria-hidden="true">
+    <img src="images/_tap_banner.webp" alt="" width="1080" height="608" fetchpriority="high" decoding="async">
+    <span class="entry-orbit entry-orbit--one"></span><span class="entry-orbit entry-orbit--two"></span>
+    <p>ROMANTIC RESTAURANT<br>CASE FILE</p>
+  </div>
+</section>
 <svg class="icon-sprite" aria-hidden="true" focusable="false">
   <symbol id="icon-coffee" viewBox="0 0 24 24">
     <path d="M10 2v2M14 2v2M6 2v2"></path>
@@ -69,6 +86,7 @@
 <nav class="topbar" aria-label="章节导航">
   <div class="topbar-inner">
     <a class="brand" href="#cover"><span class="brand-mark" aria-hidden="true"><img src="images/portfolio-lemon-slice.png?v=20260901" alt="" width="32" height="32" decoding="async"></span><span class="brand-copy">《浪漫餐厅》· 两周实玩记录</span></a>
+    <span class="nav-stage" aria-live="polite"><span>CASE</span><strong id="nav-stage-value">00 / 05</strong></span>
     <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
       <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span><span class="sr-only">打开章节导航</span>
     </button>
@@ -106,13 +124,17 @@
       <figure class="cover-visual">
         <img src="images/_tap_banner.webp" alt="《浪漫餐厅》官方宣传画面" width="1080" height="608" fetchpriority="high" decoding="async">
       </figure>
+      <div class="cover-frame" aria-hidden="true"><span>CASE / 01</span><span>PLAY / NOTE / CHECK</span></div>
+      <span class="cover-pulse" aria-hidden="true"></span>
     </div>
   </div>
   <a class="scroll-cue" href="#summary"><span>往下看结论</span><svg class="ui-icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></a>
 </header>
 
+<div class="chapter-rail" aria-hidden="true"><div><span>实玩记录</span><i>✳</i><span>玩家感受</span><i>✳</i><span>问题单</span><i>✳</i><span>待查数据</span><i>✳</i><span>实玩记录</span><i>✳</i><span>玩家感受</span><i>✳</i><span>问题单</span><i>✳</i><span>待查数据</span><i>✳</i></div></div>
+
 <main id="main-content" tabindex="-1">
-  <section class="section" id="summary">
+  <section class="section stage-section section--summary" id="summary" data-stage="01" aria-label="第一章：先看结论">
     <div class="section-heading reveal">
       <span class="section-number">00</span>
       <div>
@@ -122,29 +144,29 @@
       </div>
     </div>
 
-    <div class="quick-read reveal" aria-label="四项项目要点">
-      <a class="quick-step" href="#experience">
+    <div class="quick-read conclusion-stage reveal" aria-label="四项项目要点">
+      <a class="quick-step" href="#experience" data-conclusion="继续玩">
         <span class="quick-index" aria-hidden="true">01</span>
         <span class="evidence-chip first-hand">我的实玩</span>
         <strong>我为什么继续玩</strong>
         <p>剧情悬念让我接着清订单，装修则让我看见餐厅一点点变样。</p>
         <small>看 3 张实玩截图</small>
       </a>
-      <a class="quick-step" href="#friction">
+      <a class="quick-step" href="#friction" data-conclusion="卡住">
         <span class="quick-index" aria-hidden="true">02</span>
         <span class="evidence-chip inference">个人判断</span>
         <strong>我在哪里卡住</strong>
         <p>玩到 Lv.20 时，高阶订单变长，体力却很快见底，刚进入状态就要停。</p>
         <small>看卡点怎么出现</small>
       </a>
-      <a class="quick-step" href="#support">
+      <a class="quick-step" href="#support" data-conclusion="整理">
         <span class="quick-index" aria-hidden="true">03</span>
         <span class="evidence-chip delivered">已经整理</span>
         <strong>我会怎么处理</strong>
         <p>我把这次卡点写成 GH-EXP-01，也准备了团队摘要和玩家回复草稿。</p>
         <small>看我整理了什么</small>
       </a>
-      <a class="quick-step" href="#issue-report" data-case-open="case-validation-tab">
+      <a class="quick-step" href="#issue-report" data-case-open="case-validation-tab" data-conclusion="待查">
         <span class="quick-index" aria-hidden="true">04</span>
         <span class="evidence-chip pending">还需查数</span>
         <strong>还要查什么</strong>
@@ -165,7 +187,7 @@
     <div class="evidence-note reveal"><strong>这些话能说明什么：</strong>我能确认自己的实玩过程、付费选择和截图；市场情况只参考公开资料。留存率、付费率和流失情况，只能回到公司后台确认。</div>
   </section>
 
-  <section class="section" id="experience">
+  <section class="section stage-section section--experience" id="experience" data-stage="2 周" aria-label="第二章：两周实玩">
     <div class="section-heading reveal">
       <span class="section-number">01</span>
       <div>
@@ -175,20 +197,20 @@
       </div>
     </div>
 
-    <div class="evidence-index reveal" aria-label="两周体验记录索引">
-      <article class="evidence-step">
+    <div class="evidence-index time-capsule reveal" aria-label="两周体验记录索引">
+      <article class="evidence-step" data-time="D01">
         <span class="evidence-time">第 1 天</span>
         <strong>很快就会玩了</strong>
         <p>拖动一次我就明白了二合，早期订单也短，很快进入状态。</p>
         <small>对应记录：订单与合成截图</small>
       </article>
-      <article class="evidence-step">
+      <article class="evidence-step" data-time="D03">
         <span class="evidence-time">第 3—14 天</span>
         <strong>开始惦记剧情</strong>
         <p>我会为了接着看剧情再打开游戏；每完成一处装修，也能看到餐厅确实在变。</p>
         <small>对应记录：剧情与装修截图</small>
       </article>
-      <article class="evidence-step">
+      <article class="evidence-step" data-time="L20">
         <span class="evidence-time">Lv.1—20</span>
         <strong>卡点出现</strong>
         <p>玩到 Lv.20 时，订单需要合成的层级越来越深；体力一用完，订单、剧情和装修就一起停下。</p>
@@ -262,7 +284,7 @@
     </div>
   </section>
 
-  <section class="section" id="friction">
+  <section class="section stage-section section--friction" id="friction" data-stage="Lv.20" aria-label="第三章：Lv.20 卡点">
     <div class="section-heading reveal">
       <span class="section-number">02</span>
       <div>
@@ -287,7 +309,7 @@
 
     <div class="impact-line reveal"><strong>我实际经历的是：</strong>高阶订单变长 → 体力先见底 → 一张订单要分几次完成 → 剧情和装修也停下。我确实想过“今天先不玩了”；其他玩家会不会同样离开，还要回后台查。</div>
 
-    <article class="issue-report reveal" id="issue-report" aria-labelledby="issue-report-title">
+    <article class="issue-report issue-report--stage reveal" id="issue-report" aria-labelledby="issue-report-title">
       <header class="report-header">
         <div>
           <span class="report-kicker">实玩问题单 · GH-EXP-01</span>
@@ -356,7 +378,7 @@
     </article>
   </section>
 
-  <section class="section" id="support">
+  <section class="section stage-section section--support" id="support" data-stage="01 单" aria-label="第四章：我的处理">
     <div class="section-heading reveal">
       <span class="section-number">03</span>
       <div>
@@ -388,7 +410,7 @@
     <aside class="support-note reveal"><strong>面试官可以直接检查的内容</strong><p>包括实玩截图、GH-EXP-01 问题单、四项待查数据、团队摘要、玩家回复草稿和公开资料来源。</p></aside>
   </section>
 
-  <section class="section" id="market">
+  <section class="section stage-section section--market" id="market" data-stage="03" aria-label="第五章：公开资料">
     <div class="section-heading reveal">
       <span class="section-number">04</span>
       <div>
@@ -405,7 +427,7 @@
       <article><span class="evidence-chip pending">还需查数</span><strong>必须回后台查的</strong><p>玩家在哪退出、会不会回来、是否看广告或买礼包、订单完成情况，都要用后台数据确认。</p></article>
     </div>
 
-    <div class="market-proof reveal" aria-label="公开市场数据摘要">
+    <div class="market-proof market-proof--stage reveal" aria-label="公开市场数据摘要">
       <article class="market-metric">
         <span class="metric-label">《Gossip Harbor》2025 年全球移动端内购估算</span>
         <strong>$550M</strong>
@@ -570,11 +592,55 @@
   var navToggle = document.getElementById("nav-toggle");
   var navToggleLabel = navToggle ? navToggle.querySelector(".sr-only") : null;
   var navLinks = Array.prototype.slice.call(document.querySelectorAll(".nav-link"));
+  var navStageValue = document.getElementById("nav-stage-value");
   var sections = navLinks.map(function (link) {
     return document.querySelector(link.getAttribute("href"));
   }).filter(Boolean);
   var scrollQueued = false;
   var currentActiveSection = "";
+  var entryGate = document.getElementById("entry-gate");
+  var entryEnter = document.getElementById("entry-enter");
+  var entrySkip = document.getElementById("entry-skip");
+  var entryIsOpen = false;
+
+  function closeEntryGate(immediate) {
+    if (!entryGate || !entryIsOpen) return;
+    entryIsOpen = false;
+    document.body.classList.remove("entry-open");
+    entryGate.classList.add("is-leaving");
+    var closeDelay = immediate || reducedMotion ? 0 : 680;
+    window.setTimeout(function () {
+      entryGate.hidden = true;
+    }, closeDelay);
+  }
+
+  if (entryGate && (!window.location.hash || window.location.hash === "#cover")) {
+    entryIsOpen = true;
+    document.body.classList.add("entry-open");
+    if (entryEnter) entryEnter.focus();
+    if (entryEnter) entryEnter.addEventListener("click", function () { closeEntryGate(false); });
+    if (entrySkip) entrySkip.addEventListener("click", function () { closeEntryGate(true); });
+    document.addEventListener("keydown", function (event) {
+      if (!entryIsOpen) return;
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeEntryGate(true);
+        return;
+      }
+      if (event.key !== "Tab") return;
+      var entryFocusables = [entryEnter, entrySkip].filter(Boolean);
+      var currentIndex = entryFocusables.indexOf(document.activeElement);
+      if (event.shiftKey && currentIndex === 0) {
+        event.preventDefault();
+        entryFocusables[entryFocusables.length - 1].focus();
+      } else if (!event.shiftKey && currentIndex === entryFocusables.length - 1) {
+        event.preventDefault();
+        entryFocusables[0].focus();
+      }
+    });
+  } else if (entryGate) {
+    entryGate.hidden = true;
+  }
 
   function updateScrollState() {
     var doc = document.documentElement;
@@ -596,6 +662,10 @@
       else link.removeAttribute("aria-current");
       if (isActive) activeLink = link;
     });
+    if (navStageValue) {
+      var activeIndex = active ? sections.findIndex(function (section) { return section.id === active; }) + 1 : 0;
+      navStageValue.textContent = String(activeIndex).padStart(2, "0") + " / " + String(sections.length).padStart(2, "0");
+    }
     if (active && active !== currentActiveSection && activeLink && navLinksContainer) {
       var navRect = navLinksContainer.getBoundingClientRect();
       var linkRect = activeLink.getBoundingClientRect();
@@ -692,6 +762,41 @@
     });
   } else {
     revealItems.forEach(function (item) { item.classList.add("in-view"); });
+  }
+
+  var stageSections = Array.prototype.slice.call(document.querySelectorAll(".stage-section"));
+  if ("IntersectionObserver" in window && !reducedMotion) {
+    var stageObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        entry.target.classList.toggle("is-active", entry.isIntersecting);
+      });
+    }, { threshold: 0.22, rootMargin: "-12% 0px -44% 0px" });
+    stageSections.forEach(function (section) { stageObserver.observe(section); });
+  } else {
+    stageSections.forEach(function (section) { section.classList.add("is-active"); });
+  }
+
+  var cover = document.getElementById("cover");
+  if (cover && !reducedMotion && window.matchMedia("(pointer: fine)").matches) {
+    var coverPointerFrame = null;
+    var pointerX = 0;
+    var pointerY = 0;
+    function renderCoverPointer() {
+      cover.style.setProperty("--pointer-x", pointerX.toFixed(1));
+      cover.style.setProperty("--pointer-y", pointerY.toFixed(1));
+      coverPointerFrame = null;
+    }
+    cover.addEventListener("pointermove", function (event) {
+      var rect = cover.getBoundingClientRect();
+      pointerX = ((event.clientX - rect.left) / rect.width - 0.5) * 16;
+      pointerY = ((event.clientY - rect.top) / rect.height - 0.5) * 16;
+      if (!coverPointerFrame) coverPointerFrame = window.requestAnimationFrame(renderCoverPointer);
+    });
+    cover.addEventListener("pointerleave", function () {
+      pointerX = 0;
+      pointerY = 0;
+      if (!coverPointerFrame) coverPointerFrame = window.requestAnimationFrame(renderCoverPointer);
+    });
   }
 
   var caseTabs = Array.prototype.slice.call(document.querySelectorAll(".case-tabs [role='tab']"));
